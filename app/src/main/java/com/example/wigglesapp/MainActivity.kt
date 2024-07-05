@@ -119,6 +119,62 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
         verticalArrangement = Arrangement.Center
     ) {
         Image(painter = painterResource(id = R.drawable.baseline_pets_24), contentDescription = "Cute Pets")
+        Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Blue)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        TextField(
+            value = fullname,
+            onValueChange = {fullname = it},
+            label = { Text(text = "Full Name")},
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = dob,
+            onValueChange = {dob = it},
+            label = { Text(text = "Date of Birth (DD/MM/YYYY)")},
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = contactNumber,
+            onValueChange = {contactNumber = it},
+            label = { Text(text = "Contact Number")},
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = address,
+            onValueChange = {address = it},
+            label = { Text(text = "Address")},
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = email,
+            onValueChange = {email = it},
+            label = { Text(text = "Email")},
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = password,
+            onValueChange = {password = it},
+            label = { Text(text = "Password")},
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
+        TextField(
+            value = confirmPassword,
+            onValueChange = {confirmPassword = it},
+            label = { Text(text = "Confirm Password")},
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier.fillMaxWidth(0.8f)
+        )
+
     }
+
 
 }
