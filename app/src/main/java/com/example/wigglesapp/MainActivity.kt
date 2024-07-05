@@ -103,3 +103,22 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit){
     }
 }
 
+@Composable
+fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
+    var fullname by remember { mutableStateOf("") }
+    var dob by remember { mutableStateOf("") }
+    var contactNumber by remember { mutableStateOf("") }
+    var address by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(painter = painterResource(id = R.drawable.baseline_pets_24), contentDescription = "Cute Pets")
+    }
+
+}
