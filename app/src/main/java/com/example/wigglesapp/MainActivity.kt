@@ -51,3 +51,4 @@ class MainActivity : ComponentActivity(){
 fun MyApp(){
     AuthScreen()
 }
+

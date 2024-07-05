@@ -54,6 +54,7 @@ dependencies {
 
     implementation(libs.sceneform.ux)
     implementation(libs.sceneform)
+    implementation("com.gorisse.thomas.sceneform:sceneform:1.20.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
