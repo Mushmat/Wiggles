@@ -1,6 +1,7 @@
 package com.example.wigglesapp
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,9 +13,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -79,5 +82,24 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit){
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth(0.8f)
         )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = {
+            authViewModel.logIn(email,password)
+        }) {
+            Text(text = "Login")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        TextButton(onClick = onSignUpClicked) {
+            Text(text = "Create an Account!")
+        }
+
+        authState.error?.let{
+            Text(text = it, color = Color.Red)
+        }
     }
 }
+
