@@ -42,9 +42,12 @@ class MainActivity : ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContent{
-            WigglesAppTheme{
-                AuthScreen(authViewModel)
-            }
+            MyApp()
         }
     }
+}
+
+@Composable
+fun MyApp(){
+    AuthScreen()
 }
