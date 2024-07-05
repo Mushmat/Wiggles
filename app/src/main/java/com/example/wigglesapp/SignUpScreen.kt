@@ -1,4 +1,4 @@
-package com.example.wigglesapp.ui.theme
+package com.example.wigglesapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -28,9 +30,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.wigglesapp.AuthViewModel
-import com.example.wigglesapp.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
     var fullname by remember { mutableStateOf("") }
@@ -68,51 +69,83 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                 value = fullname,
                 onValueChange = { fullname = it },
                 label = { Text(text = "Full Name") },
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
+
+            Spacer(modifier = Modifier.height(6.dp))
 
             TextField(
                 value = dob,
                 onValueChange = { dob = it },
                 label = { Text(text = "Date of Birth (DD/MM/YYYY)") },
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
+
+            Spacer(modifier = Modifier.height(6.dp))
 
             TextField(
                 value = contactNumber,
                 onValueChange = { contactNumber = it },
                 label = { Text(text = "Contact Number") },
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
-
+            Spacer(modifier = Modifier.height(6.dp))
             TextField(
                 value = address,
                 onValueChange = { address = it },
                 label = { Text(text = "Address") },
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
-
+            Spacer(modifier = Modifier.height(6.dp))
             TextField(
                 value = email,
                 onValueChange = { email = it },
                 label = { Text(text = "Email") },
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
-
+            Spacer(modifier = Modifier.height(6.dp))
             TextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text(text = "Password") },
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
-
+            Spacer(modifier = Modifier.height(6.dp))
             TextField(
                 value = confirmPassword,
                 onValueChange = { confirmPassword = it },
                 label = { Text(text = "Confirm Password") },
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier.fillMaxWidth(0.8f),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
             )
 
             Spacer(modifier = Modifier.height(16.dp))

@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.wigglesapp.ui.theme.SignUpScreen
 
 @Composable
 fun AuthScreen(authViewModel: AuthViewModel = viewModel()) {
