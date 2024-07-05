@@ -59,13 +59,13 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             verticalArrangement = Arrangement.Center
         ) {
             
-            Box(
+            /*Box(
                 modifier = Modifier
                     .height(200.dp)
                     .fillMaxWidth()
             ){
                 Dog3DModel()
-            }
+            }*/
 
             Spacer(modifier = Modifier.height(16.dp))
 

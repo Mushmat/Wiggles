@@ -1,6 +1,6 @@
 package com.example.wigglesapp
 
-import com.google.ar.sceneform.Scene
+
 import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -16,11 +16,9 @@ fun Dog3DModel() {
 
     AndroidView(
         factory = { ctx ->
-            SceneView(ctx).apply {
-                scene = Scene(this)
-
+            SceneView(ctx).apply{
                 val renderableFuture = ModelRenderable.builder()
-                    .setSource(context, Uri.parse("dog.glb"))
+                    .setSource(context, Uri.parse("assets/dog.glb"))
                     .build()
 
                 renderableFuture.thenAccept { renderable ->
