@@ -58,6 +58,17 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            
+            Box(
+                modifier = Modifier
+                    .height(200.dp)
+                    .fillMaxWidth()
+            ){
+                Dog3DModel()
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             Image(
                 painter = painterResource(id = R.drawable.baseline_pets_24),
                 contentDescription = "Cute Pets",
