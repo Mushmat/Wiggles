@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.wigglesapp.AuthViewModel
 import com.example.wigglesapp.R
 
@@ -55,9 +57,10 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
         ) {
             Image(
                 painter = painterResource(id = R.drawable.baseline_pets_24),
-                contentDescription = "Cute Pets"
+                contentDescription = "Cute Pets",
+                modifier = Modifier.size(48.dp)
             )
-            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Blue)
+            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.White, fontSize = 60.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -119,13 +122,13 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     fullname, dob, contactNumber, address, email, password, confirmPassword
                 )
             }) {
-                Text(text = "Create Account")
+                Text(text = "Create Account", fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
             TextButton(onClick = onLoginClicked) {
-                Text(text = "Back to Login")
+                Text(text = "Back to Login", fontSize = 30.sp, color = Color.White)
             }
 
             authState.error?.let {

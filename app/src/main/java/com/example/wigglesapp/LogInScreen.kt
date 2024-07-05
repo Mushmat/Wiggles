@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
@@ -49,9 +51,10 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.baseline_pets_24),
-                contentDescription = "Cute Pets"
+                contentDescription = "Cute Pets",
+                modifier = Modifier.size(48.dp)
             )
-            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Blue)
+            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.White, fontSize = 60.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -75,13 +78,13 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             Button(onClick = {
                 authViewModel.logIn(email, password)
             }) {
-                Text(text = "Login")
+                Text(text = "Login", fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
             TextButton(onClick = onSignUpClicked) {
-                Text(text = "Create an Account!")
+                Text(text = "Create an Account!",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 30.sp )
             }
 
             authState.error?.let {
