@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "769819807105",
+    "project_id": "wiggles-afdb9",
+    "storage_bucket": "wiggles-afdb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769819807105:android:0c0e2db54906910ce1ec80",
+        "android_client_info": {
+          "package_name": "com.example.wigglesapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRSExZGYWtT_ZPEpw6ybrgkW940q8SwN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
