@@ -174,6 +174,25 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
             modifier = Modifier.fillMaxWidth(0.8f)
         )
 
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Button(onClick = { 
+            authViewModel.signUp(
+                fullname,dob,contactNumber,address,email,password,confirmPassword
+            )
+        }) {
+            Text(text = "Create Account")
+        }
+        
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        TextButton(onClick =  onLoginClicked ) {
+            Text(text = "Back to Login")
+        }
+        
+        authState.error?.let {
+            Text(text = it, color = Color.Red)
+        }
     }
 
 
