@@ -52,6 +52,9 @@ android {
 
 dependencies {
 
+    implementation(libs.sceneform.ux)
+    implementation(libs.sceneform)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

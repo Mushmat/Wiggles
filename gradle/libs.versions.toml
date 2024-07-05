@@ -17,6 +17,8 @@ composeBom = "2024.06.00"
 navigationCompose = "2.7.7"
 firebaseCrashlyticsBuildtools = "3.0.2"
 roomKtx = "2.6.1"
+sceneform = "1.20.1"
+sceneformUx = "1.17.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +45,8 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+sceneform = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneform" }
+sceneform-ux = { module = "com.google.ar.sceneform.ux:sceneform-ux", version.ref = "sceneformUx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
