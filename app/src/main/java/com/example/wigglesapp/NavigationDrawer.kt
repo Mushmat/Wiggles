@@ -11,13 +11,14 @@ import kotlinx.coroutines.CoroutineScope
 fun NavigationDrawer(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
     Column(modifier = Modifier.padding(16.dp)) {
         DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }
-        DrawerButton(text = "User Profile") { /* Navigate to User Profile */ }
-        DrawerButton(text = "Adoption Process Instructions") { /* Navigate to Adoption Process Instructions */ }
-        DrawerButton(text = "Bookmarked Pets") { /* Navigate to Bookmarked Pets */ }
-        DrawerButton(text = "Adoption Application Tracker") { /* Navigate to Adoption Application Tracker */ }
-        DrawerButton(text = "Testimonials") { /* Navigate to Testimonials */ }
-        DrawerButton(text = "FAQs") { /* Navigate to FAQs */ }
-        DrawerButton(text = "Contact Us") { /* Navigate to Contact Us */ }
+        DrawerButton(text = "User Profile") { navController.navigate("user_profile_screen") }
+        DrawerButton(text = "Adoption Process Instructions") { navController.navigate("adoption_process_screen") }
+        DrawerButton(text = "Bookmarked Pets") { navController.navigate("bookmarked_pets_screen") }
+        DrawerButton(text = "Adoption Application Tracker") { navController.navigate("adoption_application_screen") }
+        DrawerButton(text = "Testimonials") { navController.navigate("testimonials_screen") }
+        DrawerButton(text = "FAQs") { navController.navigate("faqs_screen") }
+        DrawerButton(text = "Contact Us") { navController.navigate("contact_us_screen") }
+        DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
     }
 }
 

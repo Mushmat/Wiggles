@@ -81,6 +81,11 @@ fun MyApp(authViewModel: AuthViewModel) {
                         drawerState = drawerState,
                         scope = scope
                     )}
+                    composable("user_profile_screen"){ UserProfileScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
                 }
             }
         }
