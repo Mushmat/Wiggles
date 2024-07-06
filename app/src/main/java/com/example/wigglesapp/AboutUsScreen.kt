@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
@@ -26,16 +25,17 @@ fun AboutUsScreen(navController: NavController, drawerState: DrawerState, scope:
         verticalArrangement = Arrangement.Center
     ) {
         Text(text = "About Us Screen")
+
+        Button(
+            onClick = {
+                navController.navigate("home") {
+                    popUpTo(navController.graph.startDestinationId) {inclusive = true}
+                }
+            },
+            modifier = Modifier.padding(16.dp)
+        ){
+            Text(text = "Home")
+        }
     }
 
-    Button(
-        onClick = {
-            navController.navigate("home") {
-                popUpTo(navController.graph.startDestinationId) {inclusive = true}
-            }
-        },
-        modifier = Modifier.padding(16.dp)
-    ){
-        Text(text = "Home")
-    }
 }

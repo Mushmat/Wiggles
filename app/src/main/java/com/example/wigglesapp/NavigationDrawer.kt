@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 @Composable
 fun NavigationDrawer(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
     Column(modifier = Modifier.padding(16.dp)) {
-        DrawerButton(text = "About Us") { /* Navigate to About Us */ }
+        DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }
         DrawerButton(text = "User Profile") { /* Navigate to User Profile */ }
         DrawerButton(text = "Adoption Process Instructions") { /* Navigate to Adoption Process Instructions */ }
         DrawerButton(text = "Bookmarked Pets") { /* Navigate to Bookmarked Pets */ }

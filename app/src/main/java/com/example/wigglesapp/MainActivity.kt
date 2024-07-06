@@ -76,6 +76,11 @@ fun MyApp(authViewModel: AuthViewModel) {
                 NavHost(navController = navController, startDestination = if (authState.isAuthenticated) "home" else "auth") {
                     composable("auth") { AuthScreen(navController, authViewModel) }
                     composable("home") { HomeScreen(navController, drawerState, scope, authViewModel) }
+                    composable("about_us_screen"){ AboutUsScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    )}
                 }
             }
         }
