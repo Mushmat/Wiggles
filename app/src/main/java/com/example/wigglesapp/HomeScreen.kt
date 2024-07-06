@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,19 +18,63 @@ import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
-    Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Home", fontSize = 32.sp)
-        Spacer(modifier = Modifier.height(16.dp))
 
-        HomeButton(icon = R.drawable.baseline_pets_24, text = "Available Pets", onClick = { /* Navigate to Available Pets */ })
-        HomeButton(icon = R.drawable.baseline_search_24, text = "Find Best Pet", onClick = { /* Navigate to Find Best Pet */ })
-        HomeButton(icon = R.drawable.health, text = "Pet Care", onClick = { /* Navigate to Pet Care */ })
-        HomeButton(icon = R.drawable.shelter, text = "Shelter Info", onClick = { /* Navigate to Shelter Info */ })
-        HomeButton(icon = R.drawable.money, text = "Donate", onClick = { /* Navigate to Donate */ })
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.background_image),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = "Home", fontSize = 32.sp)
+            Spacer(modifier = Modifier.height(16.dp))
+
+            HomeButton(
+                icon = R.drawable.baseline_pets_24,
+                text = "Available Pets",
+                onClick = { /* Navigate to Available Pets */ })
+            HomeButton(
+                icon = R.drawable.baseline_search_24,
+                text = "Find Best Pet",
+                onClick = { /* Navigate to Find Best Pet */ })
+            HomeButton(
+                icon = R.drawable.health,
+                text = "Pet Care",
+                onClick = { /* Navigate to Pet Care */ })
+            HomeButton(
+                icon = R.drawable.shelter,
+                text = "Shelter Info",
+                onClick = { /* Navigate to Shelter Info */ })
+            HomeButton(
+                icon = R.drawable.money,
+                text = "Donate",
+                onClick = { /* Navigate to Donate */ })
+        }
+        
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+            contentAlignment = Alignment.BottomStart
+        ){
+            Button(
+                onClick = { 
+                    authViewModel.logOut()
+                    navController.navigate("auth") {
+                        popUpTo("home") {inclusive = true}
+                    }
+                }
+            ) {
+                Text(text = "Sign Out", fontSize = 14.sp)
+            }
+        }
     }
 }
 
