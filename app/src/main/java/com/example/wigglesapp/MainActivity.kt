@@ -5,11 +5,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.compose.NavHost
@@ -40,7 +42,12 @@ fun MyApp(authViewModel: AuthViewModel) {
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            NavigationDrawer(navController, drawerState, scope)
+            Surface(
+                color = MaterialTheme.colorScheme.surface,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                NavigationDrawer(navController, drawerState, scope)
+            }
         },
         content = {
             Scaffold(
