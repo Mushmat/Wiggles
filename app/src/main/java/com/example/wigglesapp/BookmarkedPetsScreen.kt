@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun AdoptionProcessScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope){
+fun BookmarkedPetsScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope){
     val context = LocalContext.current
 
     Column(
@@ -24,7 +24,7 @@ fun AdoptionProcessScreen(navController: NavController, drawerState: DrawerState
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Adoption Process Screen")
+        Text(text = "Bookmarked Pets Screen")
 
     }
 

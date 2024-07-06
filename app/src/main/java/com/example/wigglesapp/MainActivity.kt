@@ -86,6 +86,37 @@ fun MyApp(authViewModel: AuthViewModel) {
                         drawerState = drawerState,
                         scope = scope
                     ) }
+                    composable("adoption_process_screen"){ AdoptionProcessScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+                    composable("bookmarked_pets_screen"){ BookmarkedPetsScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+                    composable("adoption_application_screen"){ AdoptionApplicationScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+                    composable("testimonials_screen"){ TestimonialsScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+                    composable("faqs_screen"){ FAQsScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+                    composable("contact_us_screen"){ ContactUsScreen(
+                        navController = navController,
+                        drawerState = drawerState,
+                        scope = scope
+                    ) }
+
                 }
             }
         }

@@ -26,16 +26,6 @@ fun UserProfileScreen(navController: NavController, drawerState: DrawerState, sc
     ) {
         Text(text = "User Profile Screen")
 
-        Button(
-            onClick = {
-                navController.navigate("home") {
-                    popUpTo(navController.graph.startDestinationId) {inclusive = true}
-                }
-            },
-            modifier = Modifier.padding(16.dp)
-        ){
-            Text(text = "Home")
-        }
     }
 
 }

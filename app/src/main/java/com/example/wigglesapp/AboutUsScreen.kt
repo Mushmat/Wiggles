@@ -26,16 +26,6 @@ fun AboutUsScreen(navController: NavController, drawerState: DrawerState, scope:
     ) {
         Text(text = "About Us Screen")
 
-        Button(
-            onClick = {
-                navController.navigate("home") {
-                    popUpTo(navController.graph.startDestinationId) {inclusive = true}
-                }
-            },
-            modifier = Modifier.padding(16.dp)
-        ){
-            Text(text = "Home")
-        }
     }
 
 }

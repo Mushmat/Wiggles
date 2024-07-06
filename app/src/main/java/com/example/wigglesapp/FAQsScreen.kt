@@ -1,5 +1,6 @@
 package com.example.wigglesapp
 
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,7 +17,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun AdoptionProcessScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope){
+fun FAQsScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope){
     val context = LocalContext.current
 
     Column(
@@ -24,7 +25,7 @@ fun AdoptionProcessScreen(navController: NavController, drawerState: DrawerState
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Adoption Process Screen")
+        Text(text = "FAQS")
 
     }
 
