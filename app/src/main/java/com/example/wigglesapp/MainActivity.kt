@@ -45,7 +45,7 @@ fun MyApp(authViewModel: AuthViewModel) {
         drawerContent = {
             Surface(
                 color = MaterialTheme.colorScheme.surface,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(0.75f)
             ) {
                 NavigationDrawer(navController, drawerState, scope)
             }
@@ -68,7 +68,7 @@ fun MyApp(authViewModel: AuthViewModel) {
             ) {
                 NavHost(navController = navController, startDestination = if (authState.isAuthenticated) "home" else "auth") {
                     composable("auth") { AuthScreen(navController, authViewModel) }
-                    composable("home") { HomeScreen(navController, drawerState, scope) }
+                    composable("home") { HomeScreen(navController, drawerState, scope, authViewModel) }
                 }
             }
         }

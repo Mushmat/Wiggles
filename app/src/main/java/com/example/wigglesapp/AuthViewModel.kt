@@ -60,6 +60,13 @@ class AuthViewModel: ViewModel() {
         }
     }
 
+    fun logOut(){
+        viewModelScope.launch {
+            firebaseAuth.signOut()
+            _authState.value = AuthState(isAuthenticated = false)
+        }
+    }
+
     fun resetAuthState(){
         _authState.value = AuthState()
     }

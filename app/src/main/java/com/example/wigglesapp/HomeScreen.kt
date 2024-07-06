@@ -6,10 +6,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,7 +20,19 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
+fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, authViewModel: AuthViewModel) {
+
+    val context = LocalContext.current
+    val authState by authViewModel.authState.collectAsState()
+
+    LaunchedEffect(key1 = authState.isAuthenticated) {
+        if(!authState.isAuthenticated){
+            navController.navigate("auth"){
+                popUpTo(navController.graph.startDestinationId) {inclusive = true}
+            }
+        }
+    }
+
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -58,21 +73,20 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 text = "Donate",
                 onClick = { /* Navigate to Donate */ })
         }
-        
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-            contentAlignment = Alignment.BottomStart
-        ){
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.Start
+        ) {
             Button(
-                onClick = { 
-                    authViewModel.logOut()
-                    navController.navigate("auth") {
-                        popUpTo("home") {inclusive = true}
-                    }
-                }
+                onClick = { authViewModel.logOut() },
             ) {
-                Text(text = "Sign Out", fontSize = 14.sp)
+                Text(text = "Sign Out")
             }
         }
     }
