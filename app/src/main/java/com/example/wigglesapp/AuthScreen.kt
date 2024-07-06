@@ -8,19 +8,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 
 @Composable
-fun AuthScreen(authViewModel: AuthViewModel = viewModel()) {
+fun AuthScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
     var isSignUp by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
 
-    if(authState.isAuthenticated){
-        Text(text = "Welcome to Wiggles!")
-    }else{
-        if(isSignUp){
-            SignUpScreen(authViewModel) {isSignUp = false }
+    if (authState.isAuthenticated) {
+        navController.navigate("home") {
+            popUpTo("auth") { inclusive = true }
+        }
+    } else {
+        if (isSignUp) {
+            SignUpScreen(authViewModel) { isSignUp = false }
         } else {
-            LoginScreen(authViewModel) {isSignUp = true}
+            LoginScreen(authViewModel) { isSignUp = true }
         }
     }
 }
