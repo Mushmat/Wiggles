@@ -1,5 +1,6 @@
 package com.example.wigglesapp
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,10 +24,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController){
@@ -93,4 +97,9 @@ fun HomeOptionItem(text: String, icon: Int, onClick: () -> Unit){
     }
 }
 
-@
+@Preview
+@Composable
+fun PreviewHomeScreen(){
+    val navController = rememberNavController()
+    HomeScreen(navController = navController)
+}
