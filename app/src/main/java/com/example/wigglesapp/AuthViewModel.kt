@@ -12,7 +12,7 @@ class AuthViewModel: ViewModel() {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val firestore = FirebaseFirestore.getInstance()
 
-    private val _authState = MutableStateFlow(AuthState())
+    internal val _authState = MutableStateFlow(AuthState())
     val authState: StateFlow<AuthState> = _authState
 
     fun signUp(

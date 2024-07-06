@@ -18,6 +18,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -27,6 +28,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp(authViewModel)
+        }
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if(currentUser != null){
+            authViewModel.resetAuthState()
+            authViewModel._authState.value = AuthState(isAuthenticated = true)
         }
     }
 }
