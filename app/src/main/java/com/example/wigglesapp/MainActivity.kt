@@ -52,11 +52,11 @@ fun MyApp(authViewModel: AuthViewModel) {
 
     var filteredPets by remember { mutableStateOf(dummyPets) }
 
-    fun applyFilters(breed: String, gender: String, size: String){
-        filteredPets = dummyPets.filter {
-            (breed.isEmpty() || it.breed == breed) &&
-                    (gender.isEmpty() || it.gender == gender) &&
-                    (size.isEmpty() || it.size == size)
+    fun applyFilters(breeds: List<String>, genders: List<String>, sizes: List<String>) {
+        filteredPets = dummyPets.filter { pet ->
+            (breeds.isEmpty() || breeds.contains(pet.breed)) &&
+                    (genders.isEmpty() || genders.contains(pet.gender)) &&
+                    (sizes.isEmpty() || sizes.contains(pet.size))
         }
     }
 
