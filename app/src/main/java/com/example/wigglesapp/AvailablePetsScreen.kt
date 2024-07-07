@@ -47,8 +47,30 @@ import coil.compose.rememberImagePainter
 import kotlinx.coroutines.launch
 
 val dummyPets = listOf(
-    Pet(1, "Bailey","Pit Bull Terrier","https://dbw3zep4prcju.cloudfront.net/animal/3cc08a4b-ffdc-47a5-bb8a-3a62147ce7cb/image/3a36eb40-c7e6-470c-9206-f5bacdcebc2b.jpg?versionId=zZ8cPVw8vhdfM6z0sSQ3EKfiBnvzIJM8&bust=1719713935&width=720"),
-    Pet(2, "Solomon","Dachshund","https://dbw3zep4prcju.cloudfront.net/animal/922fd600-c704-4a47-baae-d0ef5bdd7deb/image/5ddba02e-27f9-4819-93ad-5c0317fdebab.jpg?versionId=zpMokUb.EZiJrc_JdimO_kStXobV3O3w&bust=1718220692&width=720"),
+    Pet(1,
+        "Bailey",
+        "Pit Bull Terrier",
+        "https://dbw3zep4prcju.cloudfront.net/animal/3cc08a4b-ffdc-47a5-bb8a-3a62147ce7cb/image/3a36eb40-c7e6-470c-9206-f5bacdcebc2b.jpg?versionId=zZ8cPVw8vhdfM6z0sSQ3EKfiBnvzIJM8&bust=1719713935&width=720",
+        "Female",
+        "Medium",
+        "Affectionate, Funny, Quiet, Smart, Playful, Loyal, Loves, Independent, Gentle, Friendly, Dignified, Curious, Couch, Brave, Athletic",
+        "Bailee was born approximately April 10th. She and her siblings found themselves in a rural shelter and in terrible condition. They were skinny, anemic, and sickly. We were able to save them thanks to foster homes. They have been thriving and are finally healthy puppies! Bailee is being fostered with her sister, and they have been doing great in their foster home!\n" +
+                "\n" +
+                "Bailee is thriving with crate, potty, and leash training. She has loved playing with other dogs, and has done well meeting all sorts of people. She has had a great start to basic puppy obedience training and safe puppy socialization. Bailee is already spayed. Her next vaccines are scheduled for July 8 This appointment is covered by the rescue. He is able to be adopted prior to the appointment as long as adopters are willing to get him to the appointment. "
+        ),
+
+    Pet(2,
+        "Solomon",
+        "Dachshund",
+        "https://dbw3zep4prcju.cloudfront.net/animal/922fd600-c704-4a47-baae-d0ef5bdd7deb/image/5ddba02e-27f9-4819-93ad-5c0317fdebab.jpg?versionId=zpMokUb.EZiJrc_JdimO_kStXobV3O3w&bust=1718220692&width=720",
+        "Male",
+        "Small",
+        "Friendly, Curious, Gentle, Affectionate, Follower, Sweet, Couch Potato",
+        "Solomon has asked us to place him in a home where he can get all the attention. He is now 14 months old and is a follower. He will follow you outside. He will follow you inside. He will follow you upstairs. He will follow you downstairs. He will follow you to the bathroom and kitchen and bedroom. :) He likes to be your shadow.\n" +
+                "No cats or other dogs. No children under 8 years old please.\n" +
+                "Solomon enjoys walks but has no desire to meet all of the other dogs that are walking. He's a home-body and will give you lots of loves! He is a snuggler!\n" +
+                "Solomon is scheduled to be neutered later in June."
+        ),
     Pet(3, "Maple","Plott Hound","https://dbw3zep4prcju.cloudfront.net/animal/0d9266af-b2db-4f44-9fe0-2bfce19411b3/image/cfab1d31-a825-4454-b4a0-cf87e4ed294d.jpg?versionId=qCde0vHBgQXaybeCUS..5agtHGJ9VCcp&bust=1718220241&width=720"),
     Pet(4, "Dale","Hound","https://dbw3zep4prcju.cloudfront.net/animal/22e7331c-c7b9-42d2-8365-46cfe4214ad6/image/d5bde6a1-fd4c-4936-8e93-c92a4e7af37f.jpg?versionId=U.Ao8lyG0divcXiDn.duZYatJx69gsd2&bust=1717684331&width=720"),
     Pet(5, "Earl","Mixed Breed","https://dbw3zep4prcju.cloudfront.net/animal/5d736401-47d1-4579-8494-a67ba10a693c/image/e23e8f23-b76b-4482-b2ce-ef70362f5009.jpg?versionId=HTju8FSkvuJxIA3sMqLojqkVYMSE_Vpf&bust=1714782863&width=720"),

@@ -7,6 +7,6 @@ data class Pet(
     val imageUrl: String,
     val gender: String = "",
     val size: String = "",
-    val characterstics: String = "",
+    val characteristics: String = "",
     val about: String = ""
 )
