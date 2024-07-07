@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+coilCompose = "2.4.0"
 firebaseAuthKtx = "23.0.0"
 firebaseBom = "33.1.1"
 firebaseFirestoreKtx = "25.0.0"
@@ -25,6 +26,7 @@ core = "1.17.1"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }

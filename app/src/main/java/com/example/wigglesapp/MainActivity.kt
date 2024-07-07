@@ -116,7 +116,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                         drawerState = drawerState,
                         scope = scope
                     ) }
-
+                    composable("available_pets") { AvailablePetsScreen(navController = navController)}
                 }
             }
         }

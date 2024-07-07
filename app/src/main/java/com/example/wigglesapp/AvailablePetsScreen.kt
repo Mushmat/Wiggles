@@ -1,9 +1,45 @@
 package com.example.wigglesapp
 
 import android.annotation.SuppressLint
+import android.graphics.Paint.Align
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
+import kotlinx.coroutines.launch
 
 val dummyPets = listOf(
     Pet(1, "Bailey","Pit Bull Terrier","https://dbw3zep4prcju.cloudfront.net/animal/3cc08a4b-ffdc-47a5-bb8a-3a62147ce7cb/image/3a36eb40-c7e6-470c-9206-f5bacdcebc2b.jpg?versionId=zZ8cPVw8vhdfM6z0sSQ3EKfiBnvzIJM8&bust=1719713935&width=720"),
@@ -40,8 +76,81 @@ val dummyPets = listOf(
 
     )
 
-@SuppressLint("RememberReturnType")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AvailablePetsScreen(navController: NavController){
     val pets = remember { dummyPets }
+    val scope = rememberCoroutineScope()
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Wiggles") },
+                actions = {
+                    IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(id = R.drawable.baseline_menu_24),
+                            contentDescription = "Menu"
+                        )
+                    }
+                }
+            )
+        }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Button(
+                onClick = { /*TODO HANDLE FILTERS */ },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Filter")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(pets.chunked(2)) { rowPets ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    rowPets.forEach{
+                        pet ->
+                        PetCard(pet = pet)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PetCard(pet: Pet){
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth(0.5f)
+            .padding(8.dp)
+    ) {
+        Image(
+            painter = rememberImagePainter(data = pet.imageUrl),
+            contentDescription = null,
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surface)
+            )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = pet.name, fontWeight = FontWeight.Bold)
+        Text(text = pet.breed)
+    }
 }
