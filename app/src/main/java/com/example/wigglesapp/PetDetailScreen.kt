@@ -58,7 +58,7 @@ fun PetDetailScreen(navController: NavController, petId: Int){
                         .padding(bottom = 16.dp)
                 )
             }
-dde
+
             item {
 
                 Text(text = pet.name, fontSize = 32.sp, color = Color.Black, style = MaterialTheme.typography.labelLarge)
