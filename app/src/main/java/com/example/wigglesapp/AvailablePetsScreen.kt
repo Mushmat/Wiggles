@@ -107,10 +107,48 @@ val dummyPets = listOf(
                 "\"Earl loves other dogs and finds comfort in them. We would ideally like for him to have another dog in his forever home. He is still nervous around new people, but once he warms up to them, he is a big love bud and wants to cuddle. He has been doing wonderful with crate and potty training, and he has been amazing with all the dogs he has met. He is currently being fostered with a female dog, and they are best friends. Earl loves to play and is good at adjusting to other dogs' playstyles. He has been great around kids and cats when he's been exposed. Earl would love a home where he will be shown all the love, and bonus points if he gets to have a fur sibling!\""
         ),
 
-    Pet(6, "Slick","Labrador Retriever","https://dbw3zep4prcju.cloudfront.net/animal/7e35e861-33a2-467d-abab-21e1e558b3c0/image/ef8895de-2c4e-4124-949c-beb5169c5914.jpeg?versionId=09HyRzi88J6E8nXBQmc4jqyC4aeyFvcq&bust=1719666397&width=720"),
-    Pet(7, "Jasper","Jack Russell Terrier","https://dbw3zep4prcju.cloudfront.net/animal/4e24be5c-5309-42ff-af31-36ce6fd16de6/image/0829cfbc-d927-4e8c-a83e-398882cc4e96.jpeg?versionId=7LyfnpmQKCmQpVE3mi1lmWIfd_m8x6NX&bust=1717295973&width=720"),
-    Pet(8, "Belle","Australian Cattle Dog","https://dbw3zep4prcju.cloudfront.net/animal/0efe8dfb-94ea-4cd8-9870-3ce3870f3e8d/image/45c68613-925d-47a9-a3ed-18567f407a6f.jpeg?versionId=8ODrfw.56VLA7p9ggNmIgFgUPZAJZErz&bust=1712338857&width=720"),
-    Pet(9, "Alvin","Labrador Retriever","https://dbw3zep4prcju.cloudfront.net/animal/c4b66dfb-54e8-4be9-804c-1f3962a2c2b0/image/314389cf-3b5e-491c-987b-62e4b1748dda.jpeg?versionId=cRZOFJRcyASvEiqclJGqNsuVBUCdHvYS&bust=1713803507&width=720"),
+    Pet(6,
+        "Slick",
+        "Labrador Retriever",
+        "https://dbw3zep4prcju.cloudfront.net/animal/7e35e861-33a2-467d-abab-21e1e558b3c0/image/ef8895de-2c4e-4124-949c-beb5169c5914.jpeg?versionId=09HyRzi88J6E8nXBQmc4jqyC4aeyFvcq&bust=1719666397&width=720",
+        "Male",
+        "Medium",
+        "Yet to be discovered",
+        "This precious baby was rescued by a Good Samaritan who found out her neighbor was selling these puppies at 3 weeks old! She was able to get two and the momma, thank goodness! Mom is pictured below. She is less than knee high and weighs about 30 pounds. I don’t believe these babies will be big dogs but medium sized! Slick is currently 8 weeks old and PRECIOUS!"
+        ),
+
+    Pet(7,
+        "Jasper",
+        "Jack Russell Terrier",
+        "https://dbw3zep4prcju.cloudfront.net/animal/4e24be5c-5309-42ff-af31-36ce6fd16de6/image/0829cfbc-d927-4e8c-a83e-398882cc4e96.jpeg?versionId=7LyfnpmQKCmQpVE3mi1lmWIfd_m8x6NX&bust=1717295973&width=720",
+        "Male",
+        "Medium",
+        "Friendly, Affectionate, Loyal, Gentle, Playful, Smart, Dignified, Quiet, Athletic",
+        "Jack Russell terrier mix\n" +
+                "26 pounds\n" +
+                "6 year old\n" +
+                "\n" +
+                "Jasper was abandoned by his owners on a rural road. They were so scared and unsure but were able to be caught by the person who dumped them son. Jasper is a total sweet boy and has zero aggression. He is crate trained and walks well on a leash. If someone is interested in a calm, very well mannered boy, he’s your boy! He does great with other dogs and loves kids. We don’t know how he is with cats. We were told he is house trained and was a house dog until he was dumped. Adopt this precious baby today!"
+        ),
+
+    Pet(8,
+        "Belle",
+        "Australian Cattle Dog",
+        "https://dbw3zep4prcju.cloudfront.net/animal/0efe8dfb-94ea-4cd8-9870-3ce3870f3e8d/image/45c68613-925d-47a9-a3ed-18567f407a6f.jpeg?versionId=8ODrfw.56VLA7p9ggNmIgFgUPZAJZErz&bust=1712338857&width=720",
+        "Female",
+        "Medium",
+        "Friendly, Affectionate, Loyal, Gentle, Playful, Smart, Dignified, Quiet",
+        "This little cutie is a 9 week old lab mix.\n" +
+                "Mom is only 45 pounds and her picture is included below. They were all dumped at a good samaritan’s house, so we don’t know what dad was. The whole group looks like possibly fiest/cattle dog/lab mixes. Sweet, happy, and goofy pups full of kisses is the only way to describe them! Mom’s personality is very sweet, gentle, and calm! Their adoption donation covers their spay/neuter, 3 sets of puppy distemper vaccines, rabies vaccine, dewormings, and a microchip!"
+        ),
+
+    Pet(
+        9,
+        "Alvin",
+        "Labrador Retriever",
+        "https://dbw3zep4prcju.cloudfront.net/animal/c4b66dfb-54e8-4be9-804c-1f3962a2c2b0/image/314389cf-3b5e-491c-987b-62e4b1748dda.jpeg?versionId=cRZOFJRcyASvEiqclJGqNsuVBUCdHvYS&bust=1713803507&width=720",
+        ),
+
     Pet(10, "Laney","German Shepherd","https://dbw3zep4prcju.cloudfront.net/animal/4738e961-5e2a-441a-9003-5aaf13ac5cb5/image/3c418608-8655-417d-a98b-c7760ac166e8.jpeg?versionId=G.JTG8rOuXw0bpLjD1y8C4tEn.9.1tL.&bust=1712335555&width=720"),
 
     Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
