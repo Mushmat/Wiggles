@@ -164,16 +164,112 @@ val dummyPets = listOf(
         "Laney is a sweetheart who is full of love and kisses! Laney is currently a small shepherd mix weighing 40 pounds. She is about 3-4 years old. She is an adult dog with a playful side. She enjoys spending her days snuggling up with her human friends and exploring the outdoors. She loves going on adventures or just spending the day lounging on the couch. Laney is GREAT with other dogs, kids, and doesn’t pay too much attention to cats. She is crate trained and working on house training. Laney is heartworm positive but her treatment is included in her adoption donation. The treatment is the slow kill method. She is on normal heartworm prevention twice a month and there is no exercise restrictions!"
         ),
 
-    Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
-    Pet(22,"Nene","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300"),
-    Pet(23,"Asher","American Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72124640/1/?bust=1720323573&width=300"),
-    Pet(24,"Peugeot","Domestic Medium Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72038617/1/?bust=1720128776&width=300"),
-    Pet(25,"May","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71573001/1/?bust=1720323589&width=300"),
-    Pet(26,"Lexi","Abyssinian","https://dbw3zep4prcju.cloudfront.net/animal/cd8dfafd-8299-4e82-8f32-f0a4ce2fd047/image/16f2b70e-9c88-48b4-9464-701a2487047d.jpg?versionId=LPrLMCS_4cVHpy6kc2Z7f8ux4CTfmfeh&bust=1712614228&width=300"),
-    Pet(27,"Moose","Bengal","https://dbw3zep4prcju.cloudfront.net/animal/b713cfb7-234e-4870-9956-47a47ed2b682/image/bdbedbce-743a-49eb-a349-1c72e68c2ee6.jpg?versionId=7LgY6j.XmDTPMgZgRkFx1fXBvSiaFQHI&bust=1712600739&width=300"),
-    Pet(28,"Chester","British Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/bcc34188-453a-4d30-b813-b7d99bd2ca36/image/9cb60834-b56a-4b5c-962f-f31dd9b72291.jpg?versionId=YGMAdKfdGELGXUaMIj_uZwmEbmhkA7N3&bust=1719675861&width=300"),
-    Pet(29,"Tinky","Dilute Calico","https://dbw3zep4prcju.cloudfront.net/animal/45cd62de-bcbd-4c7b-841e-71622d68bd4b/image/a588e539-0bc0-4eae-9e65-200e76e8c5c2.jpg?versionId=TsACFmj51hGkR4BuzJkc6Ns4stIiHH0j&bust=1712650429&width=300"),
-    Pet(30,"Cookie","Dilute Calico","https://dbw3zep4prcju.cloudfront.net/animal/ab66eb58-776b-444e-98db-da7700c3d6d0/image/2709203a-e8e0-458a-8caa-ec4f1807cf8c.jpg?versionId=qM9OGOeicegrZDTTIUFbQew8CTuw0_qZ&bust=1718826402&width=300"),
+    Pet(
+        21,
+        "September",
+        "Domestic Short Hair",
+        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300",
+        "Male",
+        "Small",
+        "Cute",
+        "Profile coming soon!"
+        ),
+
+    Pet(22,
+        "Nene",
+        "Domestic Short Hair",
+        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300",
+        "Female",
+        "Small",
+        "Playful, affectionate, curious, independent, agile, nocturnal, vocal",
+        "Nene was one of 5 kittens dumped on a remote road in York County and left to fend for themselves. While 3 kittens readily entered the humane trap, Nene and Drew proved to be both stubborn and resilient! It took 3 days for their rescuer to catch them and bring to safety. The rescue itself had to get creative as the kittens found themseleves stuck in a storm drain. Ultimately, tying a blanket to the grate and lowering it to the ground provided just the right thing for them to climb out. Once out, neither could resist the smell of fresh sardines and they entered the trap together.\n" +
+                "\n" +
+                "While Nene is still on the shy side, she does allow her human to pick her up for short period. She enjoys being loved on and pet and shows that she is capable of being an amazing companion for a quieter home - no small children please! She would thrive being adopted with a foster friend, or into a home with a playmate. Her preferred naptime spot is by a window where she can watch the birds."
+        ),
+
+    Pet(23,
+        "Asher",
+        "American Short Hair",
+        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72124640/1/?bust=1720323573&width=300",
+        "Male",
+        "Medium",
+        "Affectionate, Couch, Curious, Friendly, Independent, Playful",
+        "The adorable boys ready for his forever home. He is house trained and has all the vaccinations up-to-date."
+        ),
+
+    Pet(24,
+        "Peugeot",
+        "Domestic Medium Hair",
+        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72038617/1/?bust=1720128776&width=300",
+        "Male",
+        "Small",
+        "Playful, independent, curious, affectionate, agile, nocturnal, territorial",
+        "Meet Peugeot, a wonderful feline companion with a unique personality. Peugeot is known for being sociable, gentle, and intelligent, making every day an adventure. With a sleek coat and bright eyes, Peugeot is as beautiful as he is charming. He enjoys climbing to high places, engaging in interactive play, and basking in warm spots, and he has a knack for making everyone around him smile. Whether you're looking for a cuddly lap cat or a curious explorer, Peugeot is ready to bring joy and love into your home. Adopt Peugeot today and discover the endless happiness he can offer."
+        ),
+
+    Pet(25,
+        "May",
+        "Domestic Short Hair",
+        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71573001/1/?bust=1720323589&width=300",
+        "Female",
+        "Small",
+        "Playful, curious, independent, affectionate, agile, territorial, and intelligent.",
+        "Meet May, a wonderful feline companion with a unique personality. May is known for being playful, affectionate, and curious, making every day an adventure. With a sleek coat and bright eyes, May is as beautiful as she is charming. She enjoys playing with toys, relaxing in sunny spots, and exploring her surroundings, and she has a knack for making everyone around her smile. Whether you're looking for a cuddly lap cat or an energetic playmate, May is ready to bring joy and love into your home. Adopt May today and discover the endless happiness she can offer."
+        ),
+
+    Pet(26,
+        "Lexi",
+        "Abyssinian",
+        "https://dbw3zep4prcju.cloudfront.net/animal/cd8dfafd-8299-4e82-8f32-f0a4ce2fd047/image/16f2b70e-9c88-48b4-9464-701a2487047d.jpg?versionId=LPrLMCS_4cVHpy6kc2Z7f8ux4CTfmfeh&bust=1712614228&width=300",
+        "Female",
+        "Medium",
+        "Smart, Playful, Independent",
+        "Lexi is a beautiful 9 year old female Abyssinian. She is not happy living in a multi-cat household. One-on-one with her people, she craves attention. She loves sitting in the window watching birds and squirrels. Wave a feather toy and you'll have her attention. She loves high places, like most Abys. This pretty girl is searching for a home where she can be cherished as your one and only feline companion."
+        ),
+
+    Pet(27,
+        "Moose",
+        "Bengal",
+        "https://dbw3zep4prcju.cloudfront.net/animal/b713cfb7-234e-4870-9956-47a47ed2b682/image/bdbedbce-743a-49eb-a349-1c72e68c2ee6.jpg?versionId=7LgY6j.XmDTPMgZgRkFx1fXBvSiaFQHI&bust=1712600739&width=300",
+        "Male",
+        "Medium",
+        "Loyal, Playful, Friendly, Smart, Curious, Funny",
+        "Moose's coat length is short. He is well house-trained and is friendly. All the vaccinations are up-to-date, spayed and neutered. Also, he is very good with other cats and dogs."
+        ),
+
+    Pet(28,
+        "Chester",
+        "British Short Hair",
+        "https://dbw3zep4prcju.cloudfront.net/animal/bcc34188-453a-4d30-b813-b7d99bd2ca36/image/9cb60834-b56a-4b5c-962f-f31dd9b72291.jpg?versionId=YGMAdKfdGELGXUaMIj_uZwmEbmhkA7N3&bust=1719675861&width=300",
+        "Male",
+        "Medium",
+        "Affectionate, Friendly, Gentle, Quiet, Loves Belly Rubs",
+        "Chester has, until now, had a hard life. He lived in a colony outside for years. The lady feeding the colony requested euthanasia when he tested positive for both Feline AIDS and Feline Leukemia. Despite the diagnosis, Chester is healthy and vigorous. He is a healthy weight, has clear eyes, eats well, uses his litter box, and plays with his toys. He is also very loving and craves attention, which of course he did not get all those years of living outside. We know that Chester still has a lot of love to give to the right family. Please help us help him."
+        ),
+
+    Pet(29,
+        "Tinky",
+        "Dilute Calico",
+        "https://dbw3zep4prcju.cloudfront.net/animal/45cd62de-bcbd-4c7b-841e-71622d68bd4b/image/a588e539-0bc0-4eae-9e65-200e76e8c5c2.jpg?versionId=TsACFmj51hGkR4BuzJkc6Ns4stIiHH0j&bust=1712650429&width=300",
+        "Male",
+        "Medium",
+        "Friendly, Gentle, Affectionate, Curious, Smart",
+        "Remember Winky and Tinky, our special needs kittens of 2020?\n" +
+                "In 2020, at 4 weeks old, they had upper respiratory infections and badly infected eyes! Unfortunately, Winky (female) lost sight in one eye and Tinky (male) has limited vision in one eye. As you can see in Tinky’s photos, there is one of him as a kitten with his infected eye. Winky’s eye still leaks but vet said to expect that with scar tissue. Her eye is deflated but not painful. It isn’t beautiful to look at but isn’t causing issues now.\n" +
+                "They were adopted as kittens in December 2020 by a wonderful family. Through no fault of anybody (humans or Winky and Tinky) they need a new home, preferably semi-quiet, not an extremely hectic household. They are healthy and have been well cared for.\n" +
+                "They are loving cats that would be wonderful family members. Still a bonded pair, they need to be adopted together. The adoption fee is \$125.00 for the pair.\n" +
+                "They were combo-tested negative and they are up to date on vaccinations. They have been spayed and neutered."
+        ),
+
+    Pet(30,
+        "Cookie",
+        "Dilute Calico",
+        "https://dbw3zep4prcju.cloudfront.net/animal/ab66eb58-776b-444e-98db-da7700c3d6d0/image/2709203a-e8e0-458a-8caa-ec4f1807cf8c.jpg?versionId=qM9OGOeicegrZDTTIUFbQew8CTuw0_qZ&bust=1718826402&width=300",
+        "Female",
+        "Medium",
+        "She is a kitten who is good with other cats.",
+        "Cookie was found living by homeowners living in their grill. Unfortunately, they are allergic to cats so reached out for help. She’s an energetic girl that loves to play and purr while doing it. Cookie didn’t have any issues adjusting to her foster home or any of the other cats. If anything, she was happy because now she had feline friends to be with. Her medium fur is very plush and she’s so adorable!"
+        ),
 
     )
 
