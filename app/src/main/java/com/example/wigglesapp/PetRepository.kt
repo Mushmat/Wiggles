@@ -1,8 +1,9 @@
 package com.example.wigglesapp
 
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PetRepository(private val petDao: PetDao) {
+class PetRepository @Inject constructor(private val petDao: PetDao) {
 
     val bookmarkedPets: Flow<List<PetEntity>> = petDao.getBookmarkedPets()
 
