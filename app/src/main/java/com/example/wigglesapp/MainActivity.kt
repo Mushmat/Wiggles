@@ -121,7 +121,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                         val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
                         PetDetailScreen(navController = navController, petId = petId)
                     }
-                }
+                    composable("filter") { FilterScreen(navController = navController) { breed, gender, size -> applyFilters(breed, gender, size) } }
             }
         }
     )

@@ -29,8 +29,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -278,9 +281,17 @@ val dummyPets = listOf(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AvailablePetsScreen(navController: NavController){
-    val pets = remember { dummyPets }
+    var filteredPets by remember { mutableStateOf(dummyPets) }
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+
+    fun applyFilter(breed: String, gender: String, size: String){
+        filteredPets = dummyPets.filter {
+            (breed.isEmpty() || it.breed == breed) &&
+                    (gender.isEmpty() || it.gender == gender) &&
+                    (size.isEmpty() || it.size == size)
+        }
+    }
 
     Scaffold(
         topBar = {
