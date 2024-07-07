@@ -280,18 +280,10 @@ val dummyPets = listOf(
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AvailablePetsScreen(navController: NavController){
-    var filteredPets by remember { mutableStateOf(dummyPets) }
+fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
+
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
-
-    fun applyFilter(breed: String, gender: String, size: String){
-        filteredPets = dummyPets.filter {
-            (breed.isEmpty() || it.breed == breed) &&
-                    (gender.isEmpty() || it.gender == gender) &&
-                    (size.isEmpty() || it.size == size)
-        }
-    }
 
     Scaffold(
         topBar = {
@@ -323,7 +315,7 @@ fun AvailablePetsScreen(navController: NavController){
                     .padding(16.dp)
             ) {
                 Button(
-                    onClick = { /*TODO HANDLE FILTERS */ },
+                    onClick = { navController.navigate("filter") },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = "Filter")

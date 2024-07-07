@@ -11,7 +11,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -47,6 +50,16 @@ fun MyApp(authViewModel: AuthViewModel) {
     val scope = rememberCoroutineScope()
     val authState by authViewModel.authState.collectAsState()
 
+    var filteredPets by remember { mutableStateOf(dummyPets) }
+
+    fun applyFilters(breed: String, gender: String, size: String){
+        filteredPets = dummyPets.filter {
+            (breed.isEmpty() || it.breed == breed) &&
+                    (gender.isEmpty() || it.gender == gender) &&
+                    (size.isEmpty() || it.size == size)
+        }
+    }
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -73,55 +86,91 @@ fun MyApp(authViewModel: AuthViewModel) {
                     )
                 }
             ) {
-                NavHost(navController = navController, startDestination = if (authState.isAuthenticated) "home" else "auth") {
+                NavHost(
+                    navController = navController,
+                    startDestination = if (authState.isAuthenticated) "home" else "auth"
+                ) {
                     composable("auth") { AuthScreen(navController, authViewModel) }
-                    composable("home") { HomeScreen(navController, drawerState, scope, authViewModel) }
-                    composable("about_us_screen"){ AboutUsScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    )}
-                    composable("user_profile_screen"){ UserProfileScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("adoption_process_screen"){ AdoptionProcessScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("bookmarked_pets_screen"){ BookmarkedPetsScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("adoption_application_screen"){ AdoptionApplicationScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("testimonials_screen"){ TestimonialsScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("faqs_screen"){ FAQsScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("contact_us_screen"){ ContactUsScreen(
-                        navController = navController,
-                        drawerState = drawerState,
-                        scope = scope
-                    ) }
-                    composable("available_pets") { AvailablePetsScreen(navController = navController)}
-                    composable("pet_detail/{petId}") {backStackEntry ->
-                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                    composable("home") {
+                        HomeScreen(
+                            navController,
+                            drawerState,
+                            scope,
+                            authViewModel
+                        )
+                    }
+                    composable("about_us_screen") {
+                        AboutUsScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("user_profile_screen") {
+                        UserProfileScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("adoption_process_screen") {
+                        AdoptionProcessScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("bookmarked_pets_screen") {
+                        BookmarkedPetsScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("adoption_application_screen") {
+                        AdoptionApplicationScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("testimonials_screen") {
+                        TestimonialsScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("faqs_screen") {
+                        FAQsScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("contact_us_screen") {
+                        ContactUsScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
+                        )
+                    }
+                    composable("available_pets") { AvailablePetsScreen(navController = navController, filteredPets) }
+                    composable("pet_detail/{petId}") { backStackEntry ->
+                        val petId = backStackEntry.arguments?.getString("petId")?.toInt()
+                            ?: return@composable
                         PetDetailScreen(navController = navController, petId = petId)
                     }
-                    composable("filter") { FilterScreen(navController = navController) { breed, gender, size -> applyFilters(breed, gender, size) } }
+                    composable("filter") {
+                        FilterScreen(navController = navController) { breed, gender, size ->
+                            applyFilters(
+                                breed,
+                                gender,
+                                size
+                            )
+                        }
+                    }
+                }
             }
         }
     )
