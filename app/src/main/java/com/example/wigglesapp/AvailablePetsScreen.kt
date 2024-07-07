@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Paint.Align
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -329,7 +330,7 @@ fun AvailablePetsScreen(navController: NavController){
                             horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             rowPets.forEach { pet ->
-                                PetCard(pet = pet)
+                                PetCard(navController = navController, pet = pet)
                             }
                         }
                     }
@@ -340,12 +341,15 @@ fun AvailablePetsScreen(navController: NavController){
 }
 
 @Composable
-fun PetCard(pet: Pet){
+fun PetCard(navController: NavController, pet: Pet){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .clickable {
+                navController.navigate("pet_detail/${pet.id}")
+            }
     ) {
         Image(
             painter = rememberImagePainter(data = pet.imageUrl),
