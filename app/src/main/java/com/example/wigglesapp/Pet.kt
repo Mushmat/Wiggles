@@ -28,6 +28,18 @@ fun dummyData(){
         Pet(17, "Lark","Chihuahua","https://dbw3zep4prcju.cloudfront.net/animal/5101bbf8-8f26-4f4c-ba3e-425a283f648f/image/78bae310-2b18-4041-9ac9-ea94b981422c.jpg?versionId=1_VagU4ldPAfzAcGi9whXBVR.rn5OhZJ&bust=1716582429&width=720"),
         Pet(18, "Ruby","Chihuahua","https://dbw3zep4prcju.cloudfront.net/animal/f78d3c5b-4e70-49b8-99f7-0fe32f4c6583/image/cfcee275-15a7-4aec-a12c-42e5263be40d.jpg?versionId=OK7UKoj7JrJQOrznHQRZav7F9sTgeWsT&bust=1711892909&width=720"),
         Pet(19, "Polly","Terrier","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72185007/1/?bust=1720243354&width=720"),
-        Pet(20, "Neville","Beagle","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72216731/1/?bust=1720246553&width=720")
+        Pet(20, "Neville","Beagle","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72216731/1/?bust=1720246553&width=720"),
+
+        Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
+        Pet(22,"Nene","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300"),
+        Pet(23,"Asher","American Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/4d562d02-c606-4bcb-aa41-62a2a18ffe4c/image/3893469b-17fa-43fb-948a-09c84b82e2d0.jpg?versionId=Id5SEKJNyBvkL2FInEXR4j42Y49GE7G3&bust=1719825873&width=300"),
+        Pet(24,"Peugeot","Domestic Medium Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72038617/1/?bust=1720128776&width=300"),
+        Pet(25,"May","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71573001/1/?bust=1720323589&width=300"),
+        Pet(26,"Lexi","Abyssinian","https://dbw3zep4prcju.cloudfront.net/animal/cd8dfafd-8299-4e82-8f32-f0a4ce2fd047/image/16f2b70e-9c88-48b4-9464-701a2487047d.jpg?versionId=LPrLMCS_4cVHpy6kc2Z7f8ux4CTfmfeh&bust=1712614228&width=300"),
+        Pet(27,"Moose","Bengal","https://dbw3zep4prcju.cloudfront.net/animal/b713cfb7-234e-4870-9956-47a47ed2b682/image/bdbedbce-743a-49eb-a349-1c72e68c2ee6.jpg?versionId=7LgY6j.XmDTPMgZgRkFx1fXBvSiaFQHI&bust=1712600739&width=300"),
+        Pet(28,"Chester","British Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/bcc34188-453a-4d30-b813-b7d99bd2ca36/image/9cb60834-b56a-4b5c-962f-f31dd9b72291.jpg?versionId=YGMAdKfdGELGXUaMIj_uZwmEbmhkA7N3&bust=1719675861&width=300"),
+        Pet(29,"Tinky","Dilute Calico","https://dbw3zep4prcju.cloudfront.net/animal/45cd62de-bcbd-4c7b-841e-71622d68bd4b/image/a588e539-0bc0-4eae-9e65-200e76e8c5c2.jpg?versionId=TsACFmj51hGkR4BuzJkc6Ns4stIiHH0j&bust=1712650429&width=300"),
+        Pet(30,"Cookie","Dilute Calico","https://dbw3zep4prcju.cloudfront.net/animal/ab66eb58-776b-444e-98db-da7700c3d6d0/image/2709203a-e8e0-458a-8caa-ec4f1807cf8c.jpg?versionId=qM9OGOeicegrZDTTIUFbQew8CTuw0_qZ&bust=1718826402&width=300"),
+
     )
 }
