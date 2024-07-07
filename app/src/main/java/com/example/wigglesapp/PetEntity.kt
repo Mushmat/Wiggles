@@ -15,3 +15,25 @@ data class PetEntity(
     val about: String
 )
 
+fun Pet.toEntity() = PetEntity(
+    id = id,
+    name = name,
+    breed = breed,
+    imageUrl = imageUrl,
+    gender = gender,
+    size = size,
+    characteristics = characteristics,
+    about = about
+)
+
+fun PetEntity.toPet() = Pet(
+    id = id,
+    name = name,
+    breed = breed,
+    imageUrl = imageUrl,
+    gender = gender,
+    size = size,
+    characteristics = characteristics,
+    about = about
+)
+
