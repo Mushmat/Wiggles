@@ -2,21 +2,19 @@ package com.example.wigglesapp
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PetViewModel(application: Application): AndroidViewModel(application) {
-
+class PetViewModel @Inject constructor(
     private val repository: PetRepository
-    val bookmarkedPets: Flow<List<PetEntity>>
+): ViewModel() {
 
-    init {
-        val petDao = PetDatabase.getDatabase(application).petDao()
-        repository = PetRepository(petDao)
-        bookmarkedPets = repository.bookmarkedPets
-    }
+    val bookmarkedPets: Flow<List<PetEntity>> = repository.bookmarkedPets
+
 
     fun bookmarkPet(pet:Pet) = viewModelScope.launch {
         repository.bookmarkPet(pet.toEntity())
