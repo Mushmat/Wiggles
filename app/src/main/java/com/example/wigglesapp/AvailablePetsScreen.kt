@@ -147,9 +147,22 @@ val dummyPets = listOf(
         "Alvin",
         "Labrador Retriever",
         "https://dbw3zep4prcju.cloudfront.net/animal/c4b66dfb-54e8-4be9-804c-1f3962a2c2b0/image/314389cf-3b5e-491c-987b-62e4b1748dda.jpeg?versionId=cRZOFJRcyASvEiqclJGqNsuVBUCdHvYS&bust=1713803507&width=720",
-        ),
+        "Male",
+        "Medium",
+        "Friendly, Affectionate, Playful, Smart, Brave, Curious, Funny, Athletic, Quiet, Dignified, Couch potato, Loves Kisses",
+        "These three precious boys were dumped at a business. They are the friendliest and happiest little guys you will meet! They are lab mixes and we aren’t sure with what as we don’t know what mom or dad was. We are guessing they will\n" +
+                "be medium sized dogs"
+    ),
 
-    Pet(10, "Laney","German Shepherd","https://dbw3zep4prcju.cloudfront.net/animal/4738e961-5e2a-441a-9003-5aaf13ac5cb5/image/3c418608-8655-417d-a98b-c7760ac166e8.jpeg?versionId=G.JTG8rOuXw0bpLjD1y8C4tEn.9.1tL.&bust=1712335555&width=720"),
+    Pet(10,
+        "Laney",
+        "German Shepherd",
+        "https://dbw3zep4prcju.cloudfront.net/animal/4738e961-5e2a-441a-9003-5aaf13ac5cb5/image/3c418608-8655-417d-a98b-c7760ac166e8.jpeg?versionId=G.JTG8rOuXw0bpLjD1y8C4tEn.9.1tL.&bust=1712335555&width=720",
+        "Female",
+        "Medium",
+        "Sweetheart, Affectionate, Playful, Smart, Brave, Curious",
+        "Laney is a sweetheart who is full of love and kisses! Laney is currently a small shepherd mix weighing 40 pounds. She is about 3-4 years old. She is an adult dog with a playful side. She enjoys spending her days snuggling up with her human friends and exploring the outdoors. She loves going on adventures or just spending the day lounging on the couch. Laney is GREAT with other dogs, kids, and doesn’t pay too much attention to cats. She is crate trained and working on house training. Laney is heartworm positive but her treatment is included in her adoption donation. The treatment is the slow kill method. She is on normal heartworm prevention twice a month and there is no exercise restrictions!"
+        ),
 
     Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
     Pet(22,"Nene","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300"),
