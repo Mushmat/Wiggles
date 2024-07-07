@@ -117,6 +117,10 @@ fun MyApp(authViewModel: AuthViewModel) {
                         scope = scope
                     ) }
                     composable("available_pets") { AvailablePetsScreen(navController = navController)}
+                    composable("pet_detail/{petId}") {backStackEntry ->
+                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                        PetDetailScreen(navController = navController, petId = petId)
+                    }
                 }
             }
         }
