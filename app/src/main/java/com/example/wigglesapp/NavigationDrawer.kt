@@ -10,6 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 @Composable
 fun NavigationDrawer(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
     Column(modifier = Modifier.padding(16.dp)) {
+        DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
         DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }
         DrawerButton(text = "User Profile") { navController.navigate("user_profile_screen") }
         DrawerButton(text = "Adoption Process Instructions") { navController.navigate("adoption_process_screen") }
@@ -18,7 +19,7 @@ fun NavigationDrawer(navController: NavController, drawerState: DrawerState, sco
         DrawerButton(text = "Testimonials") { navController.navigate("testimonials_screen") }
         DrawerButton(text = "FAQs") { navController.navigate("faqs_screen") }
         DrawerButton(text = "Contact Us") { navController.navigate("contact_us_screen") }
-        DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
+
     }
 }
 

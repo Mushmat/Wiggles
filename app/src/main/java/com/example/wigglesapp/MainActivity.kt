@@ -162,13 +162,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                         PetDetailScreen(navController = navController, petId = petId)
                     }
                     composable("filter") {
-                        FilterScreen(navController = navController) { breed, gender, size ->
-                            applyFilters(
-                                breed,
-                                gender,
-                                size
-                            )
-                        }
+                        FilterScreen(navController = navController, applyFilters = ::applyFilters)
                     }
                 }
             }
