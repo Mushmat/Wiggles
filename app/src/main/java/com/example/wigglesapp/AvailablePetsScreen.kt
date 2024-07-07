@@ -71,24 +71,47 @@ val dummyPets = listOf(
                 "Solomon enjoys walks but has no desire to meet all of the other dogs that are walking. He's a home-body and will give you lots of loves! He is a snuggler!\n" +
                 "Solomon is scheduled to be neutered later in June."
         ),
-    Pet(3, "Maple","Plott Hound","https://dbw3zep4prcju.cloudfront.net/animal/0d9266af-b2db-4f44-9fe0-2bfce19411b3/image/cfab1d31-a825-4454-b4a0-cf87e4ed294d.jpg?versionId=qCde0vHBgQXaybeCUS..5agtHGJ9VCcp&bust=1718220241&width=720"),
-    Pet(4, "Dale","Hound","https://dbw3zep4prcju.cloudfront.net/animal/22e7331c-c7b9-42d2-8365-46cfe4214ad6/image/d5bde6a1-fd4c-4936-8e93-c92a4e7af37f.jpg?versionId=U.Ao8lyG0divcXiDn.duZYatJx69gsd2&bust=1717684331&width=720"),
-    Pet(5, "Earl","Mixed Breed","https://dbw3zep4prcju.cloudfront.net/animal/5d736401-47d1-4579-8494-a67ba10a693c/image/e23e8f23-b76b-4482-b2ce-ef70362f5009.jpg?versionId=HTju8FSkvuJxIA3sMqLojqkVYMSE_Vpf&bust=1714782863&width=720"),
+    Pet(3,
+        "Maple",
+        "Plott Hound",
+        "https://dbw3zep4prcju.cloudfront.net/animal/0d9266af-b2db-4f44-9fe0-2bfce19411b3/image/cfab1d31-a825-4454-b4a0-cf87e4ed294d.jpg?versionId=qCde0vHBgQXaybeCUS..5agtHGJ9VCcp&bust=1718220241&width=720",
+        "Female",
+        "Medium",
+        "Friendly, Affectionate, Playful, Curious, Independent, Athletic, Cuddler, Brave",
+        "Maple is about 3 months old (born mid-March).\n" +
+                "From her foster: She loves everything and everyone! She is very independent and is not afraid of anything. She has gotten along very well with my dog and they love to wrestle. Maple loves to play fetch and tug. She is definitely in the teething stage and can be redirected to something appropriate to chew on.\n" +
+                "She does very well in the crate. She sleeps through the night and does not go potty in the crate. Potty training is going very well, but she sometimes has small accidents when excited. Maple is great at cuddling! I call her a little space heater. :) She is perfect for those who want a play mate and a dog that will cozy up to them after a long day of work."
+        ),
+
+    Pet(4,
+        "Dale",
+        "Hound",
+        "https://dbw3zep4prcju.cloudfront.net/animal/22e7331c-c7b9-42d2-8365-46cfe4214ad6/image/d5bde6a1-fd4c-4936-8e93-c92a4e7af37f.jpg?versionId=U.Ao8lyG0divcXiDn.duZYatJx69gsd2&bust=1717684331&width=720",
+        "Male",
+        "Medium",
+        "Friendly, Affectionate, Playful, Smart, Brave, Curious, Funny, Athletic, Quiet, Dignified, Couch potato, Loves Kisses",
+        "Meet Dale! Dale sat in a rural shelter for a while until a foster stepped up to save him. We have learned so much about him in foster care, and we can't wait for him to find his perfect home! Dale is a hound who is around 2 years old and full grown at about 35-40 pounds. Here are some notes from his foster family!\n" +
+                "\n" +
+                "\"Dale is the sweetest boy! He is very much a hound in some ways, but also has some characteristics that are surprising for a hound. For starters, he's pretty quiet! He doesn't have the hound bark/howl. Although we think he's around 2, he was likely never given a true puppyhood experience, and still has some puppy behaviors. These include wanting to chew things that are not toys, jumping up on you when excited, and still building confidence on the leash. All of these things are super easy to train and manage, and he is the type of pup who wants to learn! Dale is very dog friendly and great with cats as well. He would thrive with a family/person who will continue to build his basic obedience training, help him build confidence, and of course provide him with all the love and kindness he never got as a puppy.\""
+        ),
+
+    Pet(5,
+        "Earl",
+        "Mixed Breed",
+        "https://dbw3zep4prcju.cloudfront.net/animal/5d736401-47d1-4579-8494-a67ba10a693c/image/e23e8f23-b76b-4482-b2ce-ef70362f5009.jpg?versionId=HTju8FSkvuJxIA3sMqLojqkVYMSE_Vpf&bust=1714782863&width=720",
+        "Male",
+        "Medium",
+        "Friendly, Affectionate, Loyal, Gentle, Playful, Smart, Dignified, Quiet, Athletic, Funny, Independent, Curious, Brave, Couch potato, Loves Kisses",
+        "Earl and his sister found themselves in a rural shelter just outside of Charlotte, NC. They were under one year old, and very timid and afraid. They sadly spent months there until fosters opened their homes. Earl has now been in a foster home for about a month, and he is doing amazing! We are unsure of his breed, but he is about 47 pounds and about one year old now. Here are some notes from his foster family: \n" +
+                "\n" +
+                "\"Earl loves other dogs and finds comfort in them. We would ideally like for him to have another dog in his forever home. He is still nervous around new people, but once he warms up to them, he is a big love bud and wants to cuddle. He has been doing wonderful with crate and potty training, and he has been amazing with all the dogs he has met. He is currently being fostered with a female dog, and they are best friends. Earl loves to play and is good at adjusting to other dogs' playstyles. He has been great around kids and cats when he's been exposed. Earl would love a home where he will be shown all the love, and bonus points if he gets to have a fur sibling!\""
+        ),
+
     Pet(6, "Slick","Labrador Retriever","https://dbw3zep4prcju.cloudfront.net/animal/7e35e861-33a2-467d-abab-21e1e558b3c0/image/ef8895de-2c4e-4124-949c-beb5169c5914.jpeg?versionId=09HyRzi88J6E8nXBQmc4jqyC4aeyFvcq&bust=1719666397&width=720"),
     Pet(7, "Jasper","Jack Russell Terrier","https://dbw3zep4prcju.cloudfront.net/animal/4e24be5c-5309-42ff-af31-36ce6fd16de6/image/0829cfbc-d927-4e8c-a83e-398882cc4e96.jpeg?versionId=7LyfnpmQKCmQpVE3mi1lmWIfd_m8x6NX&bust=1717295973&width=720"),
     Pet(8, "Belle","Australian Cattle Dog","https://dbw3zep4prcju.cloudfront.net/animal/0efe8dfb-94ea-4cd8-9870-3ce3870f3e8d/image/45c68613-925d-47a9-a3ed-18567f407a6f.jpeg?versionId=8ODrfw.56VLA7p9ggNmIgFgUPZAJZErz&bust=1712338857&width=720"),
     Pet(9, "Alvin","Labrador Retriever","https://dbw3zep4prcju.cloudfront.net/animal/c4b66dfb-54e8-4be9-804c-1f3962a2c2b0/image/314389cf-3b5e-491c-987b-62e4b1748dda.jpeg?versionId=cRZOFJRcyASvEiqclJGqNsuVBUCdHvYS&bust=1713803507&width=720"),
     Pet(10, "Laney","German Shepherd","https://dbw3zep4prcju.cloudfront.net/animal/4738e961-5e2a-441a-9003-5aaf13ac5cb5/image/3c418608-8655-417d-a98b-c7760ac166e8.jpeg?versionId=G.JTG8rOuXw0bpLjD1y8C4tEn.9.1tL.&bust=1712335555&width=720"),
-    Pet(11, "Yara","Fox Hound","https://dbw3zep4prcju.cloudfront.net/animal/e6e1ba9a-ab0a-480d-9434-d2c0f8b5996f/image/0b121871-90af-4d45-91eb-263e3e2d2c60.jpg?versionId=kXB5JdfK.bFFZAknx1QTRWauoFUuS2Dp&bust=1719689752&width=720"),
-    Pet(12, "Waffles","Pit Bull Terrier","https://dbw3zep4prcju.cloudfront.net/animal/3b721da5-0e5d-4373-936d-75c44d7d5935/image/47601ceb-da04-4089-8c6b-3ffaccdf87bb.jpg?versionId=hfOpzq63z9.2c.91_qxivCqo0MS8pLBK&bust=1719087565&width=720"),
-    Pet(13, "Mo","Chiweenie","https://dbw3zep4prcju.cloudfront.net/animal/4ac9f7ba-34be-438e-be0a-4acd5ba20552/image/92bdb274-dff5-4db6-b4aa-70acc97b7ab8.jpg?versionId=b9jAr2cN0UVQTKjUcUIriRqp_k3HXtoR&bust=1719086608&width=720"),
-    Pet(14, "Buster","Boxer","https://dbw3zep4prcju.cloudfront.net/animal/103824a4-f401-4a39-a00e-f41fc59a0475/image/85b74498-8689-4f0e-b59f-44d5981442af.jpg?versionId=o86_73E9UJIxmyRVLtYfg6754efVHyxY&bust=1718381843&width=720"),
-    Pet(15, "Harper","Boxer","https://dbw3zep4prcju.cloudfront.net/animal/631e15b7-75a5-4847-8e73-a9859260cc3e/image/20b826ec-a818-48c0-b6b2-62a1ec9d0ec0.jpeg?versionId=VfPTtWzoRVk6Mts_WyFsRPT0nHQpt3Kr&bust=1719183516&width=720"),
-    Pet(16, "Nikki","Pomeranian","https://dbw3zep4prcju.cloudfront.net/animal/421ce142-655e-48cb-92fb-6c33fc13b99e/image/cf13396e-667c-4253-967d-fa3ebbc5a15e.jpeg?versionId=5X3zf7mfMepBOirT60oBOimiV23ehkIs&bust=1716643901&width=720"),
-    Pet(17, "Lark","Chihuahua","https://dbw3zep4prcju.cloudfront.net/animal/5101bbf8-8f26-4f4c-ba3e-425a283f648f/image/78bae310-2b18-4041-9ac9-ea94b981422c.jpg?versionId=1_VagU4ldPAfzAcGi9whXBVR.rn5OhZJ&bust=1716582429&width=720"),
-    Pet(18, "Ruby","Chihuahua","https://dbw3zep4prcju.cloudfront.net/animal/f78d3c5b-4e70-49b8-99f7-0fe32f4c6583/image/cfcee275-15a7-4aec-a12c-42e5263be40d.jpg?versionId=OK7UKoj7JrJQOrznHQRZav7F9sTgeWsT&bust=1711892909&width=720"),
-    Pet(19, "Polly","Terrier","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72185007/1/?bust=1720243354&width=720"),
-    Pet(20, "Neville","Beagle","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72216731/1/?bust=1720246553&width=720"),
 
     Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
     Pet(22,"Nene","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300"),
