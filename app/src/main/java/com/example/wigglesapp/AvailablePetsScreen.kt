@@ -33,6 +33,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -161,7 +162,7 @@ fun PetCard(pet: Pet){
                 .size(200.dp)
             )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-        Text(text = pet.breed, fontSize = 14.sp)
+        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.White)
+        Text(text = pet.breed, fontSize = 14.sp,color = Color.White)
     }
 }
