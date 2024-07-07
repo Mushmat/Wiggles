@@ -323,6 +323,11 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
 
                 Spacer(modifier = Modifier.height(16.dp))
 
+                if (pets.isEmpty()){
+                    Text(text = "No such pet is available for now! ", color = Color.White, fontSize = 20.sp, modifier = Modifier.align(
+                        Alignment.CenterHorizontally))
+                }else {
+
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -336,6 +341,7 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
                                 PetCard(navController = navController, pet = pet)
                             }
                         }
+                    }
                     }
                 }
             }
