@@ -5,6 +5,7 @@ import android.graphics.Paint.Align
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -34,9 +35,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import kotlinx.coroutines.launch
@@ -65,7 +69,7 @@ val dummyPets = listOf(
 
     Pet(21,"September","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300"),
     Pet(22,"Nene","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71845070/1/?bust=1719984701&width=300"),
-    Pet(23,"Asher","American Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/4d562d02-c606-4bcb-aa41-62a2a18ffe4c/image/3893469b-17fa-43fb-948a-09c84b82e2d0.jpg?versionId=Id5SEKJNyBvkL2FInEXR4j42Y49GE7G3&bust=1719825873&width=300"),
+    Pet(23,"Asher","American Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72124640/1/?bust=1720323573&width=300"),
     Pet(24,"Peugeot","Domestic Medium Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72038617/1/?bust=1720128776&width=300"),
     Pet(25,"May","Domestic Short Hair","https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/71573001/1/?bust=1720323589&width=300"),
     Pet(26,"Lexi","Abyssinian","https://dbw3zep4prcju.cloudfront.net/animal/cd8dfafd-8299-4e82-8f32-f0a4ce2fd047/image/16f2b70e-9c88-48b4-9464-701a2487047d.jpg?versionId=LPrLMCS_4cVHpy6kc2Z7f8ux4CTfmfeh&bust=1712614228&width=300"),
@@ -98,34 +102,43 @@ fun AvailablePetsScreen(navController: NavController){
                 }
             )
         }
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            Button(
-                onClick = { /*TODO HANDLE FILTERS */ },
-                modifier = Modifier.fillMaxWidth()
+    ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.background_image),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp)
             ) {
-                Text(text = "Filter")
-            }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(pets.chunked(2)) { rowPets ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                Button(
+                    onClick = { /*TODO HANDLE FILTERS */ },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    rowPets.forEach{
-                        pet ->
-                        PetCard(pet = pet)
+                    Text(text = "Filter")
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(pets.chunked(1)) { rowPets ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            rowPets.forEach { pet ->
+                                PetCard(pet = pet)
+                            }
+                        }
                     }
                 }
             }
@@ -138,19 +151,17 @@ fun PetCard(pet: Pet){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .fillMaxWidth(0.5f)
+            .fillMaxWidth()
             .padding(8.dp)
     ) {
         Image(
             painter = rememberImagePainter(data = pet.imageUrl),
             contentDescription = null,
             modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surface)
+                .size(200.dp)
             )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = pet.name, fontWeight = FontWeight.Bold)
-        Text(text = pet.breed)
+        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+        Text(text = pet.breed, fontSize = 14.sp)
     }
 }
