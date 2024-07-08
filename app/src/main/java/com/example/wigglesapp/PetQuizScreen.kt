@@ -1,26 +1,11 @@
+// PetQuizScreen.kt
 package com.example.wigglesapp
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -68,7 +53,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
-            // QUESTION 1
+            //QUESTION 1
             Text(text = "How much time can you dedicate to your pet daily?", fontSize = 18.sp)
             timeOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -81,7 +66,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 2
+            //QUESTION 2
             Text(text = "What size of pet are you looking for?", fontSize = 18.sp)
             sizeOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -94,7 +79,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 3
+            //QUESTION 3
             Text(text = "Do you have children at home?", fontSize = 18.sp)
             childrenOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -107,7 +92,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 4
+            //QUESTION 4
             Text(text = "How active is your lifestyle?", fontSize = 18.sp)
             activityOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -120,7 +105,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 5
+            //QUESTION 5
             Text(text = "Do you have other pets at home?", fontSize = 18.sp)
             petOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -133,7 +118,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 6
+            //QUESTION 6
             Text(text = "What type of living environment do you have?", fontSize = 18.sp)
             livingOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -146,7 +131,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 7
+            //QUESTION 7
             Text(text = "What is your main reason for getting a pet?", fontSize = 18.sp)
             reasonOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -159,7 +144,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            // QUESTION 8
+            //QUESTION 8
             Text(text = "Do you have any preference for grooming needs?", fontSize = 18.sp)
             groomingOptions.forEach { option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -188,7 +173,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                     navController.navigate("suggested_pets_screen")
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally)
-            ) {
+            ){
                 Text(text = "Find Best Pet")
             }
         }
