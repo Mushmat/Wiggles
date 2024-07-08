@@ -10,3 +10,14 @@ data class Pet(
     val characteristics: String = "",
     val about: String = ""
 )
+
+data class UserPreference(
+    val timeDedication: String,
+    val sizePreference: String,
+    val childrenAtHome: String,
+    val activityLevel: String,
+    val otherPets: String,
+    val livingEnvironment: String,
+    val reasonForPet: String,
+    val groomingPreference: String
+)
