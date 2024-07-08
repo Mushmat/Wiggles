@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -81,11 +82,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 2
             Text(text = "What size of pet are you looking for?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            sizeOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedSize == option,
+                        onClick = { selectedSize = option}
                     )
                     Text(text = option)
                 }
@@ -94,11 +95,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 3
             Text(text = "Do you have children at home?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            childrenOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedChildren == option,
+                        onClick = { selectedChildren = option}
                     )
                     Text(text = option)
                 }
@@ -107,11 +108,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 4
             Text(text = "How active is your lifestyle?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            activityOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedActivity == option,
+                        onClick = { selectedActivity = option}
                     )
                     Text(text = option)
                 }
@@ -120,11 +121,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 5
             Text(text = "Do you have other pets at home?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            petOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedPets == option,
+                        onClick = { selectedPets = option}
                     )
                     Text(text = option)
                 }
@@ -133,11 +134,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 6
             Text(text = "What type of living environment do you have?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            livingOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedLiving == option,
+                        onClick = { selectedLiving = option}
                     )
                     Text(text = option)
                 }
@@ -146,11 +147,11 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 7
             Text(text = "What is your main reason for getting a pet?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            reasonOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedReason == option,
+                        onClick = { selectedReason = option}
                     )
                     Text(text = option)
                 }
@@ -159,17 +160,36 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
 
             //QUESTION 8
             Text(text = "Do you have any preference for grooming needs?", fontSize = 18.sp)
-            timeOptions.forEach{ option ->
+            groomingOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
-                        selected = selectedTime == option,
-                        onClick = { selectedTime = option}
+                        selected = selectedGrooming == option,
+                        onClick = { selectedGrooming = option}
                     )
                     Text(text = option)
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
 
+            Button(
+                onClick = {
+                    val preferences = UserPreferences(
+                        timeDedication = selectedTime,
+                        sizePreference = selectedSize,
+                        childrenAtHome = selectedChildren,
+                        activityLevel = selectedActivity,
+                        otherPets = selectedPets,
+                        livingEnvironment = selectedLiving,
+                        reasonForPet = selectedReason,
+                        groomingPreference = selectedGrooming
+                    )
+                    sharedViewModel.suggestedPets = suggestPets(preferences)
+                    navController.navigate("suggested_pets_screen")
+                },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ){
+             Text(text = "Find Best Pet")   
+            }
         }
     }
 }
