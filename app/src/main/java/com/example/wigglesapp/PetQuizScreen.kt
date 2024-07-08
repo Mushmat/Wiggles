@@ -66,6 +66,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
+            //QUESTION 1
             Text(text = "How much time can you dedicate to your pet daily?", fontSize = 18.sp)
             timeOptions.forEach{ option ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -77,13 +78,98 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            
-            
-            
+
+            //QUESTION 2
+            Text(text = "What size of pet are you looking for?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 3
+            Text(text = "Do you have children at home?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 4
+            Text(text = "How active is your lifestyle?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 5
+            Text(text = "Do you have other pets at home?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 6
+            Text(text = "What type of living environment do you have?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 7
+            Text(text = "What is your main reason for getting a pet?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //QUESTION 8
+            Text(text = "Do you have any preference for grooming needs?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+
         }
-
-        
     }
-
-
 }
