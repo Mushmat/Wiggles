@@ -7,4 +7,7 @@ fun suggestPets(preferences: UserPreferences): List<Pet> {
     }
 }
 
-fun
+fun matchesSizePreference(pet: Pet, sizePreference: String): Boolean {
+    return sizePreference == "No preference" || pet.size == sizePreference
+}
+
