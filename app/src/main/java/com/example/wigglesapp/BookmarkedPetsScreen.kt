@@ -3,6 +3,7 @@ package com.example.wigglesapp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -52,9 +53,10 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
             )
         }
     ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)){
         if(bookmarkedPets.isEmpty()){
             Text(text = "No Bookmarked Pets Available", fontSize = 20.sp, modifier = Modifier.padding(16.dp))
-        }else{
+        }else {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
@@ -65,6 +67,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                     BookmarkedPetCard(navController = navController, pet = pet)
                 }
             }
+        }
         }
     }
 }
