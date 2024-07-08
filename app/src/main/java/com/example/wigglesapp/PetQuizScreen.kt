@@ -1,6 +1,10 @@
 package com.example.wigglesapp
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 
 @Composable
@@ -13,5 +17,17 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
     val livingOptions = listOf("Apartment", "House with a small yard", "House with a large yard", "Farm/Rural area")
     val reasonOptions = listOf("Companionship", "Protection", "For children", "Therapy/Emotional support")
     val groomingOptions = listOf("Low maintenance", "Moderate maintenance", "High maintenance", "No preference")
+
+    var selectedTime by remember { mutableStateOf("") }
+    var selectedSize by remember { mutableStateOf("") }
+    var selectedChildren by remember { mutableStateOf("") }
+    var selectedActivity by remember { mutableStateOf("") }
+    var selectedPets by remember { mutableStateOf("") }
+    var selectedLiving by remember { mutableStateOf("") }
+    var selectedReason by remember { mutableStateOf("") }
+    var selectedGrooming by remember { mutableStateOf("") }
+
+
+
 
 }
