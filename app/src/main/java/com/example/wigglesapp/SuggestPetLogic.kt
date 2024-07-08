@@ -1,20 +1,17 @@
 package com.example.wigglesapp
 
-import kotlinx.coroutines.flow.StateFlow
-
 fun suggestPets(preferences: UserPreferences): List<Pet> {
     return dummyPets.filter { pet ->
         matchesTimeDedication(pet, preferences.timeDedication) &&
-        matchesSizePreference(pet, preferences.sizePreference) &&
-        matchesChildrenAtHome(pet, preferences.childrenAtHome) &&
-        matchesActivityLevel(pet, preferences.activityLevel) &&
-        matchesOtherPets(pet, preferences.otherPets) &&
-        matchesLivingEnvironment(pet, preferences.livingEnvironment) &&
-        matchesReasonForPet(pet, preferences.reasonForPet) &&
-        matchesGroomingPreference(pet, preferences.groomingPreference)
+                matchesSizePreference(pet, preferences.sizePreference) &&
+                matchesChildrenAtHome(pet, preferences.childrenAtHome) &&
+                matchesActivityLevel(pet, preferences.activityLevel) &&
+                matchesOtherPets(pet, preferences.otherPets) &&
+                matchesLivingEnvironment(pet, preferences.livingEnvironment) &&
+                matchesReasonForPet(pet, preferences.reasonForPet) &&
+                matchesGroomingPreference(pet, preferences.groomingPreference)
     }
 }
-
 
 fun matchesTimeDedication(pet: Pet, timeDedication: String): Boolean {
     return when (timeDedication) {
@@ -32,7 +29,7 @@ fun matchesSizePreference(pet: Pet, sizePreference: String): Boolean {
 
 fun matchesChildrenAtHome(pet: Pet, childrenAtHome: String): Boolean {
     return when (childrenAtHome) {
-        "Yes, under 5 years old" -> pet.characteristics.contains("Gentle") || pet.characteristics.contains("Patient")
+        "Yes, under 5 years old" -> pet.characteristics.contains("Gentle")
         "Yes, 5-10 years old" -> pet.characteristics.contains("Playful")
         "Yes, older than 10 years old" -> pet.characteristics.contains("Friendly") || pet.characteristics.contains("Affectionate")
         "No children" -> true
@@ -40,10 +37,10 @@ fun matchesChildrenAtHome(pet: Pet, childrenAtHome: String): Boolean {
     }
 }
 
-fun matchesActivityLevel(pet: Pet, activityLevel: String): Boolean{
-    return when (activityLevel){
+fun matchesActivityLevel(pet: Pet, activityLevel: String): Boolean {
+    return when (activityLevel) {
         "Very active (exercise daily)" -> pet.characteristics.contains("Active") || pet.characteristics.contains("High-energy")
-        "Moderately active (exercise a few times a week" -> pet.characteristics.contains("Moderate-energy")
+        "Moderately active (exercise a few times a week)" -> pet.characteristics.contains("Moderate-energy")
         "Not very active (occasional exercise)" -> pet.characteristics.contains("Low-energy")
         "Sedentary (rarely exercise)" -> pet.characteristics.contains("Couch Potato")
         else -> true
@@ -82,7 +79,7 @@ fun matchesReasonForPet(pet: Pet, reasonForPet: String): Boolean {
 
 fun matchesGroomingPreference(pet: Pet, groomingPreference: String): Boolean {
     return when (groomingPreference) {
-        "Low maintenance" -> pet.characteristics.contains("Short-haired") || pet.characteristics.contains("Low maintenance")
+        "Low maintenance" -> pet.characteristics.contains("Low maintenance")
         "Moderate maintenance" -> pet.characteristics.contains("Moderate maintenance")
         "High maintenance" -> pet.characteristics.contains("High maintenance")
         "No preference" -> true

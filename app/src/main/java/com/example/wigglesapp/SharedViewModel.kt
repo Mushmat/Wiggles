@@ -1,12 +1,11 @@
 package com.example.wigglesapp
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.wigglesapp.Pet
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
-class SharedViewModel: ViewModel() {
+class SharedViewModel : ViewModel() {
     private val _bookmarkedPets = MutableStateFlow<List<Pet>>(emptyList())
     val bookmarkedPets: StateFlow<List<Pet>> get() = _bookmarkedPets
 
@@ -23,5 +22,7 @@ class SharedViewModel: ViewModel() {
 
     fun setSuggestedPets(pets: List<Pet>) {
         _suggestedPets.value = pets
+        // Debug log
+        println("Suggested Pets: ${pets.map { it.name }}")
     }
 }

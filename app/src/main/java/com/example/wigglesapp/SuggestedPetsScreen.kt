@@ -1,7 +1,6 @@
 package com.example.wigglesapp
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,21 +35,32 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
             )
         }
     ) { paddingValues ->
-        if (suggestedPets.isEmpty()) {
-            Text(
-                text = "No pets found matching your preference!",
-                fontSize = 20.sp,
-                modifier = Modifier.padding(16.dp)
-            )
-        } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-                    .padding(16.dp)
-            ) {
-                items(suggestedPets) { pet ->
-                    PetCard(navController = navController, pet = pet)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp)
+        ) {
+            if (suggestedPets.isEmpty()) {
+                Text(
+                    text = "No pets found matching your preference!",
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(16.dp)
+                )
+            } else {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    suggestedPets.forEach { pet ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
+                        ) {
+                            PetCard(navController = navController, pet = pet)
+                        }
+                    }
                 }
             }
         }
