@@ -30,3 +30,13 @@ fun matchesActivityLevel(pet: Pet, activityLevel: String): Boolean{
         else -> true
     }
 }
+
+fun matchesOtherPets(pet: Pet, otherPets: String): Boolean {
+    return when (otherPets) {
+        "Yes, dogs" -> pet.characteristics.contains("Dog-friendly")
+        "Yes, cats" -> pet.characteristics.contains("Cat-friendly")
+        "Yes, both dogs and cats" -> pet.characteristics.contains("Dog-friendly") && pet.characteristics.contains("Cat-friendly")
+        "No other pets" -> true
+        else -> true
+    }
+}
