@@ -20,3 +20,13 @@ fun matchesChildrenAtHome(pet: Pet, childrenAtHome: String): Boolean {
         else -> true
     }
 }
+
+fun matchesActivityLevel(pet: Pet, activityLevel: String): Boolean{
+    return when (activityLevel){
+        "Very active (exercise daily)" -> pet.characteristics.contains("Active") || pet.characteristics.contains("High-energy")
+        "Moderately active (exercise a few times a week" -> pet.characteristics.contains("Moderate-energy")
+        "Not very active (occasional exercise)" -> pet.characteristics.contains("Low-energy")
+        "Sedentary (rarely exercise)" -> pet.characteristics.contains("Couch Potato")
+        else -> true
+    }
+}
