@@ -1,12 +1,33 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.RadioButton
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel) {
     val timeOptions = listOf("Less than 1 hour", "1-2 hours", "2-4 hours", "More than 4 hours")
@@ -27,7 +48,42 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
     var selectedReason by remember { mutableStateOf("") }
     var selectedGrooming by remember { mutableStateOf("") }
 
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Find Best Pet") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = null)
+                    }
+                }
+            )
+        }
+    ) { paddingValues -> 
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp)
+        ) {
+            Text(text = "How much time can you dedicate to your pet daily?", fontSize = 18.sp)
+            timeOptions.forEach{ option ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = selectedTime == option,
+                        onClick = { selectedTime = option}
+                    )
+                    Text(text = option)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            
+            
+        }
 
+        
+    }
 
 
 }
