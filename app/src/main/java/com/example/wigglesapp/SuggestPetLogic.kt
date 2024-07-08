@@ -40,3 +40,33 @@ fun matchesOtherPets(pet: Pet, otherPets: String): Boolean {
         else -> true
     }
 }
+
+fun matchesLivingEnvironment(pet: Pet, livingEnvironment: String): Boolean {
+    return when (livingEnvironment) {
+        "Apartment" -> pet.size == "Small" || pet.characteristics.contains("Low-energy")
+        "House with a small yard" -> pet.size == "Medium" || pet.characteristics.contains("Moderate-energy")
+        "House with a large yard" -> pet.size == "Large" || pet.characteristics.contains("High-energy")
+        "Farm/Rural area" -> pet.characteristics.contains("Very high-energy") || pet.characteristics.contains("Active")
+        else -> true
+    }
+}
+
+fun matchesReasonForPet(pet: Pet, reasonForPet: String): Boolean {
+    return when (reasonForPet) {
+        "Companionship" -> pet.characteristics.contains("Affectionate") || pet.characteristics.contains("Friendly")
+        "Protection" -> pet.characteristics.contains("Brave") || pet.characteristics.contains("Loyal")
+        "For children" -> pet.characteristics.contains("Playful") || pet.characteristics.contains("Gentle")
+        "Therapy/Emotional support" -> pet.characteristics.contains("Calm") || pet.characteristics.contains("Gentle")
+        else -> true
+    }
+}
+
+fun matchesGroomingPreference(pet: Pet, groomingPreference: String): Boolean {
+    return when (groomingPreference) {
+        "Low maintenance" -> pet.characteristics.contains("Short-haired") || pet.characteristics.contains("Low maintenance")
+        "Moderate maintenance" -> pet.characteristics.contains("Moderate maintenance")
+        "High maintenance" -> pet.characteristics.contains("High maintenance")
+        "No preference" -> true
+        else -> true
+    }
+}
