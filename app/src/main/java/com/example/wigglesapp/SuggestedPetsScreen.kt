@@ -1,5 +1,7 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,11 +14,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,11 +64,31 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
                                 .fillMaxWidth()
                                 .padding(8.dp)
                         ) {
-                            PetCard(navController = navController, pet = pet)
+                            SuggestedPetCard(navController = navController, pet = pet)
                         }
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun SuggestedPetCard(navController: NavController, pet: Pet){
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { navController.navigate("pet_detail/${pet.id}") }
+    ){
+        Image(
+            painter = rememberImagePainter(data = pet.imageUrl),
+            contentDescription = null,
+            modifier = Modifier.size(200.dp)
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
+        Text(text = pet.breed, fontSize = 14.sp, color = Color.Gray)
+
     }
 }

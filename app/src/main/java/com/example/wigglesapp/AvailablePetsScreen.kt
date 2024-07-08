@@ -71,7 +71,7 @@ val dummyPets = listOf(
     ),
     Pet(3, "Maple", "Plott Hound",
         "https://dbw3zep4prcju.cloudfront.net/animal/0d9266af-b2db-4f44-9fe0-2bfce19411b3/image/cfab1d31-a825-4454-b4a0-cf87e4ed294d.jpg",
-        "Female", "Medium",
+        "Female", "Small",
         "Cat-friendly, Playful, Curious, Independent, Athletic, Medium maintenance",
         "Maple is about 3 months old (born mid-March).\n" +
                 "From her foster: She loves everything and everyone! She is very independent and is not afraid of anything. She has gotten along very well with my dog and they love to wrestle. Maple loves to play fetch and tug. She is definitely in the teething stage and can be redirected to something appropriate to chew on.\n" +
@@ -89,7 +89,7 @@ val dummyPets = listOf(
 
     Pet(5, "Earl", "Mixed Breed",
         "https://dbw3zep4prcju.cloudfront.net/animal/5d736401-47d1-4579-8494-a67ba10a693c/image/e23e8f23-b76b-4482-b2ce-ef70362f5009.jpg",
-        "Male", "Medium",
+        "Male", "Small",
         "Cat-friendly, Loyal, Gentle, Playful, Quiet, Athletic, Curious, Brave, Couch Potato, Moderate maintenance",
         "Earl and his sister found themselves in a rural shelter just outside of Charlotte, NC. They were under one year old, and very timid and afraid. They sadly spent months there until fosters opened their homes. Earl has now been in a foster home for about a month, and he is doing amazing! We are unsure of his breed, but he is about 47 pounds and about one year old now. Here are some notes from his foster family: \n" +
                 "\n" +
@@ -105,7 +105,7 @@ val dummyPets = listOf(
 
     Pet(7, "Jasper", "Jack Russell Terrier",
         "https://dbw3zep4prcju.cloudfront.net/animal/4e24be5c-5309-42ff-af31-36ce6fd16de6/image/0829cfbc-d927-4e8c-a83e-398882cc4e96.jpeg",
-        "Male", "Medium",
+        "Male", "Small",
         "Dog-friendly, Affectionate, Loyal, Playful, Athletic, High maintenance",
         "Jack Russell terrier mix\n" +
                 "26 pounds\n" +
@@ -116,7 +116,7 @@ val dummyPets = listOf(
 
     Pet( 8, "Belle", "Australian Cattle Dog",
         "https://dbw3zep4prcju.cloudfront.net/animal/0efe8dfb-94ea-4cd8-9870-3ce3870f3e8d/image/45c68613-925d-47a9-a3ed-18567f407a6f.jpeg",
-        "Female", "Medium",
+        "Female", "Small",
         "Dog-friendly, Affectionate, Loyal, Gentle, Smart, Dignified, Low maintenance",
         "This little cutie is a 9 week old lab mix.\n" +
                 "Mom is only 45 pounds and her picture is included below. They were all dumped at a good samaritan’s house, so we don’t know what dad was. The whole group looks like possibly fiest/cattle dog/lab mixes. Sweet, happy, and goofy pups full of kisses is the only way to describe them! Mom’s personality is very sweet, gentle, and calm! Their adoption donation covers their spay/neuter, 3 sets of puppy distemper vaccines, rabies vaccine, dewormings, and a microchip!"
