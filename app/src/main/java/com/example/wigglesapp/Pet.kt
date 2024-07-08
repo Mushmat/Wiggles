@@ -11,7 +11,7 @@ data class Pet(
     val about: String = ""
 )
 
-data class UserPreference(
+data class UserPreferences(
     val timeDedication: String,
     val sizePreference: String,
     val childrenAtHome: String,
