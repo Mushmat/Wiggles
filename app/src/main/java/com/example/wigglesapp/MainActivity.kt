@@ -123,6 +123,8 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("bookmarked_pets_screen") {
                         BookmarkedPetsScreen(
                             navController = navController,
+                            drawerState = drawerState,
+                            scope = scope
                         )
                     }
                     composable("adoption_application_screen") {
