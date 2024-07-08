@@ -2,8 +2,25 @@ package com.example.wigglesapp
 
 fun suggestPets(preferences: UserPreferences): List<Pet> {
     return dummyPets.filter { pet ->
+        matchesTimeDedication(pet, preferences.timeDedication) &&
+        matchesSizePreference(pet, preferences.sizePreference) &&
+        matchesChildrenAtHome(pet, preferences.childrenAtHome) &&
+        matchesActivityLevel(pet, preferences.activityLevel) &&
+        matchesOtherPets(pet, preferences.otherPets) &&
+        matchesLivingEnvironment(pet, preferences.livingEnvironment) &&
+        matchesReasonForPet(pet, preferences.reasonForPet) &&
+        matchesGroomingPreference(pet, preferences.groomingPreference)
+    }
+}
 
 
+fun matchesTimeDedication(pet: Pet, timeDedication: String): Boolean {
+    return when (timeDedication) {
+        "Less than 1 hour" -> pet.characteristics.contains("Couch Potato") || pet.characteristics.contains("Low-energy")
+        "1-2 hours" -> pet.characteristics.contains("Moderate-energy")
+        "2-4 hours" -> pet.characteristics.contains("High-energy") || pet.characteristics.contains("Playful")
+        "More than 4 hours" -> pet.characteristics.contains("Very high-energy") || pet.characteristics.contains("Active")
+        else -> true
     }
 }
 
