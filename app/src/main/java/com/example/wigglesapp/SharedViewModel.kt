@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class SharedViewModel: ViewModel() {
     private val _bookmarkedPets = MutableStateFlow<List<Pet>>(emptyList())
-    val bookmarkedPets: StateFlow<List<Pet>> = _bookmarkedPets.asStateFlow()
+    val bookmarkedPets: StateFlow<List<Pet>> get() = _bookmarkedPets
 
     private val _suggestedPets = MutableStateFlow<List<Pet>>(emptyList())
-    var suggestedPets: StateFlow<List<Pet>> = _suggestedPets.asStateFlow()
+    val suggestedPets: StateFlow<List<Pet>> get() = _suggestedPets
 
     fun bookmarkPet(pet: Pet) {
         _bookmarkedPets.value += pet
