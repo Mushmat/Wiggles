@@ -2,7 +2,7 @@ package com.example.wigglesapp
 
 import kotlinx.coroutines.flow.StateFlow
 
-fun suggestPets(preferences: UserPreferences): StateFlow<List<Pet>> {
+fun suggestPets(preferences: UserPreferences): List<Pet> {
     return dummyPets.filter { pet ->
         matchesTimeDedication(pet, preferences.timeDedication) &&
         matchesSizePreference(pet, preferences.sizePreference) &&

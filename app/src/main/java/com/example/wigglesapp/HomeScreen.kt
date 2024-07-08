@@ -59,7 +59,7 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             HomeButton(
                 icon = R.drawable.baseline_search_24,
                 text = "Find Best Pet",
-                onClick = { /* Navigate to Find Best Pet */ })
+                onClick = { navController.navigate("pet_quiz") })
             HomeButton(
                 icon = R.drawable.health,
                 text = "Pet Care",

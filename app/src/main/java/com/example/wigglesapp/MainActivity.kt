@@ -169,6 +169,12 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("filter") {
                         FilterScreen(navController = navController, applyFilters = ::applyFilters)
                     }
+                    composable("pet_quiz"){
+                        PetQuizScreen(navController = navController, sharedViewModel = sharedViewModel)
+                    }
+                    composable("suggested_pets_screen"){
+                        SuggestedPetsScreen(navController = navController, sharedViewModel = sharedViewModel)
+                    }
                 }
             }
         }

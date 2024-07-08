@@ -183,7 +183,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                         reasonForPet = selectedReason,
                         groomingPreference = selectedGrooming
                     )
-                    sharedViewModel.suggestedPets = suggestPets(preferences)
+                    sharedViewModel.setSuggestedPets(suggestPets(preferences))
                     navController.navigate("suggested_pets_screen")
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally)
