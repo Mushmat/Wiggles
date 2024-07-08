@@ -20,6 +20,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -29,9 +31,12 @@ import coil.compose.rememberImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PetDetailScreen(navController: NavController, petId: Int){
+fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel){
     val pet = dummyPets.firstOrNull{ it.id == petId} ?: return
+    val bookmarkedPets by sharedViewModel.bookmarkedPets.collectAsState()
 
+    val isBookmarked = bookmarkedPets.contains(pet)
+    
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,7 +51,9 @@ fun PetDetailScreen(navController: NavController, petId: Int){
         )
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
         ) {
             item {
                 Image(
@@ -78,7 +85,18 @@ fun PetDetailScreen(navController: NavController, petId: Int){
 
                 Text(text = "About: ${pet.about}", fontSize = 18.sp, color = Color.Gray)
                 Spacer(modifier = Modifier.height(16.dp))
-
+    
+                Button(onClick = { 
+                if(isBookmarked){
+                    sharedViewModel.removeBookmark(pet)
+                }else{
+                    sharedViewModel.bookmarkPet(pet)
+                }
+                }) {
+                    Text(text = if(isBookmarked) "Remove Bookmark" else "Bookmark")
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                
                 Button(onClick = { /*TODO ADOPTION LOGIC*/ }) {
                     Text(text = "Adopt ${pet.name}")
                 }

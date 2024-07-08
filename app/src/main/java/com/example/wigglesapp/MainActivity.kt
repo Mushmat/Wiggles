@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -49,6 +50,8 @@ fun MyApp(authViewModel: AuthViewModel) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val authState by authViewModel.authState.collectAsState()
+
+    val sharedViewModel: SharedViewModel = viewModel()
 
     var filteredPets by remember { mutableStateOf(dummyPets) }
 
@@ -123,8 +126,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("bookmarked_pets_screen") {
                         BookmarkedPetsScreen(
                             navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                            sharedViewModel = sharedViewModel
                         )
                     }
                     composable("adoption_application_screen") {
@@ -155,11 +157,14 @@ fun MyApp(authViewModel: AuthViewModel) {
                             scope = scope
                         )
                     }
-                    composable("available_pets") { AvailablePetsScreen(navController = navController, filteredPets) }
+                    composable("available_pets") {
+                        AvailablePetsScreen(navController = navController, filteredPets)
+                    }
+
                     composable("pet_detail/{petId}") { backStackEntry ->
                         val petId = backStackEntry.arguments?.getString("petId")?.toInt()
                             ?: return@composable
-                        PetDetailScreen(navController = navController, petId = petId)
+                        PetDetailScreen(navController = navController, petId = petId,sharedViewModel = sharedViewModel)
                     }
                     composable("filter") {
                         FilterScreen(navController = navController, applyFilters = ::applyFilters)
