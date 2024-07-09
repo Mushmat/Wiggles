@@ -158,6 +158,18 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("pet_care_screen"){
                         PetCareScreen(navController = navController)
                     }
+                    composable("pet_care_tips_screen"){
+                        PetCareOptions(navController = navController)
+                    }
+                    composable("general_tips"){
+                        GeneralTipsScreen(navController = navController)
+                    }
+                    composable("dog_tips"){
+                        DogTipsScreen(navController = navController)
+                    }
+                    composable("cat_tips"){
+                        CatTipsScreen(navController = navController)
+                    }
                     
                 }
             }
