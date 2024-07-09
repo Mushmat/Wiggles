@@ -1,7 +1,20 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -19,4 +32,28 @@ fun GeneralTipsScreen(navController: NavController){
         "9. PREVENT PARASITES: Use preventive treatments to protect your pet from fleas, ticks, and worms.",
         "10. MENTAL STIMULATION: Provide toys and activities to keep your pet mentally stimulated and engaged."
     )
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "General Pet Care Tips") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = null)
+                    }
+                }
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp)
+        ) {
+            items(tips) { tip ->
+                Text(text = tip, fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+            }
+        }
+    }
 }
