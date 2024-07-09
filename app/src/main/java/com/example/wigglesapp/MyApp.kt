@@ -154,6 +154,11 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("suggested_pets_screen"){
                         SuggestedPetsScreen(navController = navController, sharedViewModel = sharedViewModel)
                     }
+                    
+                    composable("pet_care_screen"){
+                        PetCareScreen(navController = navController)
+                    }
+                    
                 }
             }
         }

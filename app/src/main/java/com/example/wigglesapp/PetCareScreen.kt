@@ -1,6 +1,7 @@
 package com.example.wigglesapp
 
 import android.widget.Space
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -40,12 +41,15 @@ fun PetCareScreen(navController: NavController){
     ) {
         paddingValues ->
         Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(16.dp)
                 .verticalScroll(
                     rememberScrollState()
+
                 )
         ) {
             Button(
