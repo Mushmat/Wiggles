@@ -19,23 +19,24 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DogTipsScreen(navController: NavController){
+fun CatTipsScreen(navController: NavController){
     val tips = listOf(
-        "1. SOCIALIZATION: Expose your dog to different people, environments, and other animals.",
-        "2. REGULAR WALKS: Take your dog for daily walks to provide physical exercise and mental stimulation.",
-        "3. OBEDIENCE TRAINING: Teach your dog basic obedience commands and good manners.",
-        "4. GROOMING: Regularly bathe and brush your dog to keep their coat clean and healthy.",
-        "5. NUTRITION: Feed your dog high-quality dog food appropriate for their age and activity level.",
-        "6. SAFE TOYS: Provide safe chew toys to keep your dog entertained and to prevent destructive chewing.",
-        "7. COMFORTABLE BED: Ensure your dog has a comfortable place to sleep and rest.",
-        "8. ROUTINE CHECKUPS: Take your dog to the vet for routine checkups and vaccinations.",
-        "9. AVOID OVERFEEDING: Monitor your dog’s diet and avoid overfeeding to prevent obesity."
+        "1. Litter Box Maintenance: Keep the litter box clean and place it in a quiet, accessible location.",
+        "2. Scratching Posts: Provide scratching posts to satisfy your cat’s natural scratching instincts.",
+        "3. Regular Brushing: Brush your cat’s fur regularly to reduce shedding and prevent matting.",
+        "4. Interactive Play: Engage your cat with interactive toys to keep them active and stimulated.",
+        "5. Nutrition: Feed your cat high-quality cat food suitable for their age and health needs.",
+        "6. Quiet Spaces: Provide quiet and safe spaces where your cat can retreat and relax.",
+        "7. Routine Vet Visits: Schedule regular vet visits for checkups and vaccinations.",
+        "8. Hydration: Ensure your cat has access to fresh water at all times.",
+        "9. Dental Health: Maintain your cat’s dental health with regular brushing or dental treats.",
+        "10. Window Perches: Install window perches to give your cat a view of the outdoors and keep them entertained."
     )
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Dog Care Tips") },
+                title = { Text(text = "Cat Care Tips") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = null)
