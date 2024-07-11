@@ -41,12 +41,11 @@ fun AboutUsScreen(navController: NavController) {
             verticalArrangement = Arrangement.Top
         ) {
             Image(
-                painter = painterResource(id = R.drawable.pet_shelter_image), // Add your shelter image here
+                painter = painterResource(id = R.drawable._024), // Add your shelter image here
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp),
-                contentScale = ContentScale.Crop
+                    .height(100.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Welcome to Wiggles", fontSize = 24.sp, fontWeight = FontWeight.Bold)

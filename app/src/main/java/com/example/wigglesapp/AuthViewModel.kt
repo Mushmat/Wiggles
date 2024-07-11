@@ -25,22 +25,19 @@ class AuthViewModel: ViewModel() {
                 return@launch
             }
 
-            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                task->
+            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
                 if(task.isSuccessful) {
                     val userId = firebaseAuth.currentUser?.uid ?: ""
                     val user = User(fullName, dob, contactNumber, address, email)
                     firestore.collection("users").document(userId).set(user)
                         .addOnSuccessListener {
-                            _authState.value = _authState.value.copy(isAuthenticated = true)
+                            _authState.value = _authState.value.copy(isAuthenticated = true, user = user)
                         }
                         .addOnFailureListener {
-                            _authState.value =
-                                _authState.value.copy(error = "Failed to save user data")
+                            _authState.value = _authState.value.copy(error = "Failed to save user data")
                         }
-                }else{
+                } else {
                     _authState.value = _authState.value.copy(error = task.exception?.message ?: "Sign up failed!")
-
                 }
             }
         }
@@ -49,11 +46,22 @@ class AuthViewModel: ViewModel() {
     fun logIn(email: String, password: String){
         viewModelScope.launch {
             firebaseAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener {
-                    task->
+                .addOnCompleteListener { task ->
                     if(task.isSuccessful){
-                        _authState.value = _authState.value.copy(isAuthenticated = true)
-                    }else{
+                        val userId = firebaseAuth.currentUser?.uid ?: ""
+                        firestore.collection("users").document(userId).get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    val user = document.toObject(User::class.java)
+                                    _authState.value = _authState.value.copy(isAuthenticated = true, user = user)
+                                } else {
+                                    _authState.value = _authState.value.copy(error = "User data not found")
+                                }
+                            }
+                            .addOnFailureListener {
+                                _authState.value = _authState.value.copy(error = "Failed to fetch user data")
+                            }
+                    } else {
                         _authState.value = _authState.value.copy(error = task.exception?.message ?: "Login Failed")
                     }
                 }
@@ -67,6 +75,29 @@ class AuthViewModel: ViewModel() {
         }
     }
 
+    fun updateUserProfile(fullName: String, contactNumber: String, address: String) {
+        viewModelScope.launch {
+            val currentUser = firebaseAuth.currentUser
+            if (currentUser != null) {
+                val userId = currentUser.uid
+                val userUpdates = mapOf(
+                    "fullName" to fullName,
+                    "contactNumber" to contactNumber,
+                    "address" to address
+                )
+                firestore.collection("users").document(userId).update(userUpdates)
+                    .addOnSuccessListener {
+                        _authState.value.user?.let { user ->
+                            _authState.value = _authState.value.copy(user = user.copy(fullName = fullName, contactNumber = contactNumber, address = address))
+                        }
+                    }
+                    .addOnFailureListener {
+                        _authState.value = _authState.value.copy(error = "Failed to update user data")
+                    }
+            }
+        }
+    }
+
     fun resetAuthState(){
         _authState.value = AuthState()
     }
@@ -74,13 +105,14 @@ class AuthViewModel: ViewModel() {
 
 data class AuthState(
     val isAuthenticated: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val user: User? = null
 )
 
 data class User(
-    val fullName: String,
-    val dob: String,
-    val contactNumber: String,
-    val address: String,
-    val email: String
+    val fullName: String = "",
+    val dob: String = "",
+    val contactNumber: String = "",
+    val address: String = "",
+    val email: String = ""
 )
