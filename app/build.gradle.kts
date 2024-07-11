@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -73,7 +74,9 @@ dependencies {
 
     implementation(libs.accompanist.pager)
 
-    implementation()
+    implementation(libs.glide)
+    kapt(libs.compiler)
+    implementation(libs.landscapist.glide)
 
 
 
