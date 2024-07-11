@@ -23,11 +23,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.skydoves.landscapist.glide.GlideImage
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
 fun CatTipsScreen(navController: NavController){
     val tips = listOf(
@@ -44,21 +45,23 @@ fun CatTipsScreen(navController: NavController){
     )
 
     val gifs = listOf(
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExazF5c3U1eGxobjd2Y202MzB5Y2ZrcHRoMWlubjQ2aTNleHNxbHMwdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mokQK7oyiR8Sk/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExajZvZjBhdm9qdjY0d29lMzd2cGJyM2gxbnI3c25hdnA2dWwzY2FvaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fxOcPNZkLa68iQ52l9/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWYybXFyaTBtYnJtNnVwZXFldGtsamF4Mm1rcGgzbjRnNTluMmc1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L3urg9t8mPE4IG7VF4/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm5ldnZ0eWZ5ZWI5eHpzb3A2cTBldm41ejZzNHhnM2prNGR0cTdodiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7buc7sAR6NEfAzTi/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXZqOXd2YWJobTBydjkwdHRjandkeG12cmxteHA4cjFoOXV3ZDd3bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U9yF7jHsSRxQaOADsq/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExejRmb3o3cjYzbWdyN3VmcW16MzZ5ejJ2YWZ5dXgzdzFuNWZwczNvMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vq7R0XFCHxwqs0hN3f/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWlmbjBiZmJvNnBqYjJvZW85eGpscHVtZHRxeDFibDY1cGpmbHZyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlzpiDh3uE2dB72/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzZqY21hNHo3aGtjaGZyd24wOHdsYzgzZmc3ZXgybzNrcXJka2JlZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H4XImflNDhzByzGDkl/giphy.gif",
-        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWlyaW9wN3Fvemw0Mm5lODltZWNtOGc0ZjM1N2Y2NHpiNHkwMGtoMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rzDWq0xhY7X5S/giphy.gif"
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHQ5dzd6eHdscHcyd2Jkc2tiMW90enhzaWxuaXlibjZpNW0ybzJ4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2QE861VOZU7zQdDG/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWx0MHllMTNsbGQza3J6YTEwamd3N3g3cmNncmFmN2lnem42YXhiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vXXZ5Q2hIzv20/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlyNDZkc2M1bnV1YTViZWVhNXgyOXlxaDQ2NjJheG4zMjFvYjc3cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BYsKQyHGSDyo0/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3QyOHBvNW5sOXhuZjRreXhucmp2MTVkaW53ZDRycmhhbXJmajBxYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Fig1uR9DGHf6E/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXF3Z2w1b2RpbTBoOTEzemtmaXV6em52M3g0aHhpcnkzbnU1MTRuciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zLGga2ZuEeKBZjqFu9/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHE1aDljdXF6YmxjenIyZnAxdWNoYzlnbWJ2eTBjM2JrdWpvcmJjciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10zHDq77BLwcy4/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2xncG1zb3c5bXk4dGE2NXgxZnMzYmI4czhvazd5aHExcHRqam5nMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Ai5dIk8xvBm0/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW1vaHJhb2VrYTRqN2tjeHY2bm56OWFuejhuaGdjczA1Y3pnMWJ5YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JhUZYdpnqrgcM/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Q4cXd0aXRxYTJrN3ExeW4yOXpkdGJyaGVudm81eHkwb3lsbHQ1YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8I7a41uPPoFSU/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHc5OHhqcnFrcnNwazJrMXlvY3NxOHZsbmIyMmJvMnZqaTNnd2kzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5UmUwfmtIqie4/giphy.gif"
     )
+
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Dog Care Tips") },
+                title = { Text(text = "Cat Care Tips") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
