@@ -67,10 +67,10 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             HomeButton(
                 icon = R.drawable.shelter,
                 text = "Shelter Info",
-                onClick = { /* Navigate to Shelter Info */ })
+                onClick = { navController.navigate("shelter_info") })
             HomeButton(
                 icon = R.drawable.money,
-                text = "Donate",
+                text = "Donate (Coming Soon)",
                 onClick = { /* Navigate to Donate */ })
         }
 

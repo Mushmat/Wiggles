@@ -47,9 +47,9 @@ fun MyApp(authViewModel: AuthViewModel) {
         drawerContent = {
             Surface(
                 color = MaterialTheme.colorScheme.surface,
-                modifier = Modifier.fillMaxSize(0.85f)
+                modifier = Modifier.fillMaxSize(0.90f)
             ) {
-                NavigationDrawer(navController, drawerState, scope)
+                NavigationDrawer(navController, drawerState, scope,authViewModel)
             }
         },
         content = {
@@ -169,6 +169,9 @@ fun MyApp(authViewModel: AuthViewModel) {
                     }
                     composable("cat_tips"){
                         CatTipsScreen(navController = navController)
+                    }
+                    composable("shelter_info"){
+                        ShelterInfoScreen(navController = navController)
                     }
                     
                 }
