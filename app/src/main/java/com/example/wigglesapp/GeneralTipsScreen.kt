@@ -45,17 +45,17 @@ fun GeneralTipsScreen(navController: NavController){
     )
 
     val gifs = listOf(
-        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWMyN2lxMjUyMDhuejkwdDV2MHpkY3Z0bXBueXE2cHd3Y3hneWVxZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpGgnGZgOHcRvj9fHe/giphy.webp",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnNraThwYzB4eHNqNWM0dm1kN3FzNmNyZzF3NnJ5ZHRkeG9mbTFhcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owypgpljxXcec90UU/giphy.webp",
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjg5dG5mbnByemh2b29sOHE4bmEzdTdqaTJmdTRiMGJ6MWQzMTJ4bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tu1p1x4QwnZAc/giphy.webp",
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXRseXJtYzg4aWdlbzNlejA0eGR5NDN0Y2g3ejJqdW8zejM5am4zMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5EJHDSPpFhbG0/200.webp",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDV0MnJvamQwcmhsZXltMXZxbmd1dm45eDlhZWMydTVtamJtdzVtMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cYZkY9HeKgofpQnOUl/giphy.webp",
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2kxN3BtNjdubDVoZ2tiYTFnc29wMnl3NWl6Y3A2MGo2NndwcXM0eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tPjh5FzTLPI5wcw/giphy.webp",
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWRua2RpYmpldGg0dHlkbXJ0dWl6NXl2MTkwdmxpZzdmZzhqNDllaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hor7W22LilvnttSTAl/giphy.webp",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWJ5dmlza3c5MHd4Yjh1bnpnajE4dG43dTI2c3A4ajlzdHdwM2hsdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgpwOQfx9WmFxN6/giphy.webp",
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamw2Nmk1MjhzMG43Z3Z2ZDBwcjdpdzJ4enNvdjR4ZTZsNGMxcDl6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjHJgmOnewNLCCw8/giphy.webp",
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG8zdml6MHkwNGQwcGpuN2sxbGpybDJxZDlrYXlqaGR5N2d6ZGJ5aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ffXuoiLiu1fquv10LH/giphy.webp"
-    )
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDJ0ZHR4ZG40ZDV4NWg2ZGRhMmlna3VwNXo2dGp6d2p2bmxuaWU0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpGgnGZgOHcRvj9fHe/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmIxNWM0bXczaGRtbWxuZm8wZWlzaXY0NzIzbGN1MWg3NWdoM29hOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LU4h8W0oBaR7tEKs5K/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzFwbTRkdWdpNG50MzNvNnk3YmNzdzlscmtqbXp6bjV6cXR2dnRjOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Tu1p1x4QwnZAc/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnZtdmw2MWI1N2ZoZm5hbDZlcTV0cjRpaXNrcWd1MXc2MDhqZGx3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TF6FLfa5NryGdEJcfY/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdubXNhNnN2ZTh1aW01MzMyNDdkeGMzbno1OW56ZWlvYWFqMmtrZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13VfgGFlFM1oxa/giphy-downsized-large.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVqeHIwcjZqdjJ4NmlyZmdtYnhmdnNrOHhtd3RmeXJkODI2MHpjZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tPjh5FzTLPI5wcw/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzNhOWpucjM3YnRqMjRzNWhienowMzkwNHFrdWMxOHl4MmloNWN1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hor7W22LilvnttSTAl/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW53c2xhMTJ3NzJhbTI0aThwOTBkb3F1d2dicTFrejE3aDdrbzc3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgpwOQfx9WmFxN6/giphy-downsized-large.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2xkczVvcDA5MXV4b3h1NHJybWRwcm9hNXVkdmwxNDhqdm45eWVsaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjHJgmOnewNLCCw8/giphy.gif",
+        "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnFqdTdnazN5YmkxNXIwaTZtaHY5bHFoNTc4ajUzN3drZHRxMmczMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ffXuoiLiu1fquv10LH/giphy.gif"
+        )
 
     Scaffold(
         topBar = {
@@ -87,9 +87,10 @@ fun GeneralTipsScreen(navController: NavController){
             ) {
                 GlideImage(
                     imageModel = gifs[page],
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
+                        .height(300.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
