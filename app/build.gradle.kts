@@ -73,6 +73,8 @@ dependencies {
 
     implementation(libs.accompanist.pager)
 
+    implementation()
+
 
 
     testImplementation(libs.junit)
