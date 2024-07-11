@@ -33,27 +33,4 @@ fun GeneralTipsScreen(navController: NavController){
         "10. MENTAL STIMULATION: Provide toys and activities to keep your pet mentally stimulated and engaged."
     )
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "General Pet Care Tips") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = null)
-                    }
-                }
-            )
-        }
-    ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .padding(16.dp)
-        ) {
-            items(tips) { tip ->
-                Text(text = tip, fontSize = 18.sp, modifier = Modifier.padding(8.dp))
-            }
-        }
-    }
 }
