@@ -57,7 +57,6 @@ fun ContactUsScreen(navController: NavController) {
             Image(
                 painter = painterResource(id = R.drawable.contact_us_image),
                 contentDescription = "Contact Us Image",
-                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
@@ -84,6 +83,14 @@ fun ContactUsScreen(navController: NavController) {
 
             Text(
                 text = "Call us at: 8114489928",
+                fontSize = 18.sp,
+                color = Color.DarkGray
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = "For general queries,",
                 fontSize = 18.sp,
                 color = Color.DarkGray
             )
