@@ -89,8 +89,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("user_profile_screen") {
                         UserProfileScreen(
                             navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                            authViewModel = authViewModel
                         )
                     }
                     composable("adoption_process_screen") {
