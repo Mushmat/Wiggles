@@ -1,5 +1,6 @@
 [versions]
 accompanistCoil = "0.15.0"
+accompanistPager = "0.25.1"
 agp = "8.5.0"
 coilCompose = "2.4.0"
 firebaseAuthKtx = "23.0.0"
@@ -36,6 +37,7 @@ core = "1.17.1"
 
 [libraries]
 accompanist-coil = { module = "com.google.accompanist:accompanist-coil", version.ref = "accompanistCoil" }
+accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
 androidx-hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }

@@ -70,6 +70,11 @@ dependencies {
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.androidx.room.ktx)
     implementation(libs.coil.compose)
+
+    implementation(libs.accompanist.pager)
+
+
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
