@@ -94,6 +94,7 @@ fun GeneralTipsScreen(navController: NavController){
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                Text(text = "Swipe Left/Right :)",fontSize = 18.sp, modifier = Modifier.padding(8.dp))
             }
         }
     }
