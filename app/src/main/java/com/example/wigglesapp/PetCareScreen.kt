@@ -1,12 +1,8 @@
 package com.example.wigglesapp
 
-import android.widget.Space
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -19,6 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,7 +23,8 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PetCareScreen(navController: NavController){
+fun PetCareScreen(navController: NavController) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,8 +36,7 @@ fun PetCareScreen(navController: NavController){
                 }
             )
         }
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -47,30 +44,32 @@ fun PetCareScreen(navController: NavController){
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(16.dp)
-                .verticalScroll(
-                    rememberScrollState()
-
-                )
+                .verticalScroll(rememberScrollState())
         ) {
             Button(
                 onClick = { navController.navigate("pet_care_tips_screen") },
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Text(text = "Pet Care Tips")
             }
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { navController.navigate("nearby_vets_screen") },
-                modifier = Modifier.padding(8.dp)
+                onClick = {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse("https://www.google.com/maps/search/vets+near+me")
+                    }
+                    context.startActivity(intent)
+                },
+                modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Text(text = "Vets nearby")
             }
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { /**/ },
-                modifier = Modifier.padding(16.dp)
+                onClick = { /* Coming Soon functionality */ },
+                modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Parents who bought similar pets")
