@@ -128,9 +128,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                     }
                     composable("contact_us_screen") {
                         ContactUsScreen(
-                            navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                            navController = navController
                         )
                     }
                     composable("available_pets") {
