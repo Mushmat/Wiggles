@@ -161,7 +161,20 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("shelter_info"){
                         ShelterInfoScreen(navController = navController)
                     }
-                    
+                    composable("adoption_application/{petId}") { backStackEntry ->
+                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                        AdoptionApplicationScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
+                    }
+                    composable("adoption_success") {
+                        AdoptionSuccessScreen(navController = navController, drawerState = drawerState, scope = scope)
+                    }
+                    composable("application_detail/{petId}") { backStackEntry ->
+                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                        ApplicationDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
+                    }
+
+
+
                 }
             }
         }
