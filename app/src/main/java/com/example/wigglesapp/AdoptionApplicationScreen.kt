@@ -1,21 +1,12 @@
 package com.example.wigglesapp
 
-
 import android.widget.Space
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,8 +22,8 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 
 @Composable
-fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel){
-    val pet = dummyPets.firstOrNull {it.id == petId} ?: return
+fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel) {
+    val pet = dummyPets.firstOrNull { it.id == petId } ?: return
     val questions = listOf(
         "Who will be the owner of the pet?",
         "What is their gender?",
@@ -45,21 +36,24 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
         "Do they travel frequently? If yes, where will the pet be during that phase?",
         "How long can they hold the adoption request?"
     )
-    val answers = remember { mutableStateOf(List(questions.size) {""}) }
+    val answers = remember { mutableStateOf(List(questions.size) { "" }) }
     var currentQuestion by remember { mutableStateOf(0) }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ){
+        verticalArrangement = Arrangement.Top
+    ) {
         Image(
             painter = rememberImagePainter(data = pet.imageUrl),
             contentDescription = "Pet Chosen for Adoption",
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState())
+                .aspectRatio(1.5f)
+                .padding(bottom = 16.dp)
         )
         Text(text = "Pet Chosen for Adoption", fontSize = 24.sp)
         Spacer(modifier = Modifier.height(16.dp))
@@ -75,7 +69,8 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(text = questions[currentQuestion], fontSize = 18.sp)
@@ -83,7 +78,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                 OutlinedTextField(
                     value = answers.value[currentQuestion],
                     onValueChange = { newValue ->
-                        answers.value = answers.value.toMutableList().also {it[currentQuestion] = newValue}
+                        answers.value = answers.value.toMutableList().also { it[currentQuestion] = newValue }
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
