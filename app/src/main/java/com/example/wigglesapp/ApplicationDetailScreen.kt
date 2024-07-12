@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,24 +32,25 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
     val application = sharedViewModel.adoptionApplications.collectAsState().value.firstOrNull { it.petId == petId } ?: return
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
-    Column(
+    LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
-        Image(
-            painter = rememberImagePainter(data = pet.imageUrl),
-            contentDescription = "Pet Image",
-            modifier = Modifier
-                .size(128.dp)
-                .clip(RoundedCornerShape(8.dp))
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Name: ${pet.name}", fontSize = 20.sp)
-        Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
-        Spacer(modifier = Modifier.height(16.dp))
-
-        application.answers.forEachIndexed { index, answer ->
+        item {
+            Image(
+                painter = rememberImagePainter(data = pet.imageUrl),
+                contentDescription = "Pet Image",
+                modifier = Modifier
+                    .size(128.dp)
+                    .clip(RoundedCornerShape(8.dp))
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Name: ${pet.name}", fontSize = 20.sp)
+            Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+        itemsIndexed(application.answers) { index, answer ->
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -66,8 +69,10 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 }
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color.Green)
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color.Green)
+        }
     }
 }
 
