@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.DrawerState
@@ -55,8 +56,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                shape = RoundedCornerShape(8.dp),
-                elevation = 8.dp
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Column(
                     modifier = Modifier
