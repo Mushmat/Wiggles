@@ -96,7 +96,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 
-                Button(onClick = { /*TODO ADOPTION LOGIC*/ }) {
+                Button(onClick = { navController.navigate("adoption_application/${pet.id}") }) {
                     Text(text = "Adopt ${pet.name}")
                 }
             }

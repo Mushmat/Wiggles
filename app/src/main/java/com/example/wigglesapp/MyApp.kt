@@ -105,11 +105,8 @@ fun MyApp(authViewModel: AuthViewModel) {
                             sharedViewModel = sharedViewModel
                         )
                     }
-                    composable("adoption_application_screen") {
-                        AdoptionApplicationScreen(
-                            navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                    composable() {
+
                         )
                     }
                     composable("testimonials_screen") {
