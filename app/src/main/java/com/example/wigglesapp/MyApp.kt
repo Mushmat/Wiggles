@@ -105,10 +105,6 @@ fun MyApp(authViewModel: AuthViewModel) {
                             sharedViewModel = sharedViewModel
                         )
                     }
-                    composable() {
-
-                        )
-                    }
                     composable("testimonials_screen") {
                         TestimonialsScreen(
                             navController = navController,
