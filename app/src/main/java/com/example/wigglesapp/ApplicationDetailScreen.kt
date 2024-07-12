@@ -14,13 +14,18 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -32,46 +37,62 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
     val application = sharedViewModel.adoptionApplications.collectAsState().value.firstOrNull { it.petId == petId } ?: return
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        item {
-            Image(
-                painter = rememberImagePainter(data = pet.imageUrl),
-                contentDescription = "Pet Image",
-                modifier = Modifier
-                    .size(128.dp)
-                    .clip(RoundedCornerShape(8.dp))
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Application Detail") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
+                    }
+                }
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Name: ${pet.name}", fontSize = 20.sp)
-            Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
-            Spacer(modifier = Modifier.height(16.dp))
         }
-        itemsIndexed(application.answers) { index, answer ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Column(
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            item {
+                Image(
+                    painter = rememberImagePainter(data = pet.imageUrl),
+                    contentDescription = "Pet Image",
+                    modifier = Modifier
+                        .size(128.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Name: ${pet.name}", fontSize = 20.sp)
+                Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+            itemsIndexed(application.answers) { index, answer ->
+                Card(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    horizontalAlignment = Alignment.Start
+                    shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text(text = "Q${index + 1}: ${getQuestionLabel(index)}", fontSize = 18.sp, color = Color.Gray)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = answer, fontSize = 18.sp)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        Text(text = "Q${index + 1}: ${getQuestionLabel(index)}", fontSize = 18.sp, color = Color.Gray)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(text = answer, fontSize = 18.sp)
+                    }
                 }
             }
-        }
-        item {
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color.Green)
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color.Green)
+                Spacer(modifier = Modifier.height(16.dp))
+            }
         }
     }
 }
