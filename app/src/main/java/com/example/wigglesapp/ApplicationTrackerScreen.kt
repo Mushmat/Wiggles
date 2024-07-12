@@ -29,7 +29,7 @@ import coil.compose.rememberImagePainter
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun AdoptionApplicationScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, sharedViewModel: SharedViewModel){
+fun AdoptionTrackerScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, sharedViewModel: SharedViewModel){
     val adoptionApplications by sharedViewModel.adoptionApplications.collectAsState()
 
     Column(

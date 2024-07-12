@@ -168,13 +168,18 @@ fun MyApp(authViewModel: AuthViewModel) {
                     composable("adoption_success") {
                         AdoptionSuccessScreen(navController = navController, drawerState = drawerState, scope = scope)
                     }
+                    composable("adoption_tracker"){
+                        AdoptionTrackerScreen(
+                            navController = navController,
+                            drawerState = drawerState,
+                            scope = scope,
+                            sharedViewModel =sharedViewModel
+                        )
+                    }
                     composable("application_detail/{petId}") { backStackEntry ->
                         val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
                         ApplicationDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
                     }
-
-
-
                 }
             }
         }
