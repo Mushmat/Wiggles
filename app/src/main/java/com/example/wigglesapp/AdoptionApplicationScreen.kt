@@ -1,31 +1,27 @@
 package com.example.wigglesapp
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+
 import androidx.compose.material3.DrawerState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun AdoptionApplicationScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope){
-    val context = LocalContext.current
+fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel){
+    val pet = dummyPets.firstOrNull {it.id == petId} ?: return
+    val questions = listOf(
+        "Who will be the owner of the pet?",
+        "What is their gender?",
+        "What is their age?",
+        "What is their email?",
+        "Do they need any assistive services along with the pet?",
+        "Does their colony allow pets?",
+        "Have they had pets before? If yes, what kind?",
+        "How much time can they dedicate to the pet?",
+        "Do they travel frequently? If yes, where will the pet be during that phase?",
+        "How long can they hold the adoption request?"
+    )
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "Adoption Application")
 
-    }
 
 }
