@@ -53,7 +53,9 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
             )
         }
     ) { paddingValues ->
-        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)){
+        Box(
+            modifier = Modifier.fillMaxSize().padding(paddingValues)
+        ){
         if(bookmarkedPets.isEmpty()){
             Text(text = "No Bookmarked Pets Available", fontSize = 20.sp, modifier = Modifier.padding(16.dp))
         }else {
