@@ -19,12 +19,16 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
     var fullName by remember { mutableStateOf("") }
     var contactNumber by remember { mutableStateOf("") }
     var address by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var dob by remember { mutableStateOf("") }
 
     LaunchedEffect(user) {
         user?.let {
             fullName = it.fullName
             contactNumber = it.contactNumber
             address = it.address
+            email = it.email
+            dob = it.dob
         }
     }
 
@@ -79,6 +83,33 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 value = address,
                 onValueChange = { address = it },
                 label = { Text("Address") },
+                modifier = Modifier.fillMaxWidth(),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            TextField(
+                value = email,
+                onValueChange = { /* No-op: This field is read-only */ },
+                label = { Text("Email") },
+                readOnly = true,
+                modifier = Modifier.fillMaxWidth(),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
+                )
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            TextField(
+                value = dob,
+                onValueChange = { /* No-op: This field is read-only */ },
+                label = { Text("Date of Birth (DD/MM/YYYY)") },
+                readOnly = true,
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
