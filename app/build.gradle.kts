@@ -69,9 +69,14 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.firebase.crashlytics.buildtools)
-    implementation(libs.androidx.room.ktx)
+
     implementation(libs.coil.compose)
 
+    //ROOM DEPENDENCIES:
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    
     implementation(libs.accompanist.pager)
 
     implementation(libs.glide)
