@@ -9,7 +9,8 @@ import androidx.room.TypeConverters
 
 @Database(
     entities = [UserProfile::class, BookmarkedPet::class, AdoptionApplicationEntity::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase(){
