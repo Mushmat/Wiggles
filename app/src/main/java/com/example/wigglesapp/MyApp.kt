@@ -169,6 +169,17 @@ fun MyApp(authViewModel: AuthViewModel) {
                         val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
                         ApplicationDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
                     }
+
+                    composable("parent_detail/{parentName}") { backStackEntry ->
+                        val parentName = backStackEntry.arguments?.getString("parentName") ?: return@composable
+                        ParentDetailScreen(navController = navController, parentName = parentName)
+                    }
+
+                    composable("parents_screen") {
+                        ParentsScreen(navController = navController)
+                    }
+
+
                 }
             }
         }

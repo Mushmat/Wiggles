@@ -68,7 +68,7 @@ fun PetCareScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { /* Coming Soon functionality */ },
+                onClick = { navController.navigate("parents_screen") },
                 modifier = Modifier.fillMaxWidth().padding(8.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
