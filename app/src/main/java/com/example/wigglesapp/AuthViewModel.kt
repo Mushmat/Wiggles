@@ -1,6 +1,8 @@
 package com.example.wigglesapp
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -9,106 +11,86 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class AuthViewModel : ViewModel() {
-    private val firebaseAuth = FirebaseAuth.getInstance()
-    private val firestore = FirebaseFirestore.getInstance()
+class AuthViewModel(application: Application) : AndroidViewModel(application) {
+    private val auth = FirebaseAuth.getInstance()
+    private val db = AppDatabase.getDatabase(application)
+    private val userProfileDao = db.userProfileDao()
 
     val _authState = MutableStateFlow(AuthState())
-    val authState: StateFlow<AuthState> = _authState
+    val authState: StateFlow<AuthState> get() = _authState
 
-    private val _userDetails = MutableStateFlow<User?>(null)
-    val userDetails: StateFlow<User?> = _userDetails
+    private val _userDetails = MutableStateFlow<UserProfile?>(null)
+    val userDetails: StateFlow<UserProfile?> get() = _userDetails
 
-    fun signUp(
-        fullName: String, dob: String, contactNumber: String,
-        address: String, email: String, password: String, confirmPassword: String
-    ) {
-        viewModelScope.launch {
-            if (password != confirmPassword) {
-                _authState.value = _authState.value.copy(error = "Passwords do not match!")
-                return@launch
-            }
-
-            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val userId = firebaseAuth.currentUser?.uid ?: ""
-                    val user = User(fullName, dob, contactNumber, address, email)
-                    firestore.collection("users").document(userId).set(user)
-                        .addOnSuccessListener {
-                            _authState.value = _authState.value.copy(isAuthenticated = true)
-                            Log.d("AuthViewModel", "User data saved successfully.")
-                            fetchUserDetails()
-                        }
-                        .addOnFailureListener { exception ->
-                            _authState.value = _authState.value.copy(error = "Failed to save user data: ${exception.message}")
-                            Log.e("AuthViewModel", "Failed to save user data: ${exception.message}", exception)
-                        }
-                } else {
-                    _authState.value = _authState.value.copy(error = task.exception?.message ?: "Sign up failed!")
-                    Log.e("AuthViewModel", "Sign up failed: ${task.exception?.message}", task.exception)
-                }
+    init {
+        auth.currentUser?.let {
+            viewModelScope.launch {
+                val userProfile = userProfileDao.getUserProfile(it.email!!)
+                _userDetails.value = userProfile
             }
         }
     }
 
     fun logIn(email: String, password: String) {
-        viewModelScope.launch {
-            firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _authState.value = _authState.value.copy(isAuthenticated = true)
-                        Log.d("AuthViewModel", "Login successful.")
-                        fetchUserDetails()
-                    } else {
-                        _authState.value = _authState.value.copy(error = task.exception?.message ?: "Login Failed")
-                        Log.e("AuthViewModel", "Login failed: ${task.exception?.message}", task.exception)
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    viewModelScope.launch {
+                        val userProfile = userProfileDao.getUserProfile(email)
+                        _userDetails.value = userProfile
+                        _authState.value = AuthState(isAuthenticated = true)
                     }
+                } else {
+                    _authState.value = AuthState(error = task.exception?.message)
                 }
+            }
+    }
+
+    fun signUp(fullName: String, dob: String, contactNumber: String, address: String, email: String, password: String, confirmPassword: String) {
+        if (password != confirmPassword) {
+            _authState.value = AuthState(error = "Passwords do not match")
+            return
         }
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val userProfile = UserProfile(email, fullName, dob, contactNumber, address)
+                    viewModelScope.launch {
+                        userProfileDao.insertUserProfile(userProfile)
+                        _userDetails.value = userProfile
+                        _authState.value = AuthState(isAuthenticated = true)
+                    }
+                } else {
+                    _authState.value = AuthState(error = task.exception?.message)
+                }
+            }
     }
 
     fun logOut() {
-        viewModelScope.launch {
-            firebaseAuth.signOut()
-            _authState.value = AuthState(isAuthenticated = false)
-            _userDetails.value = null
-            Log.d("AuthViewModel", "Logged out.")
-        }
+        auth.signOut()
+        _authState.value = AuthState()
+        _userDetails.value = null
     }
 
     fun resetAuthState() {
         _authState.value = AuthState()
     }
 
-    private fun fetchUserDetails() {
-        val userId = firebaseAuth.currentUser?.uid ?: return
-        firestore.collection("users").document(userId).get()
-            .addOnSuccessListener { document ->
-                val user = document.toObject(User::class.java)
-                _userDetails.value = user
-                Log.d("AuthViewModel", "User data fetched successfully: $user")
-            }
-            .addOnFailureListener { exception ->
-                _authState.value = _authState.value.copy(error = "Failed to fetch user data: ${exception.message}")
-                Log.e("AuthViewModel", "Failed to fetch user data: ${exception.message}", exception)
-            }
-    }
-
     fun updateUserProfile(fullName: String, contactNumber: String, address: String) {
-        val userId = firebaseAuth.currentUser?.uid ?: return
-        val user = _userDetails.value ?: return
-
-        val updatedUser = user.copy(fullName = fullName, contactNumber = contactNumber, address = address)
-        firestore.collection("users").document(userId).set(updatedUser)
-            .addOnSuccessListener {
-                _userDetails.value = updatedUser
-                _authState.value = _authState.value.copy(error = null)
-                Log.d("AuthViewModel", "User data updated successfully.")
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val updatedProfile = UserProfile(
+                email = currentUser.email!!,
+                fullName = fullName,
+                dob = _userDetails.value?.dob ?: "",
+                contactNumber = contactNumber,
+                address = address
+            )
+            viewModelScope.launch {
+                userProfileDao.insertUserProfile(updatedProfile)
+                _userDetails.value = updatedProfile
             }
-            .addOnFailureListener { exception ->
-                _authState.value = _authState.value.copy(error = "Failed to update user data: ${exception.message}")
-                Log.e("AuthViewModel", "Failed to update user data: ${exception.message}", exception)
-            }
+        }
     }
 }
 

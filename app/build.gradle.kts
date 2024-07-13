@@ -75,7 +75,6 @@ dependencies {
     //ROOM DEPENDENCIES:
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.adapters)
     kapt(libs.androidx.room.compiler)
 
     implementation(libs.accompanist.pager)
