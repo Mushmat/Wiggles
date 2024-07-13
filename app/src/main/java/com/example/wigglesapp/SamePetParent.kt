@@ -2,15 +2,7 @@ package com.example.wigglesapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -29,10 +21,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ParentsScreen(navController: NavController){
+fun ParentsScreen(navController: NavController) {
     val parents = listOf(
         Parent(
             name = "John Doe",
@@ -41,7 +34,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john
+            imageUrl = "https://t3.ftcdn.net/jpg/06/78/09/78/360_F_678097876_9kJnFlRYGAeibsVxspqtCL9UR8giLAvF.jpg"
         ),
         Parent(
             name = "Jane Smith",
@@ -50,7 +43,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Max is very energetic and loves outdoor activities. He's very obedient and has quickly learned many commands. Great for an active family.",
             contactNumber = "234-567-8901",
             email = "jane.smith@example.com",
-            imageRes = R.drawable.jane
+            imageUrl = "https://live.staticflickr.com/5252/5403292396_0804de9bcf_b.jpg"
         ),
         Parent(
             name = "Michael Johnson",
@@ -59,7 +52,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Bella is very protective and affectionate. She is great with children and has a calm demeanor. Perfect for a family looking for a loving companion.",
             contactNumber = "345-678-9012",
             email = "michael.johnson@example.com",
-            imageRes = R.drawable.michael
+            imageUrl = "https://i.dailymail.co.uk/i/pix/2013/08/29/article-2405475-1B8389EE000005DC-718_634x550.jpg"
         ),
         Parent(
             name = "Emily Davis",
@@ -68,7 +61,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Charlie is very gentle and loves cuddling. He is perfect for apartment living and gets along well with other pets. Ideal for someone looking for a low-maintenance pet.",
             contactNumber = "456-789-0123",
             email = "emily.davis@example.com",
-            imageRes = R.drawable.emily
+            imageUrl = "https://img.freepik.com/free-photo/8m-women-strike-movement_23-2151400621.jpg"
         ),
         Parent(
             name = "Sarah Brown",
@@ -77,7 +70,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Cooper is highly intelligent and very easy to train. He has a playful nature and is great with kids. Perfect for a family looking for an active and smart pet.",
             contactNumber = "567-890-1234",
             email = "sarah.brown@example.com",
-            imageRes = R.drawable.sarah
+            imageUrl = "https://wallpapers.com/images/hd/beautiful-woman-with-random-people-in-background-roumbpovzh5jzxj5.jpg"
         )
     )
 
@@ -119,7 +112,7 @@ fun ParentCard(navController: NavController, parent: Parent) {
             modifier = Modifier.padding(16.dp)
         ) {
             Image(
-                painter = painterResource(id = parent.imageRes),
+                painter = rememberImagePainter(data = parent.imageUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
@@ -156,7 +149,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
                 .padding(16.dp)
         ) {
             Image(
-                painter = painterResource(id = parent.imageRes),
+                painter = rememberImagePainter(data = parent.imageUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -186,7 +179,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john
+            imageUrl = "https://t3.ftcdn.net/jpg/06/78/09/78/360_F_678097876_9kJnFlRYGAeibsVxspqtCL9UR8giLAvF.jpg"
         )
         "Jane Smith" -> Parent(
             name = "Jane Smith",
@@ -195,7 +188,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Max is very energetic and loves outdoor activities. He's very obedient and has quickly learned many commands. Great for an active family.",
             contactNumber = "234-567-8901",
             email = "jane.smith@example.com",
-            imageRes = R.drawable.jane
+            imageUrl = "https://live.staticflickr.com/5252/5403292396_0804de9bcf_b.jpg"
         )
         "Michael Johnson" -> Parent(
             name = "Michael Johnson",
@@ -204,7 +197,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Bella is very protective and affectionate. She is great with children and has a calm demeanor. Perfect for a family looking for a loving companion.",
             contactNumber = "345-678-9012",
             email = "michael.johnson@example.com",
-            imageRes = R.drawable.michael
+            imageUrl = "https://i.dailymail.co.uk/i/pix/2013/08/29/article-2405475-1B8389EE000005DC-718_634x550.jpg"
         )
         "Emily Davis" -> Parent(
             name = "Emily Davis",
@@ -213,7 +206,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Charlie is very gentle and loves cuddling. He is perfect for apartment living and gets along well with other pets. Ideal for someone looking for a low-maintenance pet.",
             contactNumber = "456-789-0123",
             email = "emily.davis@example.com",
-            imageRes = R.drawable.emily
+            imageUrl = "https://img.freepik.com/free-photo/8m-women-strike-movement_23-2151400621.jpg"
         )
         "Sarah Brown" -> Parent(
             name = "Sarah Brown",
@@ -222,7 +215,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Cooper is highly intelligent and very easy to train. He has a playful nature and is great with kids. Perfect for a family looking for an active and smart pet.",
             contactNumber = "567-890-1234",
             email = "sarah.brown@example.com",
-            imageRes = R.drawable.sarah
+            imageUrl = "https://wallpapers.com/images/hd/beautiful-woman-with-random-people-in-background-roumbpovzh5jzxj5.jpg"
         )
         else -> Parent(
             name = "John Doe",
@@ -231,7 +224,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john
+            imageUrl = "https://t3.ftcdn.net/jpg/06/78/09/78/360_F_678097876_9kJnFlRYGAeibsVxspqtCL9UR8giLAvF.jpg"
         )
     }
 }
@@ -243,5 +236,5 @@ data class Parent(
     val positiveTraits: String,
     val contactNumber: String,
     val email: String,
-    val imageRes: Int
+    val imageUrl:String
 )

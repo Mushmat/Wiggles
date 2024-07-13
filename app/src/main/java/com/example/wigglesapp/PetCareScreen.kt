@@ -73,7 +73,6 @@ fun PetCareScreen(navController: NavController) {
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Parents who bought similar pets")
-                    Text(text = "Coming soon", fontSize = 12.sp)
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
