@@ -77,7 +77,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             Text(
                 text = "Wiggles",
                 style = MaterialTheme.typography.titleLarge,
-                color = Color.White,
+                color = Color.Black,
                 fontSize = 60.sp,
 
             )
@@ -119,8 +119,8 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            TextButton(onClick = onSignUpClicked) {
-                Text(text = "Create an Account!",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 30.sp )
+            Button(onClick = onSignUpClicked) {
+                Text(text = "Create an Account!",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 18.sp )
             }
 
             authState.error?.let {
