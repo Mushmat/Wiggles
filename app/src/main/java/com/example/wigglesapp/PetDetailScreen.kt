@@ -34,7 +34,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
     val pet = dummyPets.firstOrNull{ it.id == petId} ?: return
     val bookmarkedPets by sharedViewModel.bookmarkedPets.collectAsState()
 
-    val isBookmarked = bookmarkedPets.contains(pet)
+    val isBookmarked = bookmarkedPets.any { it.id == pet.id }
     
     Column(
         modifier = Modifier
@@ -87,9 +87,9 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
     
                 Button(onClick = { 
                 if(isBookmarked){
-                    sharedViewModel.removeBookmark(pet)
+                    sharedViewModel.removeBookmark(pet.toBookmarkedPet())
                 }else{
-                    sharedViewModel.bookmarkPet(pet)
+                    sharedViewModel.bookmarkPet(pet.toBookmarkedPet())
                 }
                 }) {
                     Text(text = if(isBookmarked) "Remove Bookmark" else "Bookmark")
@@ -102,4 +102,17 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
             }
         }
     }
+}
+
+fun Pet.toBookmarkedPet(): BookmarkedPet {
+    return BookmarkedPet(
+        id = this.id,
+        name = this.name,
+        breed = this.breed,
+        imageUrl = this.imageUrl,
+        gender = this.gender,
+        size = this.size,
+        characteristics = this.characteristics,
+        about = this.about
+    )
 }

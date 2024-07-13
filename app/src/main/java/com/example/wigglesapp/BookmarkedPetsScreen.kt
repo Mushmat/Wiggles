@@ -66,7 +66,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                     .padding(16.dp)
             ) {
                 items(bookmarkedPets) { pet ->
-                    BookmarkedPetCard(navController = navController, pet = pet)
+                    BookmarkedPetCard(navController = navController, pet = pet.toPet())
                 }
             }
         }
@@ -90,6 +90,18 @@ fun BookmarkedPetCard(navController: NavController, pet: Pet){
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
         Text(text = pet.breed, fontSize = 14.sp, color = Color.Gray)
-
     }
+}
+
+fun BookmarkedPet.toPet(): Pet {
+    return Pet(
+        id = this.id,
+        name = this.name,
+        breed = this.breed,
+        imageUrl = this.imageUrl,
+        gender = this.gender,
+        size = this.size,
+        characteristics = this.characteristics,
+        about = this.about
+    )
 }
