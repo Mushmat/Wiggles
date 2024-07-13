@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -40,7 +41,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john_doe
+            imageRes = R.drawable.john
         ),
         Parent(
             name = "Jane Smith",
@@ -49,7 +50,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Max is very energetic and loves outdoor activities. He's very obedient and has quickly learned many commands. Great for an active family.",
             contactNumber = "234-567-8901",
             email = "jane.smith@example.com",
-            imageRes = R.drawable.jane_smith
+            imageRes = R.drawable.jane
         ),
         Parent(
             name = "Michael Johnson",
@@ -58,7 +59,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Bella is very protective and affectionate. She is great with children and has a calm demeanor. Perfect for a family looking for a loving companion.",
             contactNumber = "345-678-9012",
             email = "michael.johnson@example.com",
-            imageRes = R.drawable.michael_johnson
+            imageRes = R.drawable.michael
         ),
         Parent(
             name = "Emily Davis",
@@ -67,7 +68,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Charlie is very gentle and loves cuddling. He is perfect for apartment living and gets along well with other pets. Ideal for someone looking for a low-maintenance pet.",
             contactNumber = "456-789-0123",
             email = "emily.davis@example.com",
-            imageRes = R.drawable.emily_davis
+            imageRes = R.drawable.emily
         ),
         Parent(
             name = "Sarah Brown",
@@ -76,7 +77,7 @@ fun ParentsScreen(navController: NavController){
             positiveTraits = "Cooper is highly intelligent and very easy to train. He has a playful nature and is great with kids. Perfect for a family looking for an active and smart pet.",
             contactNumber = "567-890-1234",
             email = "sarah.brown@example.com",
-            imageRes = R.drawable.sarah_brown
+            imageRes = R.drawable.sarah
         )
     )
 
@@ -185,7 +186,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john_doe
+            imageRes = R.drawable.john
         )
         "Jane Smith" -> Parent(
             name = "Jane Smith",
@@ -194,7 +195,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Max is very energetic and loves outdoor activities. He's very obedient and has quickly learned many commands. Great for an active family.",
             contactNumber = "234-567-8901",
             email = "jane.smith@example.com",
-            imageRes = R.drawable.jane_smith
+            imageRes = R.drawable.jane
         )
         "Michael Johnson" -> Parent(
             name = "Michael Johnson",
@@ -203,7 +204,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Bella is very protective and affectionate. She is great with children and has a calm demeanor. Perfect for a family looking for a loving companion.",
             contactNumber = "345-678-9012",
             email = "michael.johnson@example.com",
-            imageRes = R.drawable.michael_johnson
+            imageRes = R.drawable.michael
         )
         "Emily Davis" -> Parent(
             name = "Emily Davis",
@@ -212,7 +213,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Charlie is very gentle and loves cuddling. He is perfect for apartment living and gets along well with other pets. Ideal for someone looking for a low-maintenance pet.",
             contactNumber = "456-789-0123",
             email = "emily.davis@example.com",
-            imageRes = R.drawable.emily_davis
+            imageRes = R.drawable.emily
         )
         "Sarah Brown" -> Parent(
             name = "Sarah Brown",
@@ -221,7 +222,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Cooper is highly intelligent and very easy to train. He has a playful nature and is great with kids. Perfect for a family looking for an active and smart pet.",
             contactNumber = "567-890-1234",
             email = "sarah.brown@example.com",
-            imageRes = R.drawable.sarah_brown
+            imageRes = R.drawable.sarah
         )
         else -> Parent(
             name = "John Doe",
@@ -230,7 +231,7 @@ fun getParentByName(name: String): Parent {
             positiveTraits = "Luna is incredibly friendly, loves to play, and is great with kids. She's very loyal and has become an inseparable part of our family.",
             contactNumber = "123-456-7890",
             email = "john.doe@example.com",
-            imageRes = R.drawable.john_doe
+            imageRes = R.drawable.john
         )
     }
 }
