@@ -12,8 +12,11 @@ class AuthViewModel: ViewModel() {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val firestore = FirebaseFirestore.getInstance()
 
-    internal val _authState = MutableStateFlow(AuthState())
+    private val _authState = MutableStateFlow(AuthState())
     val authState: StateFlow<AuthState> = _authState
+
+    private val _userDetails = MutableStateFlow<User?>(null)
+    val userDetails: StateFlow<User?> = _userDetails
 
     fun signUp(
         fullName: String, dob: String, contactNumber: String,
@@ -33,6 +36,7 @@ class AuthViewModel: ViewModel() {
                     firestore.collection("users").document(userId).set(user)
                         .addOnSuccessListener {
                             _authState.value = _authState.value.copy(isAuthenticated = true)
+                            fetchUserDetails()
                         }
                         .addOnFailureListener {
                             _authState.value =
@@ -53,6 +57,7 @@ class AuthViewModel: ViewModel() {
                         task->
                     if(task.isSuccessful){
                         _authState.value = _authState.value.copy(isAuthenticated = true)
+                        fetchUserDetails()
                     }else{
                         _authState.value = _authState.value.copy(error = task.exception?.message ?: "Login Failed")
                     }
@@ -64,11 +69,39 @@ class AuthViewModel: ViewModel() {
         viewModelScope.launch {
             firebaseAuth.signOut()
             _authState.value = AuthState(isAuthenticated = false)
+            _userDetails.value = null
         }
     }
 
     fun resetAuthState(){
         _authState.value = AuthState()
+    }
+
+    private fun fetchUserDetails() {
+        val userId = firebaseAuth.currentUser?.uid ?: return
+        firestore.collection("users").document(userId).get()
+            .addOnSuccessListener { document ->
+                val user = document.toObject(User::class.java)
+                _userDetails.value = user
+            }
+            .addOnFailureListener {
+                _authState.value = _authState.value.copy(error = "Failed to fetch user data")
+            }
+    }
+
+    fun updateUserProfile(fullName: String, contactNumber: String, address: String) {
+        val userId = firebaseAuth.currentUser?.uid ?: return
+        val user = _userDetails.value ?: return
+
+        val updatedUser = user.copy(fullName = fullName, contactNumber = contactNumber, address = address)
+        firestore.collection("users").document(userId).set(updatedUser)
+            .addOnSuccessListener {
+                _userDetails.value = updatedUser
+                _authState.value = _authState.value.copy(error = null)
+            }
+            .addOnFailureListener {
+                _authState.value = _authState.value.copy(error = "Failed to update user data")
+            }
     }
 }
 
