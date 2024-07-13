@@ -37,6 +37,7 @@ roomRuntime = "2.6.1"
 sceneform = "1.20.1"
 sceneformUx = "1.17.1"
 core = "1.17.1"
+adapters = "3.2.0-alpha11"
 
 [libraries]
 accompanist-coil = { module = "com.google.accompanist:accompanist-coil", version.ref = "accompanistCoil" }
@@ -84,6 +85,7 @@ module = { module = "com.example.library:module", version.ref = "module" }
 sceneform = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneform" }
 sceneform-ux = { module = "com.google.ar.sceneform.ux:sceneform-ux", version.ref = "sceneformUx" }
 core = { group = "com.google.ar.sceneform", name = "core", version.ref = "core" }
+androidx-adapters = { group = "androidx.databinding", name = "adapters", version.ref = "adapters" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
