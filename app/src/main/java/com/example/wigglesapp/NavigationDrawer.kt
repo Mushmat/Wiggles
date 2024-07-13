@@ -14,7 +14,6 @@ fun NavigationDrawer(navController: NavController, drawerState: DrawerState, sco
         DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
         DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }
         DrawerButton(text = "User Profile") { navController.navigate("user_profile_screen") }
-        DrawerButton(text = "Adoption Process Instructions") { navController.navigate("adoption_process_screen") }
         DrawerButton(text = "Bookmarked Pets") { navController.navigate("bookmarked_pets_screen") }
         DrawerButton(text = "Adoption Application Tracker") { navController.navigate("adoption_tracker") }
         DrawerButton(text = "Testimonials") { navController.navigate("testimonials_screen") }

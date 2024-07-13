@@ -92,13 +92,6 @@ fun MyApp(authViewModel: AuthViewModel) {
                             authViewModel = authViewModel
                         )
                     }
-                    composable("adoption_process_screen") {
-                        AdoptionProcessScreen(
-                            navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
-                        )
-                    }
                     composable("bookmarked_pets_screen") {
                         BookmarkedPetsScreen(
                             navController = navController,
@@ -107,9 +100,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                     }
                     composable("testimonials_screen") {
                         TestimonialsScreen(
-                            navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                            navController = navController
                         )
                     }
                     composable("faqs_screen") {
