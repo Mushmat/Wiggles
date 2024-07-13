@@ -114,9 +114,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                     }
                     composable("faqs_screen") {
                         FAQsScreen(
-                            navController = navController,
-                            drawerState = drawerState,
-                            scope = scope
+                            navController = navController
                         )
                     }
                     composable("contact_us_screen") {
