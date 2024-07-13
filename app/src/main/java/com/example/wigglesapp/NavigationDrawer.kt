@@ -1,3 +1,5 @@
+package com.example.wigglesapp
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -5,11 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.wigglesapp.AuthViewModel
-import kotlinx.coroutines.CoroutineScope
+
 
 @Composable
-fun NavigationDrawer(navController: NavController, drawerState: DrawerState, scope: CoroutineScope,authViewModel: AuthViewModel) {
+fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel) {
     Column(modifier = Modifier.padding(16.dp)) {
         DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
         DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }

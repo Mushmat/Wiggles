@@ -25,7 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.launch
 
 val dummyPets = listOf(
@@ -216,60 +215,74 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Wiggles") },
-                actions = {
-                    IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                        Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.baseline_menu_24),
-                            contentDescription = "Menu"
-                        )
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Wiggles") },
+                    actions = {
+                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                            Icon(
+                                imageVector = ImageVector.vectorResource(id = R.drawable.baseline_menu_24),
+                                contentDescription = "Menu"
+                            )
+                        }
                     }
-                }
-            )
-        }
-    ) { paddingValues ->
-        Box(modifier = Modifier.fillMaxSize()) {
-            Image(
-                painter = painterResource(id = R.drawable.background_image),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
+                )
+            }
+        ) { paddingValues ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.background_image),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-                    .padding(16.dp)
-            ) {
-                Button(
-                    onClick = { navController.navigate("filter") },
-                    modifier = Modifier.fillMaxWidth()
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues)
+                        .padding(16.dp)
                 ) {
-                    Text(text = "Filter")
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                if (pets.isEmpty()){
-                    Text(text = "No such pet is available for now! ", color = Color.White, fontSize = 20.sp, modifier = Modifier.align(
-                        Alignment.CenterHorizontally))
-                }else {
-
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    Button(
+                        onClick = { navController.navigate("filter") },
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        items(pets.chunked(1)) { rowPets ->
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(16.dp)
-                            ) {
-                                rowPets.forEach { pet ->
-                                    PetCard(navController = navController, pet = pet)
+                        Text(text = "Filter")
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    if (pets.isEmpty()) {
+                        Text(
+                            text = "No such pet is available for now! ",
+                            color = Color.White,
+                            fontSize = 20.sp,
+                            modifier = Modifier.align(
+                                Alignment.CenterHorizontally
+                            )
+                        )
+                    } else {
+
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            items(pets.chunked(1)) { rowPets ->
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                ) {
+                                    rowPets.forEach { pet ->
+                                        PetCard(navController = navController, pet = pet)
+                                    }
                                 }
                             }
                         }
@@ -292,7 +305,7 @@ fun PetCard(navController: NavController, pet: Pet){
             }
     ) {
         Image(
-            painter = rememberImagePainter(data = pet.imageUrl),
+            painter = rememberAsyncImagePainter(model = pet.imageUrl),
             contentDescription = null,
             modifier = Modifier
                 .size(200.dp)

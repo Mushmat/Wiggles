@@ -36,7 +36,7 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.background_image),
+            painter = painterResource(id = R.drawable.bg),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()

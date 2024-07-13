@@ -16,12 +16,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,6 +75,13 @@ fun ParentsScreen(navController: NavController) {
         )
     )
 
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
     Scaffold(
         topBar = {
             TopAppBar(
@@ -98,6 +106,7 @@ fun ParentsScreen(navController: NavController) {
             }
         }
     }
+    }
 }
 
 @Composable
@@ -112,7 +121,7 @@ fun ParentCard(navController: NavController, parent: Parent) {
             modifier = Modifier.padding(16.dp)
         ) {
             Image(
-                painter = rememberImagePainter(data = parent.imageUrl),
+                painter = rememberAsyncImagePainter(model = parent.imageUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
@@ -130,42 +139,63 @@ fun ParentCard(navController: NavController, parent: Parent) {
 @Composable
 fun ParentDetailScreen(navController: NavController, parentName: String) {
     val parent = getParentByName(parentName)
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Parent Details") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Parent Details") },
+                    navigationIcon = {
+                        IconButton(onClick = { navController.popBackStack() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                                contentDescription = "Back"
+                            )
+                        }
                     }
-                }
-            )
-        }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .padding(16.dp)
-        ) {
-            Image(
-                painter = rememberImagePainter(data = parent.imageUrl),
-                contentDescription = null,
+                )
+            }
+        ) { paddingValues ->
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(bottom = 16.dp)
-            )
-            Text(text = "Name: ${parent.name}", fontSize = 24.sp, color = Color.Black)
-            Text(text = "Pet's Name: ${parent.petName}", fontSize = 20.sp, color = Color.Gray)
-            Text(text = "Breed: ${parent.breed}", fontSize = 20.sp, color = Color.Gray)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Positive Traits and Reviews:", fontSize = 20.sp, color = Color.Black)
-            Text(text = parent.positiveTraits, fontSize = 18.sp, color = Color.Gray)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Contact Information:", fontSize = 20.sp, color = Color.Black)
-            Text(text = "Contact Number: ${parent.contactNumber}", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-            Text(text = "Email: ${parent.email}", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp)
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = parent.imageUrl),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .padding(bottom = 16.dp)
+                )
+                Text(text = "Name: ${parent.name}", fontSize = 24.sp, color = Color.Black)
+                Text(text = "Pet's Name: ${parent.petName}", fontSize = 20.sp, color = Color.Gray)
+                Text(text = "Breed: ${parent.breed}", fontSize = 20.sp, color = Color.Gray)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Positive Traits and Reviews:", fontSize = 20.sp, color = Color.Black)
+                Text(text = parent.positiveTraits, fontSize = 18.sp, color = Color.Gray)
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Contact Information:", fontSize = 20.sp, color = Color.Black)
+                Text(
+                    text = "Contact Number: ${parent.contactNumber}",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+                Text(
+                    text = "Email: ${parent.email}",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+            }
         }
     }
 }

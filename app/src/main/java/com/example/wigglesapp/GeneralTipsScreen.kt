@@ -1,14 +1,14 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,7 +30,7 @@ import com.skydoves.landscapist.glide.GlideImage
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
-fun GeneralTipsScreen(navController: NavController){
+fun GeneralTipsScreen(navController: NavController) {
     val tips = listOf(
         "1. REGULAR VETERINARY CHECKUPS: Schedule regular visits to the vet for vaccinations and health checkups.",
         "2. BALANCED DIET: Provide a well-balanced diet suitable for your pet's age, size, and breed.",
@@ -55,46 +55,62 @@ fun GeneralTipsScreen(navController: NavController){
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW53c2xhMTJ3NzJhbTI0aThwOTBkb3F1d2dicTFrejE3aDdrbzc3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgpwOQfx9WmFxN6/giphy-downsized-large.gif",
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2xkczVvcDA5MXV4b3h1NHJybWRwcm9hNXVkdmwxNDhqdm45eWVsaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjHJgmOnewNLCCw8/giphy.gif",
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnFqdTdnazN5YmkxNXIwaTZtaHY5bHFoNTc4ajUzN3drZHRxMmczMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ffXuoiLiu1fquv10LH/giphy.gif"
+    )
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
         )
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "General Pet Care Tips") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "General Pet Care Tips") },
+                    navigationIcon = {
+                        IconButton(onClick = { navController.popBackStack() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                                contentDescription = "Back"
+                            )
+                        }
                     }
-                }
-            )
-        }
-    ){ paddingValues ->
-        val pagerState = rememberPagerState()
+                )
+            }
+        ) { paddingValues ->
+            val pagerState = rememberPagerState()
 
-        HorizontalPager(
-            count = tips.size,
-            state = pagerState,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) { page->
-            Column(
+            HorizontalPager(
+                count = tips.size,
+                state = pagerState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                GlideImage(
-                    imageModel = gifs[page],
-                    contentScale = ContentScale.Crop,
+                    .padding(paddingValues)
+            ) { page ->
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
-                Text(text = "Swipe Left/Right :)",fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    GlideImage(
+                        imageModel = gifs[page],
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                    Text(
+                        text = "Swipe Left/Right :)",
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
             }
         }
     }

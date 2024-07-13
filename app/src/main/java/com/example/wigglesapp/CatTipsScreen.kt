@@ -1,6 +1,8 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,7 +30,7 @@ import com.skydoves.landscapist.glide.GlideImage
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
-fun CatTipsScreen(navController: NavController){
+fun CatTipsScreen(navController: NavController) {
     val tips = listOf(
         "1. Litter Box Maintenance: Keep the litter box clean and place it in a quiet, accessible location.",
         "2. Scratching Posts: Provide scratching posts to satisfy your cat’s natural scratching instincts.",
@@ -56,44 +58,59 @@ fun CatTipsScreen(navController: NavController){
     )
 
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Cat Care Tips") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Cat Care Tips") },
+                    navigationIcon = {
+                        IconButton(onClick = { navController.popBackStack() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                                contentDescription = "Back"
+                            )
+                        }
                     }
-                }
-            )
-        }
-    ){ paddingValues ->
-        val pagerState = rememberPagerState()
+                )
+            }
+        ) { paddingValues ->
+            val pagerState = rememberPagerState()
 
-        HorizontalPager(
-            count = tips.size,
-            state = pagerState,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) { page->
-            Column(
+            HorizontalPager(
+                count = tips.size,
+                state = pagerState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                GlideImage(
-                    imageModel = gifs[page],
-                    contentScale = ContentScale.Crop,
+                    .padding(paddingValues)
+            ) { page ->
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
-                Text(text = "Swipe Left/Right :)",fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    GlideImage(
+                        imageModel = gifs[page],
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                    Text(
+                        text = "Swipe Left/Right :)",
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
             }
         }
     }

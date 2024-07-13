@@ -49,7 +49,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                 color = MaterialTheme.colorScheme.surface,
                 modifier = Modifier.fillMaxSize(0.80f)
             ) {
-                NavigationDrawer(navController, drawerState, scope,authViewModel)
+                NavigationDrawer(navController, authViewModel)
             }
         },
         content = {
@@ -155,13 +155,11 @@ fun MyApp(authViewModel: AuthViewModel) {
                         AdoptionApplicationScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
                     }
                     composable("adoption_success") {
-                        AdoptionSuccessScreen(navController = navController, drawerState = drawerState, scope = scope)
+                        AdoptionSuccessScreen(navController = navController)
                     }
                     composable("adoption_tracker"){
                         AdoptionTrackerScreen(
                             navController = navController,
-                            drawerState = drawerState,
-                            scope = scope,
                             sharedViewModel =sharedViewModel
                         )
                     }

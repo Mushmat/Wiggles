@@ -1,6 +1,8 @@
 package com.example.wigglesapp
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -42,6 +45,13 @@ fun FAQsScreen(navController: NavController){
         "How can I reset my password?" to "To reset your password, click on the 'Forgot Password' link on the login screen, enter your registered email address, and follow the instructions sent to your email."
     )
 
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
     Scaffold (
         topBar = {
             TopAppBar(
@@ -53,7 +63,7 @@ fun FAQsScreen(navController: NavController){
                 }
             )
         }
-    ){ paddingValues ->
+    ) { paddingValues ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -70,19 +80,26 @@ fun FAQsScreen(navController: NavController){
                         modifier = Modifier.padding(16.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.Start
-                    ){
+                    ) {
                         Text(
                             text = faq.first,
-                            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp, color = Color.Black),
+                            style = MaterialTheme.typography.bodyLarge.copy(
+                                fontSize = 18.sp,
+                                color = Color.Black
+                            ),
                             fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = faq.second,
-                            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 16.sp,color = Color.Gray)
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontSize = 16.sp,
+                                color = Color.Gray
+                            )
                         )
                     }
                 }
             }
         }
+    }
     }
 }
