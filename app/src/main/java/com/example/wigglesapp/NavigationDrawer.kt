@@ -16,46 +16,54 @@ fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel, 
     Column(modifier = Modifier.padding(16.dp)) {
         DrawerButton(text = "Paw-some Home") {
             scope.launch {
-                drawerState.close()
+
                 navController.navigate("home")
+                drawerState.close()
             }
         }
         DrawerButton(text = "Fur-tastic About Us") {
             scope.launch {
-                drawerState.close()
                 navController.navigate("about_us_screen")
+                drawerState.close()
             }
         }
         DrawerButton(text = "Purr-sonal Profile") {
             scope.launch {
-                drawerState.close()
+
                 navController.navigate("user_profile_screen")
+                drawerState.close()
             }
         }
         DrawerButton(text = "Favorite Fur-iends") {
             scope.launch {
-                drawerState.close()
-                navController.navigate("bookmarked_pets_screen") }}
+
+                navController.navigate("bookmarked_pets_screen")
+                drawerState.close()}}
         DrawerButton(text = "Pawgress Tracker") {
             scope.launch {
-                drawerState.close()
-                navController.navigate("adoption_tracker") }}
+
+                navController.navigate("adoption_tracker")
+                drawerState.close()}}
         DrawerButton(text = "Tail Wagging Stories") {
             scope.launch {
-                drawerState.close()
-                navController.navigate("testimonials_screen") }}
+
+                navController.navigate("testimonials_screen")
+                drawerState.close()}}
         DrawerButton(text = "Frequently Barked Questions") {
             scope.launch {
-                drawerState.close()
-                navController.navigate("faqs_screen") }}
+
+                navController.navigate("faqs_screen")
+                drawerState.close()}}
         DrawerButton(text = "Get in Touch with Paws") {
             scope.launch {
-                drawerState.close()
-                navController.navigate("contact_us_screen") }}
+
+                navController.navigate("contact_us_screen")
+                drawerState.close()}}
         DrawerButton(text = "Paws Out") {
             scope.launch {
-                drawerState.close()
-                authViewModel.logOut()}
+
+                authViewModel.logOut()
+                drawerState.close()}
         }}
 }
 
