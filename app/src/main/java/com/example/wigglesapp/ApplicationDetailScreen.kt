@@ -79,8 +79,9 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                             .clip(RoundedCornerShape(8.dp))
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = "Name: ${pet.name}", fontSize = 20.sp)
-                    Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
+                    Text(text = "Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF1a1a73))
+                    Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF1a1a73))
+                    Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color(0xFF2e7d32))
                     Spacer(modifier = Modifier.height(16.dp))
                 }
                 itemsIndexed(application.answers) { index, answer ->
@@ -108,13 +109,12 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 }
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color.Green)
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
         }
     }
 }
+
 fun getQuestionLabel(index: Int): String {
     return when (index) {
         0 -> "Name"

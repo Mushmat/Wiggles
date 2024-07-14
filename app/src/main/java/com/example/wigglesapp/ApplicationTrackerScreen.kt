@@ -48,14 +48,14 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
             Text(
                 text = "Adoption Applications:",
                 fontSize = 24.sp,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
             )
 
             if (adoptionApplications.isEmpty()) {
                 Text(
                     text = "No applications found!",
                     fontSize = 18.sp,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                 )
             } else {
                 adoptionApplications.forEach { application ->
@@ -87,8 +87,7 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                 )
                                 Text(
                                     text = "Status: IN PROGRESS",
-                                    fontSize = 16.sp,
-                                    color = Color.Green
+                                    fontSize = 16.sp, color = Color(0xFF2e7d32)
                                 )
                             }
                         }

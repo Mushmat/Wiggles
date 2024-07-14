@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -36,17 +37,17 @@ fun AdoptionSuccessScreen(navController: NavController) {
             Text(
                 text = "Your application has been submitted and is in process.",
                 fontSize = 20.sp,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp), color = Color(0xFF800000)
             )
             Text(
                 text = "You will be notified soon through email.",
                 fontSize = 16.sp,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp), color = Color(0xFF800000)
             )
             Text(
                 text = "You can track the status of your application in the Application Tracker Screen from the drawer.",
                 fontSize = 16.sp,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp), color = Color(0xFF800000)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = { navController.navigate("home") }) {

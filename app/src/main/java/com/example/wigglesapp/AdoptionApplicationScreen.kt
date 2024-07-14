@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -68,10 +69,10 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                     .fillMaxWidth(0.9f)
                     .padding(16.dp)
             )
-            Text(text = "Pet Chosen for Adoption", fontSize = 24.sp)
+            Text(text = "Pet Chosen for Adoption", fontSize = 24.sp, color = Color(0xff1a1a73))
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Name: ${pet.name}", fontSize = 20.sp)
-            Text(text = "Breed: ${pet.breed}", fontSize = 20.sp)
+            Text(text = "Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF800000))
+            Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF800000))
             Spacer(modifier = Modifier.height(16.dp))
 
             Card(
@@ -85,7 +86,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                         .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = questions[currentQuestion], fontSize = 18.sp)
+                    Text(text = questions[currentQuestion], fontSize = 18.sp, color = Color(0xFF1a1a73))
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = answers.value[currentQuestion],
