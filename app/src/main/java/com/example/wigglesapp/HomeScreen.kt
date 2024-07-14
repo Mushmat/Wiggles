@@ -49,7 +49,7 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Home", fontSize = 32.sp)
+            Text(text = "Hey!", fontSize = 32.sp)
             Spacer(modifier = Modifier.height(16.dp))
 
             HomeButton(
@@ -75,20 +75,6 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.Start
-        ) {
-            Button(
-                onClick = { authViewModel.logOut() },
-            ) {
-                Text(text = "Sign Out")
-            }
-        }
     }
 }
 

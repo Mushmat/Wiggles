@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -52,7 +54,8 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
         )
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -61,7 +64,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                 contentDescription = "Cute Pets",
                 modifier = Modifier.size(48.dp)
             )
-            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.White, fontSize = 60.sp)
+            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Black, fontSize = 60.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -160,8 +163,8 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            TextButton(onClick = onLoginClicked) {
-                Text(text = "Back to Login", fontSize = 30.sp, color = Color.White)
+            Button(onClick = onLoginClicked) {
+                Text(text = "Back to Login", fontSize = 18.sp, color = Color.White)
             }
 
             authState.error?.let {

@@ -85,16 +85,14 @@ fun FAQsScreen(navController: NavController){
                         Text(
                             text = faq.first,
                             style = MaterialTheme.typography.bodyLarge.copy(
-                                fontSize = 18.sp,
-                                color = Color.Black
+                                fontSize = 18.sp, color = Color(0xFFff1493)
                             ),
                             fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = faq.second,
                             style = MaterialTheme.typography.bodyMedium.copy(
-                                fontSize = 16.sp,
-                                color = Color.Gray
+                                fontSize = 16.sp, color = Color(0xFF1a1a73)
                             )
                         )
                     }

@@ -303,7 +303,7 @@ fun PetCard(navController: NavController, pet: Pet){
                 .size(200.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.White)
-        Text(text = pet.breed, fontSize = 14.sp,color = Color.White)
+        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color(0xFF000000))
+        Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
     }
 }

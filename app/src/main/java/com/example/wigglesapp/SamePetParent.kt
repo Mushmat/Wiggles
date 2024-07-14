@@ -129,8 +129,8 @@ fun ParentCard(navController: NavController, parent: Parent) {
                     .padding(end = 16.dp)
             )
             Column {
-                Text(text = parent.name, fontSize = 18.sp, color = Color.Black)
-                Text(text = parent.breed, fontSize = 16.sp, color = Color.Gray)
+                Text(text = parent.name, fontSize = 18.sp, color = Color(0xFFff1493))
+                Text(text = parent.breed, fontSize = 16.sp, color = Color(0xFF1a1a73))
             }
         }
     }
@@ -178,11 +178,11 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
                         .padding(bottom = 16.dp)
                 )
                 Text(text = "Name: ${parent.name}", fontSize = 24.sp, color = Color.Black)
-                Text(text = "Pet's Name: ${parent.petName}", fontSize = 20.sp, color = Color.Gray)
-                Text(text = "Breed: ${parent.breed}", fontSize = 20.sp, color = Color.Gray)
+                Text(text = "Pet's Name: ${parent.petName}", fontSize = 20.sp, color = Color(0xFF5d4037))
+                Text(text = "Breed: ${parent.breed}", fontSize = 20.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Positive Traits and Reviews:", fontSize = 20.sp, color = Color.Black)
-                Text(text = parent.positiveTraits, fontSize = 18.sp, color = Color.Gray)
+                Text(text = parent.positiveTraits, fontSize = 18.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Contact Information:", fontSize = 20.sp, color = Color.Black)
                 Text(

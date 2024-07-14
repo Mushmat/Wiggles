@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -70,7 +68,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                 Text(
                     text = "No Bookmarked Pets Available",
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                 )
             } else {
                 LazyColumn(
@@ -104,7 +102,7 @@ fun BookmarkedPetCard(navController: NavController, pet: Pet){
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
-        Text(text = pet.breed, fontSize = 14.sp, color = Color.Gray)
+        Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
     }
 }
 

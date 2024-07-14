@@ -80,19 +80,19 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
                 Text(text = pet.name, fontSize = 32.sp, color = Color.Black, style = MaterialTheme.typography.labelLarge)
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color.Gray)
+                Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "Gender: ${pet.gender}", fontSize = 20.sp, color = Color.Gray)
+                Text(text = "Gender: ${pet.gender}", fontSize = 20.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "Size: ${pet.size}", fontSize = 20.sp, color = Color.Gray)
+                Text(text = "Size: ${pet.size}", fontSize = 20.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "Characteristics: ${pet.characteristics}", fontSize = 18.sp, color = Color.Gray)
+                Text(text = "Characteristics: ${pet.characteristics}", fontSize = 18.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = "About: ${pet.about}", fontSize = 18.sp, color = Color.Gray)
+                Text(text = "About: ${pet.about}", fontSize = 18.sp, color = Color(0xFF5d4037))
                 Spacer(modifier = Modifier.height(16.dp))
     
                 Button(onClick = { 
