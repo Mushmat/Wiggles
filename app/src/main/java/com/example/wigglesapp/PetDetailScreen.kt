@@ -51,7 +51,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
             .fillMaxSize()
     ) {
         TopAppBar(
-            title = { Text(text = "Pet Details") },
+            title = { Text(text = "Paw Details") },
             navigationIcon = {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")

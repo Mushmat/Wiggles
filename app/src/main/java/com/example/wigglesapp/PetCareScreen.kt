@@ -30,7 +30,7 @@ fun PetCareScreen(navController: NavController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Pet Care") },
+                    title = { Text(text = "Paw Care") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

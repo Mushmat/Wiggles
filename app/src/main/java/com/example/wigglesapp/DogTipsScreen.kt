@@ -58,7 +58,7 @@ fun DogTipsScreen(navController: NavController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Dog Care Tips") },
+                    title = { Text(text = "Care the Dogs") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

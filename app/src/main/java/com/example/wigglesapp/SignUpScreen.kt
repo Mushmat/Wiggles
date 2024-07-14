@@ -52,7 +52,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Sign Up") },
+                title = { Text(text = "Create your Paw-Profile") },
                 navigationIcon = {
                     IconButton(onClick = onLoginClicked) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")

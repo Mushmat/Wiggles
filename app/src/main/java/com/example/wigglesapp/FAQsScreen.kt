@@ -48,7 +48,7 @@ fun FAQsScreen(navController: NavController){
     Scaffold (
         topBar = {
             TopAppBar(
-                title = { Text(text = "FAQs") },
+                title = { Text(text = "This might be helpful!") },
                 navigationIcon = {
                     IconButton(onClick = {navController.popBackStack()}) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "BACK")

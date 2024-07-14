@@ -78,7 +78,7 @@ fun ParentsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Parents who bought similar pets!") },
+                title = { Text(text = "Parents who bought similar paws!") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
@@ -144,7 +144,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Parent Details") },
+                    title = { Text(text = "Paw-rent Details") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

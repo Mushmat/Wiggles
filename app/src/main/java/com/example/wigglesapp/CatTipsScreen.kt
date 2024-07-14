@@ -61,7 +61,7 @@ fun CatTipsScreen(navController: NavController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Cat Care Tips") },
+                    title = { Text(text = "Care the Cats") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

@@ -39,7 +39,7 @@ fun ContactUsScreen(navController: NavController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Contact Us") },
+                    title = { Text(text = "Get in Touch with Paws") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

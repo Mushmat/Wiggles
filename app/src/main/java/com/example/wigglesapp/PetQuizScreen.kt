@@ -52,7 +52,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Find Best Pet") },
+                    title = { Text(text = "Find Best Paw") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(

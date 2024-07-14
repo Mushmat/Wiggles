@@ -31,7 +31,7 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Suggested Pets") },
+                title = { Text(text = "Suggested Paws") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = null)
