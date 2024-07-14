@@ -41,13 +41,6 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
             ?: return
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -63,6 +56,13 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 )
             }
         ) { paddingValues ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.bg),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()

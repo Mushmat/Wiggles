@@ -33,14 +33,6 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
             dob = it.dob
         }
     }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -56,6 +48,13 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 )
             }
         ) { paddingValues ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.bg),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
             Column(
                 modifier = Modifier
                     .fillMaxSize()

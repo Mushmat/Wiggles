@@ -27,13 +27,7 @@ import coil.compose.rememberAsyncImagePainter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShelterInfoScreen(navController: NavController){
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -47,6 +41,13 @@ fun ShelterInfoScreen(navController: NavController){
         }
     ) {
         paddingValues ->
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
         Column(
             modifier = Modifier
                 .fillMaxSize()

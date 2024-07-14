@@ -58,13 +58,6 @@ fun CatTipsScreen(navController: NavController) {
     )
 
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -82,6 +75,7 @@ fun CatTipsScreen(navController: NavController) {
         ) { paddingValues ->
             val pagerState = rememberPagerState()
 
+
             HorizontalPager(
                 count = tips.size,
                 state = pagerState,
@@ -89,6 +83,13 @@ fun CatTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Image(
+                        painter = painterResource(id = R.drawable.bg),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

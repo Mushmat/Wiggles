@@ -75,13 +75,6 @@ fun ParentsScreen(navController: NavController) {
         )
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
     Scaffold(
         topBar = {
             TopAppBar(
@@ -94,6 +87,14 @@ fun ParentsScreen(navController: NavController) {
             )
         }
     ) { paddingValues ->
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -139,13 +140,7 @@ fun ParentCard(navController: NavController, parent: Parent) {
 @Composable
 fun ParentDetailScreen(navController: NavController, parentName: String) {
     val parent = getParentByName(parentName)
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -161,6 +156,13 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
                 )
             }
         ) { paddingValues ->
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.bg),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
             Column(
                 modifier = Modifier
                     .fillMaxSize()

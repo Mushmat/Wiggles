@@ -55,13 +55,6 @@ fun DogTipsScreen(navController: NavController) {
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWlyaW9wN3Fvemw0Mm5lODltZWNtOGc0ZjM1N2Y2NHpiNHkwMGtoMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rzDWq0xhY7X5S/giphy.gif"
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -86,6 +79,13 @@ fun DogTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Image(
+                        painter = painterResource(id = R.drawable.bg),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

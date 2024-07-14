@@ -28,13 +28,6 @@ import coil.compose.rememberAsyncImagePainter
 fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedViewModel){
     val suggestedPets by sharedViewModel.suggestedPets.collectAsState(initial = emptyList())
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
     Scaffold(
         topBar = {
             TopAppBar(
@@ -47,6 +40,14 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
             )
         }
     ) { paddingValues ->
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
         Box(
             modifier = Modifier
                 .fillMaxSize()

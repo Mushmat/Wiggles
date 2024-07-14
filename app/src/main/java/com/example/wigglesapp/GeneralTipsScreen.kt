@@ -57,14 +57,6 @@ fun GeneralTipsScreen(navController: NavController) {
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnFqdTdnazN5YmkxNXIwaTZtaHY5bHFoNTc4ajUzN3drZHRxMmczMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ffXuoiLiu1fquv10LH/giphy.gif"
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
-
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -89,7 +81,16 @@ fun GeneralTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
-                Column(
+
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Image(
+                        painter = painterResource(id = R.drawable.bg),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+
+                    Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp),

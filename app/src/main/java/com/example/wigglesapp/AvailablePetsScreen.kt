@@ -215,13 +215,6 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -239,7 +232,7 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
         ) { paddingValues ->
             Box(modifier = Modifier.fillMaxSize()) {
                 Image(
-                    painter = painterResource(id = R.drawable.background_image),
+                    painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
@@ -291,7 +284,6 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
             }
         }
     }
-}
 
 @Composable
 fun PetCard(navController: NavController, pet: Pet){

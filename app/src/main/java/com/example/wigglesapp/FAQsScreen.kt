@@ -45,13 +45,6 @@ fun FAQsScreen(navController: NavController){
         "How can I reset my password?" to "To reset your password, click on the 'Forgot Password' link on the login screen, enter your registered email address, and follow the instructions sent to your email."
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
     Scaffold (
         topBar = {
             TopAppBar(
@@ -64,6 +57,14 @@ fun FAQsScreen(navController: NavController){
             )
         }
     ) { paddingValues ->
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()

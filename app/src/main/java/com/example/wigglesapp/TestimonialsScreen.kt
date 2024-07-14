@@ -45,13 +45,6 @@ fun TestimonialsScreen(navController: NavController){
         "Daniel Thomas - Adopted Rocky, the Pomeranian: \"Rocky is a sweetheart, and we found him through Wiggles. The app provided all the necessary information and made the adoption process smooth and efficient. We are thrilled to have Rocky as part of our family.\""
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
     Scaffold(
         topBar = {
             TopAppBar(
@@ -64,6 +57,14 @@ fun TestimonialsScreen(navController: NavController){
             )
         }
     ) { paddingValues ->
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()

@@ -42,13 +42,6 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
     val genders = listOf("Male", "Female")
     val sizes = listOf("Small", "Medium")
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -64,6 +57,14 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
                 )
             }
         ) { paddingValues ->
+
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.bg),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()

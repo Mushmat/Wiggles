@@ -1,7 +1,5 @@
-// MyApp.kt
 package com.example.wigglesapp
 
-import NavigationDrawer
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
