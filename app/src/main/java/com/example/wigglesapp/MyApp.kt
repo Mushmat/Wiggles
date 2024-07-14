@@ -11,15 +11,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyApp(authViewModel: AuthViewModel) {
@@ -52,132 +49,118 @@ fun MyApp(authViewModel: AuthViewModel) {
         },
         content = {
             Scaffold(
-                topBar = {
-                    TopAppBar(
-                        title = { Text(text = "Wiggles") },
-                        actions = {
-                            IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(id = R.drawable.baseline_menu_24),
-                                    contentDescription = "Menu"
-                                )
-                            }
+                content = {
+                    NavHost(
+                        navController = navController,
+                        startDestination = if (authState.isAuthenticated) "home" else "auth"
+                    ) {
+                        composable("auth") { AuthScreen(navController, authViewModel) }
+                        composable("home") {
+                            HomeScreen(
+                                navController,
+                                drawerState,
+                                scope,
+                                authViewModel
+                            )
                         }
-                    )
+                        composable("about_us_screen") {
+                            AboutUsScreen(
+                                navController = navController
+                            )
+                        }
+                        composable("user_profile_screen") {
+                            UserProfileScreen(
+                                navController = navController,
+                                authViewModel = authViewModel
+                            )
+                        }
+                        composable("bookmarked_pets_screen") {
+                            BookmarkedPetsScreen(
+                                navController = navController,
+                                sharedViewModel = sharedViewModel
+                            )
+                        }
+                        composable("testimonials_screen") {
+                            TestimonialsScreen(
+                                navController = navController
+                            )
+                        }
+                        composable("faqs_screen") {
+                            FAQsScreen(
+                                navController = navController
+                            )
+                        }
+                        composable("contact_us_screen") {
+                            ContactUsScreen(
+                                navController = navController
+                            )
+                        }
+                        composable("available_pets") {
+                            AvailablePetsScreen(navController = navController, filteredPets)
+                        }
+
+                        composable("pet_detail/{petId}") { backStackEntry ->
+                            val petId = backStackEntry.arguments?.getString("petId")?.toInt()
+                                ?: return@composable
+                            PetDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
+                        }
+                        composable("filter") {
+                            FilterScreen(navController = navController, applyFilters = ::applyFilters)
+                        }
+                        composable("pet_quiz") {
+                            PetQuizScreen(navController = navController, sharedViewModel = sharedViewModel)
+                        }
+                        composable("suggested_pets_screen") {
+                            SuggestedPetsScreen(navController = navController, sharedViewModel = sharedViewModel)
+                        }
+
+                        composable("pet_care_screen") {
+                            PetCareScreen(navController = navController)
+                        }
+                        composable("pet_care_tips_screen") {
+                            PetCareOptions(navController = navController)
+                        }
+                        composable("general_tips") {
+                            GeneralTipsScreen(navController = navController)
+                        }
+                        composable("dog_tips") {
+                            DogTipsScreen(navController = navController)
+                        }
+                        composable("cat_tips") {
+                            CatTipsScreen(navController = navController)
+                        }
+                        composable("shelter_info") {
+                            ShelterInfoScreen(navController = navController)
+                        }
+                        composable("adoption_application/{petId}") { backStackEntry ->
+                            val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                            AdoptionApplicationScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
+                        }
+                        composable("adoption_success") {
+                            AdoptionSuccessScreen(navController = navController)
+                        }
+                        composable("adoption_tracker") {
+                            AdoptionTrackerScreen(
+                                navController = navController,
+                                sharedViewModel = sharedViewModel
+                            )
+                        }
+                        composable("application_detail/{petId}") { backStackEntry ->
+                            val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
+                            ApplicationDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
+                        }
+
+                        composable("parent_detail/{parentName}") { backStackEntry ->
+                            val parentName = backStackEntry.arguments?.getString("parentName") ?: return@composable
+                            ParentDetailScreen(navController = navController, parentName = parentName)
+                        }
+
+                        composable("parents_screen") {
+                            ParentsScreen(navController = navController)
+                        }
+                    }
                 }
-            ) {
-                NavHost(
-                    navController = navController,
-                    startDestination = if (authState.isAuthenticated) "home" else "auth"
-                ) {
-                    composable("auth") { AuthScreen(navController, authViewModel) }
-                    composable("home"){
-                        HomeScreen(
-                            navController,
-                            drawerState,
-                            scope,
-                            authViewModel
-                        )
-                    }
-                    composable("about_us_screen") {
-                        AboutUsScreen(
-                            navController = navController
-                        )
-                    }
-                    composable("user_profile_screen") {
-                        UserProfileScreen(
-                            navController = navController,
-                            authViewModel = authViewModel
-                        )
-                    }
-                    composable("bookmarked_pets_screen") {
-                        BookmarkedPetsScreen(
-                            navController = navController,
-                            sharedViewModel = sharedViewModel
-                        )
-                    }
-                    composable("testimonials_screen") {
-                        TestimonialsScreen(
-                            navController = navController
-                        )
-                    }
-                    composable("faqs_screen") {
-                        FAQsScreen(
-                            navController = navController
-                        )
-                    }
-                    composable("contact_us_screen") {
-                        ContactUsScreen(
-                            navController = navController
-                        )
-                    }
-                    composable("available_pets") {
-                        AvailablePetsScreen(navController = navController, filteredPets)
-                    }
-
-                    composable("pet_detail/{petId}") { backStackEntry ->
-                        val petId = backStackEntry.arguments?.getString("petId")?.toInt()
-                            ?: return@composable
-                        PetDetailScreen(navController = navController, petId = petId,sharedViewModel = sharedViewModel)
-                    }
-                    composable("filter") {
-                        FilterScreen(navController = navController, applyFilters = ::applyFilters)
-                    }
-                    composable("pet_quiz"){
-                        PetQuizScreen(navController = navController, sharedViewModel = sharedViewModel)
-                    }
-                    composable("suggested_pets_screen"){
-                        SuggestedPetsScreen(navController = navController, sharedViewModel = sharedViewModel)
-                    }
-                    
-                    composable("pet_care_screen"){
-                        PetCareScreen(navController = navController)
-                    }
-                    composable("pet_care_tips_screen"){
-                        PetCareOptions(navController = navController)
-                    }
-                    composable("general_tips"){
-                        GeneralTipsScreen(navController = navController)
-                    }
-                    composable("dog_tips"){
-                        DogTipsScreen(navController = navController)
-                    }
-                    composable("cat_tips"){
-                        CatTipsScreen(navController = navController)
-                    }
-                    composable("shelter_info"){
-                        ShelterInfoScreen(navController = navController)
-                    }
-                    composable("adoption_application/{petId}") { backStackEntry ->
-                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
-                        AdoptionApplicationScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
-                    }
-                    composable("adoption_success") {
-                        AdoptionSuccessScreen(navController = navController)
-                    }
-                    composable("adoption_tracker"){
-                        AdoptionTrackerScreen(
-                            navController = navController,
-                            sharedViewModel =sharedViewModel
-                        )
-                    }
-                    composable("application_detail/{petId}") { backStackEntry ->
-                        val petId = backStackEntry.arguments?.getString("petId")?.toInt() ?: return@composable
-                        ApplicationDetailScreen(navController = navController, petId = petId, sharedViewModel = sharedViewModel)
-                    }
-
-                    composable("parent_detail/{parentName}") { backStackEntry ->
-                        val parentName = backStackEntry.arguments?.getString("parentName") ?: return@composable
-                        ParentDetailScreen(navController = navController, parentName = parentName)
-                    }
-
-                    composable("parents_screen") {
-                        ParentsScreen(navController = navController)
-                    }
-
-
-                }
-            }
+            )
         }
     )
 }
