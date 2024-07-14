@@ -7,21 +7,56 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 @Composable
-fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel) {
+fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel, drawerState: DrawerState, scope:CoroutineScope) {
     Column(modifier = Modifier.padding(16.dp)) {
-        DrawerButton(text = "Paw-some Home") { navController.navigate("home") }
-        DrawerButton(text = "Fur-tastic About Us") { navController.navigate("about_us_screen") }
-        DrawerButton(text = "Purr-sonal Profile") { navController.navigate("user_profile_screen") }
-        DrawerButton(text = "Favorite Fur-iends") { navController.navigate("bookmarked_pets_screen") }
-        DrawerButton(text = "Pawgress Tracker") { navController.navigate("adoption_tracker") }
-        DrawerButton(text = "Tail Wagging Stories") { navController.navigate("testimonials_screen") }
-        DrawerButton(text = "Frequently Barked Questions") { navController.navigate("faqs_screen") }
-        DrawerButton(text = "Get in Touch with Paws") { navController.navigate("contact_us_screen") }
-        DrawerButton(text = "Paws Out") {authViewModel.logOut()}
+        DrawerButton(text = "Paw-some Home") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("home")
+            }
         }
+        DrawerButton(text = "Fur-tastic About Us") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("about_us_screen")
+            }
+        }
+        DrawerButton(text = "Purr-sonal Profile") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("user_profile_screen")
+            }
+        }
+        DrawerButton(text = "Favorite Fur-iends") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("bookmarked_pets_screen") }}
+        DrawerButton(text = "Pawgress Tracker") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("adoption_tracker") }}
+        DrawerButton(text = "Tail Wagging Stories") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("testimonials_screen") }}
+        DrawerButton(text = "Frequently Barked Questions") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("faqs_screen") }}
+        DrawerButton(text = "Get in Touch with Paws") {
+            scope.launch {
+                drawerState.close()
+                navController.navigate("contact_us_screen") }}
+        DrawerButton(text = "Paws Out") {
+            scope.launch {
+                drawerState.close()
+                authViewModel.logOut()}
+        }}
 }
 
 @Composable

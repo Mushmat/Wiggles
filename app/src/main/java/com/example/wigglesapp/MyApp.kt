@@ -47,7 +47,7 @@ fun MyApp(authViewModel: AuthViewModel) {
                 color = MaterialTheme.colorScheme.surface,
                 modifier = Modifier.fillMaxSize(0.80f)
             ) {
-                NavigationDrawer(navController, authViewModel)
+                NavigationDrawer(navController, authViewModel, drawerState, scope)
             }
         },
         content = {
