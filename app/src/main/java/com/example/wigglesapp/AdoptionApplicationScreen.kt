@@ -87,7 +87,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                     painter = rememberAsyncImagePainter(model = pet.imageUrl),
                     contentDescription = "Pet Chosen for Adoption",
                     modifier = Modifier
-                        .fillMaxWidth(0.9f)
+                        .fillMaxWidth(0.8f)
                         .padding(16.dp)
                 )
                 Text(text = "Fur-ever Friendly", fontSize = 24.sp, color = Color(0xff1a1a73))
