@@ -8,16 +8,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -45,132 +49,155 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
     var confirmPassword by remember { mutableStateOf("") }
     val authState by authViewModel.authState.collectAsState()
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Sign Up") },
+                navigationIcon = {
+                    IconButton(onClick = onLoginClicked) {
+                        Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
+                    }
+                }
+            )
+        }
+    ) { paddingValues ->
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.baseline_pets_24),
-                contentDescription = "Cute Pets",
-                modifier = Modifier.size(48.dp)
-            )
-            Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Black, fontSize = 60.sp)
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            TextField(
-                value = fullname,
-                onValueChange = { fullname = it },
-                label = { Text(text = "Full Name") },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
 
-            Spacer(modifier = Modifier.height(6.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.baseline_pets_24),
+                        contentDescription = "Cute Pets",
+                        modifier = Modifier.size(48.dp)
+                    )
+                    Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Black, fontSize = 60.sp)
 
-            TextField(
-                value = dob,
-                onValueChange = { dob = it },
-                label = { Text(text = "Date of Birth (DD/MM/YYYY)") },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
+                    Spacer(modifier = Modifier.height(16.dp))
 
-            Spacer(modifier = Modifier.height(6.dp))
+                    TextField(
+                        value = fullname,
+                        onValueChange = { fullname = it },
+                        label = { Text(text = "Full Name") },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
 
-            TextField(
-                value = contactNumber,
-                onValueChange = { contactNumber = it },
-                label = { Text(text = "Contact Number") },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            TextField(
-                value = address,
-                onValueChange = { address = it },
-                label = { Text(text = "Address") },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            TextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text(text = "Email") },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            TextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text(text = "Password") },
-                visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            TextField(
-                value = confirmPassword,
-                onValueChange = { confirmPassword = it },
-                label = { Text(text = "Confirm Password") },
-                visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth(0.8f),
-                colors = TextFieldDefaults.textFieldColors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                )
-            )
+                    Spacer(modifier = Modifier.height(6.dp))
 
-            Spacer(modifier = Modifier.height(16.dp))
+                    TextField(
+                        value = dob,
+                        onValueChange = { dob = it },
+                        label = { Text(text = "Date of Birth (DD/MM/YYYY)") },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
 
-            Button(onClick = {
-                authViewModel.signUp(
-                    fullname, dob, contactNumber, address, email, password, confirmPassword
-                )
-            }) {
-                Text(text = "Create Account", fontSize = 18.sp)
-            }
+                    Spacer(modifier = Modifier.height(6.dp))
 
-            Spacer(modifier = Modifier.height(8.dp))
+                    TextField(
+                        value = contactNumber,
+                        onValueChange = { contactNumber = it },
+                        label = { Text(text = "Contact Number") },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    TextField(
+                        value = address,
+                        onValueChange = { address = it },
+                        label = { Text(text = "Address") },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    TextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text(text = "Email") },
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    TextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        label = { Text(text = "Password") },
+                        visualTransformation = PasswordVisualTransformation(),
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    TextField(
+                        value = confirmPassword,
+                        onValueChange = { confirmPassword = it },
+                        label = { Text(text = "Confirm Password") },
+                        visualTransformation = PasswordVisualTransformation(),
+                        modifier = Modifier.fillMaxWidth(0.8f),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
+                        )
+                    )
 
-            Button(onClick = onLoginClicked) {
-                Text(text = "Back to Login", fontSize = 18.sp, color = Color.White)
-            }
+                    Spacer(modifier = Modifier.height(16.dp))
 
-            authState.error?.let {
-                Text(text = it, color = Color.Red)
+                    Button(onClick = {
+                        authViewModel.signUp(
+                            fullname, dob, contactNumber, address, email, password, confirmPassword
+                        )
+                    }) {
+                        Text(text = "Create Account", fontSize = 18.sp)
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Button(onClick = onLoginClicked) {
+                        Text(text = "Back to Login", fontSize = 18.sp, color = Color.White)
+                    }
+
+                    authState.error?.let {
+                        Text(text = it, color = Color.Red)
+                    }
+                }
             }
         }
-
     }
 }
