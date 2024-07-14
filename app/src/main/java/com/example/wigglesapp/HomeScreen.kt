@@ -49,24 +49,24 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Hey!", fontSize = 32.sp)
+            Text(text = "Paws Up!", fontSize = 32.sp)
             Spacer(modifier = Modifier.height(16.dp))
 
             HomeButton(
                 icon = R.drawable.baseline_pets_24,
-                text = "Available Pets",
+                text = "Pet Parade",
                 onClick = { navController.navigate("available_pets") })
             HomeButton(
                 icon = R.drawable.baseline_search_24,
-                text = "Find Best Pet",
+                text = "Pet Matcher",
                 onClick = { navController.navigate("pet_quiz") })
             HomeButton(
                 icon = R.drawable.health,
-                text = "Pet Care",
+                text = "Pet Wellness",
                 onClick = { navController.navigate("pet_care_screen") })
             HomeButton(
                 icon = R.drawable.shelter,
-                text = "Shelter Info",
+                text = "Paw-house Info",
                 onClick = { navController.navigate("shelter_info") })
             HomeButton(
                 icon = R.drawable.money,

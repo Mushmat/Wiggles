@@ -75,7 +75,7 @@ fun PetCareScreen(navController: NavController) {
                     },
                     modifier = Modifier.fillMaxWidth().padding(8.dp)
                 ) {
-                    Text(text = "Vets nearby")
+                    Text(text = "Pet Docs nearby")
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -84,7 +84,7 @@ fun PetCareScreen(navController: NavController) {
                     modifier = Modifier.fillMaxWidth().padding(8.dp)
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(text = "Parents who bought similar pets")
+                        Text(text = "Paw-rents who got my fur-iends")
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))

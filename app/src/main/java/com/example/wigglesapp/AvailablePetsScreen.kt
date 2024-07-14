@@ -218,7 +218,7 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Wiggles") },
+                    title = { Text(text = "Paws") },
                     actions = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
                             Icon(

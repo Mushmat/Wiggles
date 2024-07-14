@@ -69,10 +69,10 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                     .fillMaxWidth(0.9f)
                     .padding(16.dp)
             )
-            Text(text = "Pet Chosen for Adoption", fontSize = 24.sp, color = Color(0xff1a1a73))
+            Text(text = "Fur-ever Friendly", fontSize = 24.sp, color = Color(0xff1a1a73))
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF800000))
-            Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF800000))
+            Text(text = "Paw-sonal Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF800000))
+            Text(text = "Paw-sonal Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF800000))
             Spacer(modifier = Modifier.height(16.dp))
 
             Card(

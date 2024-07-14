@@ -22,7 +22,7 @@ fun AboutUsScreen(navController: NavController) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "About Us", color = Color(0xFF000000)) },
+                    title = { Text(text = "Fur-tastic About Us", color = Color(0xFF000000)) },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -66,28 +66,28 @@ fun AboutUsScreen(navController: NavController) {
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                SectionHeader(title = "Our Mission")
+                SectionHeader(title = "Paws for a Cause")
                 Text(
                     text = "Our mission is to provide a platform that facilitates the adoption process, making it easier for you to find a pet that matches your lifestyle and preferences. We aim to:\n\n- Promote Pet Adoption\n- Provide Comprehensive Information\n- Support Pet Owners",
                     fontSize = 16.sp, color = Color(0xff1a1a73),
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                SectionHeader(title = "What We Do")
+                SectionHeader(title = "Tail Tales")
                 Text(
                     text = "At Wiggles, we offer a range of features designed to help you find and adopt the perfect pet:\n\n- Detailed Pet Profiles\n- Personalized Recommendations\n- Pet Care Tips\n- Nearby Vets\n- Community Support",
                     fontSize = 16.sp, color = Color(0xff1a1a73),
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                SectionHeader(title = "Why Choose Wiggles?")
+                SectionHeader(title = "Paws & Perks")
                 Text(
-                    text = "User-Friendly Interface\n\nComprehensive Resources\n\nCommitment to Pet Welfare",
+                    text = "User-Friendly Interface\nComprehensive Resources\nCommitment to Pet Welfare",
                     fontSize = 16.sp, color = Color(0xff1a1a73),
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                SectionHeader(title = "Contact Us")
+                SectionHeader(title = "Get in Touch with Paws")
                 Text(
                     text = "If you have any questions or need assistance, feel free to reach out to us at contact@wigglesapp.com. We're here to help!",
                     fontSize = 16.sp, color = Color(0xff1a1a73),

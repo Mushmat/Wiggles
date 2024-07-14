@@ -42,7 +42,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Bookmarked Pets") },
+                title = { Text(text = "Favorite Fur-iends") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
@@ -66,7 +66,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
         ) {
             if (bookmarkedPets.isEmpty()) {
                 Text(
-                    text = "No Bookmarked Pets Available",
+                    text = "No Favorite Fur-iends Available",
                     fontSize = 20.sp,
                     modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                 )

@@ -44,7 +44,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Application Detail") },
+                    title = { Text(text = "Pawgress Detail") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -79,8 +79,8 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                             .clip(RoundedCornerShape(8.dp))
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = "Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF1a1a73))
-                    Text(text = "Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF1a1a73))
+                    Text(text = "Paw-sonal Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF1a1a73))
+                    Text(text = "Paw-sonal Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF1a1a73))
                     Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color(0xFF2e7d32))
                     Spacer(modifier = Modifier.height(16.dp))
                 }

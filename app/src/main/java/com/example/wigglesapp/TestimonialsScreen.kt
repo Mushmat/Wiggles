@@ -48,7 +48,7 @@ fun TestimonialsScreen(navController: NavController){
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Testimonials") },
+                title = { Text(text = "Tail Wagging Stories") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")

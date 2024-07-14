@@ -84,7 +84,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             TextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text(text = "Email") },
+                label = { Text(text = "Paw-mail") },
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
@@ -97,7 +97,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             TextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text(text = "Password") },
+                label = { Text(text = "Paws-word") },
                 visualTransformation = PasswordVisualTransformation(),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
@@ -111,13 +111,13 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             Button(onClick = {
                 authViewModel.logIn(email, password)
             }) {
-                Text(text = "Login", fontSize = 18.sp)
+                Text(text = "Paws In", fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
             Button(onClick = onSignUpClicked) {
-                Text(text = "Create an Account!",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 18.sp )
+                Text(text = "New to Wiggles?",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 18.sp )
             }
 
             authState.error?.let {

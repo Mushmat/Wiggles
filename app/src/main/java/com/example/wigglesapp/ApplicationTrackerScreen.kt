@@ -46,14 +46,14 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Adoption Applications:",
+                text = "Paw-plications:",
                 fontSize = 24.sp,
                 modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
             )
 
             if (adoptionApplications.isEmpty()) {
                 Text(
-                    text = "No applications found!",
+                    text = "No Paw-plications Found!",
                     fontSize = 18.sp,
                     modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                 )

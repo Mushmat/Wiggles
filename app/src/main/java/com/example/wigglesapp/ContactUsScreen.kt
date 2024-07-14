@@ -78,7 +78,7 @@ fun ContactUsScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Contact Us",
+                    text = "Get in Touch with Paws",
                     style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
                     color = Color.Black,
                     fontSize = 24.sp

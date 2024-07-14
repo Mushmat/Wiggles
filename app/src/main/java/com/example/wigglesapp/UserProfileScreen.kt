@@ -36,7 +36,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("User Profile") },
+                    title = { Text("Purr-sonal Profile") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -93,7 +93,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 TextField(
                     value = address,
                     onValueChange = { address = it },
-                    label = { Text("Address") },
+                    label = { Text("Paw-ddress") },
                     modifier = Modifier.fillMaxWidth(),
                     colors = TextFieldDefaults.textFieldColors(
                         focusedIndicatorColor = Color.Transparent,
@@ -105,7 +105,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 TextField(
                     value = email,
                     onValueChange = { /* No-op: This field is read-only */ },
-                    label = { Text("Email") },
+                    label = { Text("Paw-mail") },
                     readOnly = true,
                     modifier = Modifier.fillMaxWidth(),
                     colors = TextFieldDefaults.textFieldColors(
@@ -133,7 +133,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 Button(onClick = {
                     authViewModel.updateUserProfile(fullName, contactNumber, address)
                 }) {
-                    Text(text = "Update Profile")
+                    Text(text = "Update Paw-file")
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))

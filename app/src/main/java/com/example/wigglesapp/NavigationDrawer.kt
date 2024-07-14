@@ -12,15 +12,15 @@ import androidx.navigation.NavController
 @Composable
 fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel) {
     Column(modifier = Modifier.padding(16.dp)) {
-        DrawerButton(text = "Home @ Anytime") { navController.navigate("home") }
-        DrawerButton(text = "About Us") { navController.navigate("about_us_screen") }
-        DrawerButton(text = "User Profile") { navController.navigate("user_profile_screen") }
-        DrawerButton(text = "Bookmarked Pets") { navController.navigate("bookmarked_pets_screen") }
-        DrawerButton(text = "Adoption Application Tracker") { navController.navigate("adoption_tracker") }
-        DrawerButton(text = "Testimonials") { navController.navigate("testimonials_screen") }
-        DrawerButton(text = "FAQs") { navController.navigate("faqs_screen") }
-        DrawerButton(text = "Contact Us") { navController.navigate("contact_us_screen") }
-        DrawerButton(text = "Sign Out") {authViewModel.logOut()}
+        DrawerButton(text = "Paw-some Home") { navController.navigate("home") }
+        DrawerButton(text = "Fur-tastic About Us") { navController.navigate("about_us_screen") }
+        DrawerButton(text = "Purr-sonal Profile") { navController.navigate("user_profile_screen") }
+        DrawerButton(text = "Favorite Fur-iends") { navController.navigate("bookmarked_pets_screen") }
+        DrawerButton(text = "Pawgress Tracker") { navController.navigate("adoption_tracker") }
+        DrawerButton(text = "Tail Wagging Stories") { navController.navigate("testimonials_screen") }
+        DrawerButton(text = "Frequently Barked Questions") { navController.navigate("faqs_screen") }
+        DrawerButton(text = "Get in Touch with Paws") { navController.navigate("contact_us_screen") }
+        DrawerButton(text = "Paws Out") {authViewModel.logOut()}
         }
 }
 

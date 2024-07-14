@@ -134,7 +134,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     TextField(
                         value = address,
                         onValueChange = { address = it },
-                        label = { Text(text = "Address") },
+                        label = { Text(text = "Paw-ddress") },
                         modifier = Modifier.fillMaxWidth(0.8f),
                         colors = TextFieldDefaults.textFieldColors(
                             focusedIndicatorColor = Color.Transparent,
@@ -145,7 +145,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     TextField(
                         value = email,
                         onValueChange = { email = it },
-                        label = { Text(text = "Email") },
+                        label = { Text(text = "Paw-mail") },
                         modifier = Modifier.fillMaxWidth(0.8f),
                         colors = TextFieldDefaults.textFieldColors(
                             focusedIndicatorColor = Color.Transparent,
@@ -156,7 +156,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     TextField(
                         value = password,
                         onValueChange = { password = it },
-                        label = { Text(text = "Password") },
+                        label = { Text(text = "Paws-word") },
                         visualTransformation = PasswordVisualTransformation(),
                         modifier = Modifier.fillMaxWidth(0.8f),
                         colors = TextFieldDefaults.textFieldColors(
@@ -168,7 +168,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     TextField(
                         value = confirmPassword,
                         onValueChange = { confirmPassword = it },
-                        label = { Text(text = "Confirm Password") },
+                        label = { Text(text = "Confirm Paws-word") },
                         visualTransformation = PasswordVisualTransformation(),
                         modifier = Modifier.fillMaxWidth(0.8f),
                         colors = TextFieldDefaults.textFieldColors(
