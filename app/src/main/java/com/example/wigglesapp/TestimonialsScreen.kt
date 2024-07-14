@@ -82,9 +82,9 @@ fun TestimonialsScreen(navController: NavController){
                             .padding(16.dp)
                     ) {
                         val parts = testimonial.split(":")
-                        Text(text = parts[0], fontSize = 18.sp, color = Color.Black)
+                        Text(text = parts[0], fontSize = 18.sp, color = Color(0xFFff1493))
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(text = parts[1], fontSize = 16.sp, color = Color.Gray)
+                        Text(text = parts[1], fontSize = 16.sp, color = Color(0xFF1a1a73))
                     }
                 }
             }

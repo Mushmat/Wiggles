@@ -95,7 +95,7 @@ fun SuggestedPetCard(navController: NavController, pet: Pet){
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
-        Text(text = pet.breed, fontSize = 14.sp, color = Color.Gray)
+        Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
 
     }
 }
