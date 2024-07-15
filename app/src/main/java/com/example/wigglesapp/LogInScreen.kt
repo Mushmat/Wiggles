@@ -4,30 +4,15 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-
-import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -56,18 +41,11 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            
-            /*Box(
-                modifier = Modifier
-                    .height(200.dp)
-                    .fillMaxWidth()
-            ){
-                Dog3DModel()
-            }*/
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -81,7 +59,6 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                 style = MaterialTheme.typography.titleLarge,
                 color = Color.Black,
                 fontSize = 60.sp,
-
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -91,10 +68,14 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                 onValueChange = { email = it },
                 label = { Text(text = "Paw-mail") },
                 colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.White,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .padding(8.dp),
+                shape = RoundedCornerShape(8.dp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -105,25 +86,41 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                 label = { Text(text = "Paws-word") },
                 visualTransformation = PasswordVisualTransformation(),
                 colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.White,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
                 ),
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .padding(8.dp),
+                shape = RoundedCornerShape(8.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {
-                authViewModel.logIn(email, password)
-            }) {
-                Text(text = "Paws In", fontSize = 18.sp)
-            }
+            GradientButton(
+                onClick = { authViewModel.logIn(email, password) },
+                text = "Paws In",
+                gradient = Brush.horizontalGradient(
+                    colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
+                ),
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .padding(8.dp)
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(onClick = onSignUpClicked) {
-                Text(text = "New to Wiggles?",style = MaterialTheme.typography.titleSmall, color = Color.White, fontSize = 18.sp )
-            }
+            GradientButton(
+                onClick = onSignUpClicked,
+                text = "New to Wiggles?",
+                gradient = Brush.horizontalGradient(
+                    colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
+                ),
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .padding(8.dp)
+            )
 
             Text(
                 text = "Forgot Password?",
@@ -137,7 +134,6 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
         }
     }
 }
-
 fun sendPasswordResetEmail(email: String, context: Context) {
     if (email.isNotEmpty()) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
