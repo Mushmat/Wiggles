@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -286,24 +287,42 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
     }
 
 @Composable
-fun PetCard(navController: NavController, pet: Pet){
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+fun PetCard(navController: NavController, pet: Pet) {
+    Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable {
-                navController.navigate("pet_detail/${pet.id}")
-            }
+            .clickable { navController.navigate("pet_detail/${pet.id}") }
     ) {
-        Image(
-            painter = rememberAsyncImagePainter(model = pet.imageUrl),
-            contentDescription = null,
-            modifier = Modifier
-                .size(200.dp)
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color(0xFF000000))
-        Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = pet.imageUrl),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxSize() // Adjust the height as needed
+                )
+            }
+                Spacer(modifier = Modifier.height(8.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = pet.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        color = Color(0xFF000000)
+                    )
+                    Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
+                }
+            }
+        }
     }
-}
