@@ -59,31 +59,37 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            if (bookmarkedPets.isEmpty()) {
-                Text(
-                    text = "No Favorite Fur-iends Available",
-                    fontSize = 20.sp,
-                    modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
-                )
-            } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                        .padding(16.dp)
-                ) {
-                    items(bookmarkedPets) { pet ->
-                        BookmarkedPetCard(navController = navController, pet = pet.toPet())
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                if (bookmarkedPets.isEmpty()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "No Favorite Fur-iends Available",
+                            fontSize = 20.sp,
+                            color = Color(0xFF1a1a73)
+                        )
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .padding(16.dp)
+                    ) {
+                        items(bookmarkedPets) { pet ->
+                            BookmarkedPetCard(navController = navController, pet = pet.toPet())
+                        }
                     }
                 }
             }
         }
-    }
     }
 }
 
