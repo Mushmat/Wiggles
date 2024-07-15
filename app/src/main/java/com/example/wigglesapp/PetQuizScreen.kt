@@ -1,14 +1,18 @@
-// PetQuizScreen.kt
 package com.example.wigglesapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -49,141 +53,154 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
     var selectedReason by remember { mutableStateOf("") }
     var selectedGrooming by remember { mutableStateOf("") }
 
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "Find Best Paw") },
-                    navigationIcon = {
-                        IconButton(onClick = { navController.popBackStack() }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
-                                contentDescription = null
-                            )
-                        }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Find Best Paw") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                            contentDescription = null
+                        )
                     }
-                )
-            }
-        ) { paddingValues ->
-
-            Box(modifier = Modifier.fillMaxSize()) {
-                Image(
-                    painter = painterResource(id = R.drawable.bg),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
+                }
+            )
+        }
+    ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .padding(paddingValues)
                     .padding(16.dp)
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(Color(0xFFFFE0B2), Color(0xFFFFCCBC))
+                        )
+                    )
+                    .padding(16.dp)
             ) {
                 //QUESTION 1
-                Text(text = "How much time can you dedicate to your pet daily?", fontSize = 18.sp)
+                Text(text = "How much time can you dedicate to your pet daily?", fontSize = 20.sp, color = Color.DarkGray)
                 timeOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedTime == option,
-                            onClick = { selectedTime = option }
+                            onClick = { selectedTime = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 2
-                Text(text = "What size of pet are you looking for?", fontSize = 18.sp)
+                Text(text = "What size of pet are you looking for?", fontSize = 20.sp, color = Color.DarkGray)
                 sizeOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedSize == option,
-                            onClick = { selectedSize = option }
+                            onClick = { selectedSize = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 3
-                Text(text = "Do you have children at home?", fontSize = 18.sp)
+                Text(text = "Do you have children at home?", fontSize = 20.sp, color = Color.DarkGray)
                 childrenOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedChildren == option,
-                            onClick = { selectedChildren = option }
+                            onClick = { selectedChildren = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 4
-                Text(text = "How active is your lifestyle?", fontSize = 18.sp)
+                Text(text = "How active is your lifestyle?", fontSize = 20.sp, color = Color.DarkGray)
                 activityOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedActivity == option,
-                            onClick = { selectedActivity = option }
+                            onClick = { selectedActivity = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 5
-                Text(text = "Do you have other pets at home?", fontSize = 18.sp)
+                Text(text = "Do you have other pets at home?", fontSize = 20.sp, color = Color.DarkGray)
                 petOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedPets == option,
-                            onClick = { selectedPets = option }
+                            onClick = { selectedPets = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 6
-                Text(text = "What type of living environment do you have?", fontSize = 18.sp)
+                Text(text = "What type of living environment do you have?", fontSize = 20.sp, color = Color.DarkGray)
                 livingOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedLiving == option,
-                            onClick = { selectedLiving = option }
+                            onClick = { selectedLiving = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 7
-                Text(text = "What is your main reason for getting a pet?", fontSize = 18.sp)
+                Text(text = "What is your main reason for getting a pet?", fontSize = 20.sp, color = Color.DarkGray)
                 reasonOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedReason == option,
-                            onClick = { selectedReason = option }
+                            onClick = { selectedReason = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
                 //QUESTION 8
-                Text(text = "Do you have any preference for grooming needs?", fontSize = 18.sp)
+                Text(text = "Do you have any preference for grooming needs?", fontSize = 20.sp, color = Color.DarkGray)
                 groomingOptions.forEach { option ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = selectedGrooming == option,
-                            onClick = { selectedGrooming = option }
+                            onClick = { selectedGrooming = option },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFFFF7043))
                         )
-                        Text(text = option)
+                        Text(text = option, fontSize = 16.sp, color = Color.DarkGray)
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Button(
+                GradientButton(
                     onClick = {
                         val preferences = UserPreferences(
                             timeDedication = selectedTime,
@@ -198,11 +215,39 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                         sharedViewModel.setSuggestedPets(suggestPets(preferences))
                         navController.navigate("suggested_pets_screen")
                     },
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                ) {
-                    Text(text = "Find Best Pet")
-                }
+                    text = "Find Best Pet",
+                    gradient = Brush.horizontalGradient(
+                        colors = listOf(Color(0xFFFFA726), Color(0xFFFF7043))
+                    )
+                )
             }
+        }
+    }
+}
+
+@Composable
+fun GradientButton(
+    onClick: () -> Unit,
+    text: String,
+    gradient: Brush
+) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent
+        ),
+        modifier = Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .background(gradient)
+    ) {
+        Box(
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+        ) {
+            Text(
+                text = text,
+                fontSize = 18.sp,
+                color = Color.White
+            )
         }
     }
 }
