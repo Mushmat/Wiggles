@@ -112,7 +112,7 @@ val dummyPets = listOf(
     ),
 
     Pet( 8, "Belle", "Australian Cattle Dog",
-        "https://dbw3zep4prcju.cloudfront.net/animal/0efe8dfb-94ea-4cd8-9870-3ce3870f3e8d/image/45c68613-925d-47a9-a3ed-18567f407a6f.jpeg",
+        "https://res.cloudinary.com/lancaster-puppies-laravel/image/upload/v1671032732/breeds/pmdbkvt5bkhesio3nbeb.jpg",
         "Female", "Small",
         "Dog-friendly, Affectionate, Loyal, Gentle, Smart, Dignified, Low maintenance",
         "This little cutie is a 9 week old lab mix.\n" +
@@ -160,7 +160,7 @@ val dummyPets = listOf(
     ),
 
     Pet(24, "Peugeot", "Domestic Medium Hair",
-        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72038617/1/?bust=1720128776&width=300",
+        "https://res.cloudinary.com/petrescue/image/upload/b_auto:predominant,f_auto,c_pad,h_638,w_638/v1631689440/dy6haq2rogawcpn9lnfn.jpg",
         "Male", "Small",
         "Cat-friendly, Dog-friendly, Playful, Curious, Affectionate, Agile, Low maintenance",
         "Meet Peugeot, a wonderful feline companion with a unique personality. Peugeot is known for being sociable, gentle, and intelligent, making every day an adventure. With a sleek coat and bright eyes, Peugeot is as beautiful as he is charming. He enjoys climbing to high places, engaging in interactive play, and basking in warm spots, and he has a knack for making everyone around him smile. Whether you're looking for a cuddly lap cat or a curious explorer, Peugeot is ready to bring joy and love into your home. Adopt Peugeot today and discover the endless happiness he can offer."
