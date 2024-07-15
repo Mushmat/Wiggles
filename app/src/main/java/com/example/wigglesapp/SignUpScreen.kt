@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -36,6 +35,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.app.DatePickerDialog
+import android.widget.DatePicker
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.ui.platform.LocalContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,6 +54,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    var dobError by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
 
     Scaffold(
@@ -117,6 +125,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                             unfocusedIndicatorColor = Color.Transparent
                         )
                     )
+                    if (dobError) {
+                        Text(text = "Please enter a valid Date of Birth", color = Color.Red, fontSize = 14.sp)
+                    }
 
                     Spacer(modifier = Modifier.height(6.dp))
 
@@ -180,9 +191,13 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(onClick = {
-                        authViewModel.signUp(
-                            fullname, dob, contactNumber, address, email, password, confirmPassword
-                        )
+                        if (isValidDateOfBirth(dob)) {
+                            authViewModel.signUp(
+                                fullname, dob, contactNumber, address, email, password, confirmPassword
+                            )
+                        } else {
+                            dobError = true
+                        }
                     }) {
                         Text(text = "Create Account", fontSize = 18.sp)
                     }
@@ -199,5 +214,19 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit){
                 }
             }
         }
+    }
+}
+
+fun isValidDateOfBirth(dob: String): Boolean {
+    return try {
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        sdf.isLenient = false
+        val date = sdf.parse(dob)
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        val year = calendar.get(Calendar.YEAR)
+        year in 1900..Calendar.getInstance().get(Calendar.YEAR) && Calendar.getInstance().get(Calendar.YEAR) - year >= 18
+    } catch (e: Exception) {
+        false
     }
 }
