@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -115,8 +116,10 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
 }
 
 fun Pet.toBookmarkedPet(): BookmarkedPet {
+    val userId = FirebaseAuth.getInstance().currentUser?.uid ?: throw IllegalStateException("User not logged in")
     return BookmarkedPet(
         id = this.id,
+        userId = userId,
         name = this.name,
         breed = this.breed,
         imageUrl = this.imageUrl,

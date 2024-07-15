@@ -14,7 +14,8 @@ data class UserProfile(
 
 @Entity("bookmarked_pets")
 data class BookmarkedPet(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val userId: String,
     val name: String,
     val breed: String,
     val imageUrl: String,
@@ -27,6 +28,7 @@ data class BookmarkedPet(
 @Entity(tableName = "adoption_application")
 data class AdoptionApplicationEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val userId: String,
     val petId: Int,
     val answers: List<String>
 )
