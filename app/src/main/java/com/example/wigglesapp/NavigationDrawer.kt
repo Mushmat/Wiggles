@@ -55,7 +55,7 @@ fun NavigationDrawer(navController: NavController,authViewModel: AuthViewModel, 
 
                 navController.navigate("testimonials_screen")
                 drawerState.close()}}
-        DrawerButton(text = "Frequently Barked Questions") {
+        DrawerButton(text = "FAQs") {
             scope.launch {
 
                 navController.navigate("faqs_screen")
@@ -89,6 +89,6 @@ fun DrawerButton(text: String, onClick: () -> Unit) {
             .shadow(8.dp, RoundedCornerShape(12.dp)),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
     ) {
-        Text(text = text, fontSize = 18.sp, color = Color.White)
+        Text(text = text, fontSize = 18.sp, color = Color.Black)
     }
 }
