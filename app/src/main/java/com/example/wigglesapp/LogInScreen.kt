@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth
 fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var emailError by remember { mutableStateOf("") }
+    var passwordError by remember { mutableStateOf("") }
     val authState by authViewModel.authState.collectAsState()
     val context = LocalContext.current
 
@@ -77,7 +79,9 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                     .padding(8.dp),
                 shape = RoundedCornerShape(8.dp)
             )
-
+            if (emailError.isNotEmpty()) {
+                Text(text = emailError, color = Color.Red, fontSize = 12.sp)
+            }
             Spacer(modifier = Modifier.height(8.dp))
 
             TextField(
@@ -95,11 +99,18 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                     .padding(8.dp),
                 shape = RoundedCornerShape(8.dp)
             )
-
+            if (passwordError.isNotEmpty()) {
+                Text(text = passwordError, color = Color.Red, fontSize = 12.sp)
+            }
             Spacer(modifier = Modifier.height(16.dp))
 
             GradientButton(
-                onClick = { authViewModel.logIn(email, password) },
+                onClick = {
+                    if (validateFields(email, password, { emailError = it }, { passwordError = it })) {
+                        authViewModel.logIn(email, password)
+                    }
+                },
+
                 text = "Paws In",
                 gradient = Brush.horizontalGradient(
                     colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
@@ -134,6 +145,28 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
         }
     }
 }
+
+fun validateFields(email: String, password: String, onEmailError: (String) -> Unit, onPasswordError: (String) -> Unit): Boolean {
+    var isValid = true
+
+    if (email.isEmpty()) {
+        onEmailError("Email cannot be empty")
+        isValid = false
+    } else {
+        onEmailError("")
+    }
+
+    if (password.isEmpty()) {
+        onPasswordError("Password cannot be empty")
+        isValid = false
+    } else {
+        onPasswordError("")
+    }
+
+    return isValid
+}
+
+
 fun sendPasswordResetEmail(email: String, context: Context) {
     if (email.isNotEmpty()) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)

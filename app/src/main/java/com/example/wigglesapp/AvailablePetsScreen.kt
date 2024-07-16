@@ -219,18 +219,15 @@ val dummyPets = listOf(
 @Composable
 fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
 
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text(text = "Paws") },
                     actions = {
-                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                        IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
-                                imageVector = ImageVector.vectorResource(id = R.drawable.baseline_menu_24),
-                                contentDescription = "Menu"
+                                imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24),
+                                contentDescription = "Back"
                             )
                         }
                     }
