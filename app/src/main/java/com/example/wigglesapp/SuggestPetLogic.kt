@@ -1,5 +1,7 @@
 package com.example.wigglesapp
 
+import kotlin.random.Random
+
 fun suggestPets(preferences: UserPreferences): List<Pet> {
     val petId = when {
         preferences.timeDedication == "Less than 1 hour" && preferences.sizePreference == "Small" && preferences.childrenAtHome == "No children" -> 2
@@ -37,7 +39,14 @@ fun suggestPets(preferences: UserPreferences): List<Pet> {
         preferences.timeDedication == "More than 4 hours" && preferences.sizePreference == "Small" && preferences.childrenAtHome == "Yes, older than 10 years old" -> 5
         preferences.timeDedication == "More than 4 hours" && preferences.sizePreference == "Medium" && preferences.childrenAtHome == "Yes, older than 10 years old" -> 7
 
-        else -> 1
+        else -> {
+            val randomNumber = if (Random.nextBoolean()) {
+                Random.nextInt(1, 11) // 1 to 10
+            } else {
+                Random.nextInt(21, 31) // 21 to 30
+            }
+            randomNumber
+        }
     }
 
     return dummyPets.filter { it.id == petId }
