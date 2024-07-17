@@ -44,7 +44,6 @@ fun CatTipsScreen(navController: NavController) {
         "9. Dental Health: Maintain your cat’s dental health with regular brushing or dental treats.",
         "10. Window Perches: Install window perches to give your cat a view of the outdoors and keep them entertained."
     )
-
     val gifs = listOf(
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHQ5dzd6eHdscHcyd2Jkc2tiMW90enhzaWxuaXlibjZpNW0ybzJ4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2QE861VOZU7zQdDG/giphy.gif",
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWx0MHllMTNsbGQza3J6YTEwamd3N3g3cmNncmFmN2lnem42YXhiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vXXZ5Q2hIzv20/giphy.gif",
@@ -57,8 +56,6 @@ fun CatTipsScreen(navController: NavController) {
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Q4cXd0aXRxYTJrN3ExeW4yOXpkdGJyaGVudm81eHkwb3lsbHQ1YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8I7a41uPPoFSU/giphy.gif",
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHc5OHhqcnFrcnNwazJrMXlvY3NxOHZsbmIyMmJvMnZqaTNnd2kzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5UmUwfmtIqie4/giphy.gif"
     )
-
-
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -74,9 +71,9 @@ fun CatTipsScreen(navController: NavController) {
                 )
             }
         ) { paddingValues ->
+            // Remember the state for the pager
             val pagerState = rememberPagerState()
-
-
+            // Horizontal pager to swipe through cat care tips
             HorizontalPager(
                 count = tips.size,
                 state = pagerState,
@@ -84,13 +81,16 @@ fun CatTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
+                // Main content container for each page
                 Box(modifier = Modifier.fillMaxSize()) {
+                    // Background image
                     Image(
                         painter = painterResource(id = R.drawable.bg),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
                     )
+                    // Column layout to display tip content
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -98,6 +98,7 @@ fun CatTipsScreen(navController: NavController) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Display GIF for the current page
                     GlideImage(
                         imageModel = gifs[page],
                         contentScale = ContentScale.Crop,
@@ -106,7 +107,9 @@ fun CatTipsScreen(navController: NavController) {
                             .height(300.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
+                    // Display the cat care tip text
                     Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                    // Instruction to swipe left or right
                     Text(
                         text = "Swipe Left/Right :)",
                         fontSize = 18.sp,

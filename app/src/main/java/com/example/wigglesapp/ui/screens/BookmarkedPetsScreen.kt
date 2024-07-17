@@ -41,9 +41,11 @@ import com.example.wigglesapp.data.entity.BookmarkedPet
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedViewModel){
+    // Collect the list of bookmarked pets from the shared ViewModel
     val bookmarkedPets by sharedViewModel.bookmarkedPets.collectAsState()
 
     Scaffold(
+
         topBar = {
             TopAppBar(
                 title = { Text(text = "Favorite Fur-iends") },
@@ -55,20 +57,23 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
             )
         }
     ) { paddingValues ->
-
+        // Main content container
         Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Column layout to display the list of bookmarked pets or a message if there are none
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
             ) {
                 if (bookmarkedPets.isEmpty()) {
+                    // Display message if no pets are bookmarked
                     Box(
                         modifier = Modifier
                             .fillMaxSize(),
@@ -81,6 +86,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                         )
                     }
                 } else {
+                    // LazyColumn to display the list of bookmarked pets
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
@@ -99,23 +105,27 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
 
 @Composable
 fun BookmarkedPetCard(navController: NavController, pet: Pet){
+    // Column layout to display pet details in a card
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable { navController.navigate("pet_detail/${pet.id}") }
     ){
+        // Display the pet image
         Image(
             painter = rememberAsyncImagePainter(model = pet.imageUrl),
             contentDescription = null,
             modifier = Modifier.size(200.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
+        // Display the pet's name and breed
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
         Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
     }
 }
 
+// Extension function to convert a BookmarkedPet to a Pet
 fun BookmarkedPet.toPet(): Pet {
     return Pet(
         id = this.id,

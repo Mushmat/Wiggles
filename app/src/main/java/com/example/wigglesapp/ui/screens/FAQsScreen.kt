@@ -33,6 +33,8 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FAQsScreen(navController: NavController){
+
+    //List of FAQs with questions and answers
     val faqs = listOf(
         "What is Wiggles?" to "Wiggles is a pet adoption app designed to connect potential pet owners with pets in need of a loving home. Our mission is to make the adoption process as smooth and efficient as possible.",
         "How do I create an account on Wiggles?" to "To create an account, click on the 'Sign Up' button on the home screen and fill in the required details, such as your full name, date of birth, contact number, address, email, and password.",
@@ -59,7 +61,9 @@ fun FAQsScreen(navController: NavController){
         }
     ) { paddingValues ->
 
+        // Main content container
         Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -67,22 +71,26 @@ fun FAQsScreen(navController: NavController){
                 modifier = Modifier.fillMaxSize()
             )
         LazyColumn(
+            // LazyColumn to display the list of FAQs
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Iterate over the list of FAQs and create a Card for each
             items(faqs) { faq ->
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.medium
                 ) {
+                    // Column layout to display the question and answer
                     Column(
                         modifier = Modifier.padding(16.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.Start
                     ) {
+                        // Display the FAQ question
                         Text(
                             text = faq.first,
                             style = MaterialTheme.typography.bodyLarge.copy(
@@ -90,6 +98,7 @@ fun FAQsScreen(navController: NavController){
                             ),
                             fontWeight = FontWeight.Bold
                         )
+                        // Display the FAQ answer
                         Text(
                             text = faq.second,
                             style = MaterialTheme.typography.bodyMedium.copy(

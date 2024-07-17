@@ -32,6 +32,7 @@ import com.skydoves.landscapist.glide.GlideImage
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
 fun DogTipsScreen(navController: NavController) {
+    // Tips List
     val tips = listOf(
         "1. SOCIALIZATION: Expose your dog to different people, environments, and other animals.",
         "2. REGULAR WALKS: Take your dog for daily walks to provide physical exercise and mental stimulation.",
@@ -43,7 +44,7 @@ fun DogTipsScreen(navController: NavController) {
         "8. ROUTINE CHECKUPS: Take your dog to the vet for routine checkups and vaccinations.",
         "9. AVOID OVERFEEDING: Monitor your dog’s diet and avoid overfeeding to prevent obesity."
     )
-
+    // Link to the gifs corresponding to each tip
     val gifs = listOf(
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExazF5c3U1eGxobjd2Y202MzB5Y2ZrcHRoMWlubjQ2aTNleHNxbHMwdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mokQK7oyiR8Sk/giphy.gif",
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExajZvZjBhdm9qdjY0d29lMzd2cGJyM2gxbnI3c25hdnA2dWwzY2FvaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fxOcPNZkLa68iQ52l9/giphy.gif",
@@ -71,8 +72,9 @@ fun DogTipsScreen(navController: NavController) {
                 )
             }
         ) { paddingValues ->
+            //Remember the state of pager
             val pagerState = rememberPagerState()
-
+            // Horizontal pager to swipe through dog care tips
             HorizontalPager(
                 count = tips.size,
                 state = pagerState,
@@ -80,13 +82,16 @@ fun DogTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
+                // Main content container for each page
                 Box(modifier = Modifier.fillMaxSize()) {
+                    // Background image
                     Image(
                         painter = painterResource(id = R.drawable.bg),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
                     )
+                    // Column layout to display tip content
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -94,6 +99,7 @@ fun DogTipsScreen(navController: NavController) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Display GIF for the current page
                     GlideImage(
                         imageModel = gifs[page],
                         contentScale = ContentScale.Crop,
@@ -101,8 +107,12 @@ fun DogTipsScreen(navController: NavController) {
                             .fillMaxWidth()
                             .height(300.dp)
                     )
+
+                    // Display the dog care tip text
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+
+                    // Instruction to swipe left or right
                     Text(
                         text = "Swipe Left/Right :)",
                         fontSize = 18.sp,

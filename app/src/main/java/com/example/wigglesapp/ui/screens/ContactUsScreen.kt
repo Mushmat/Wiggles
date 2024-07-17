@@ -35,6 +35,7 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactUsScreen(navController: NavController) {
+    // Get the current context
     val context = LocalContext.current
 
         Scaffold(
@@ -52,14 +53,16 @@ fun ContactUsScreen(navController: NavController) {
                 )
             }
         ) { paddingValues ->
-
+            // Main content container
             Box(modifier = Modifier.fillMaxSize()) {
+                // Background image
                 Image(
                     painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
+                // Column layout to display contact information and buttons
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -68,6 +71,7 @@ fun ContactUsScreen(navController: NavController) {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Contact Us image
                 Image(
                     painter = painterResource(id = R.drawable.contact_us_image),
                     contentDescription = "Contact Us Image",
@@ -77,7 +81,7 @@ fun ContactUsScreen(navController: NavController) {
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
-
+                // Title text
                 Text(
                     text = "Get in Touch with Paws",
                     style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
@@ -86,7 +90,7 @@ fun ContactUsScreen(navController: NavController) {
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
-
+                // Contact email
                 Text(
                     text = "Email us at: contact@wigglesapp.com",
                     fontSize = 18.sp,
@@ -95,6 +99,7 @@ fun ContactUsScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
+                // Contact phone number
                 Text(
                     text = "Call us at: 8114489928",
                     fontSize = 18.sp,
@@ -103,6 +108,7 @@ fun ContactUsScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
+                // General queries text
                 Text(
                     text = "For general queries,",
                     fontSize = 18.sp,
@@ -111,9 +117,10 @@ fun ContactUsScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
+                // Button to open Google Form
                 Button(
                     onClick = {
-
+                        // Intent to open the Google Form link
                         val intent = Intent(Intent.ACTION_VIEW).apply {
                             data = Uri.parse("https://forms.gle/fjPHCgGzySoHpq3x7")
                         }
