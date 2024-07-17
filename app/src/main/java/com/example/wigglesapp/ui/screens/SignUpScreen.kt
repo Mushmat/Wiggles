@@ -25,6 +25,7 @@ import java.util.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
+    // State variables to hold user input
     var fullname by remember { mutableStateOf("") }
     var dob by remember { mutableStateOf("") }
     var contactNumber by remember { mutableStateOf("") }
@@ -37,6 +38,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
     Scaffold(
         topBar = {
+            // Top AppBar with title and back navigation
             TopAppBar(
                 title = { Text(text = "Create your Paw-Profile") },
                 navigationIcon = {
@@ -54,6 +56,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
             .fillMaxSize()
             .padding(paddingValues)
         ) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -75,6 +78,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Image(
+                        // App logo and title
                         painter = painterResource(id = R.drawable.baseline_pets_24),
                         contentDescription = "Cute Pets",
                         modifier = Modifier.size(48.dp)
@@ -83,6 +87,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    // Full name input field
                     TextField(
                         value = fullname,
                         onValueChange = { fullname = it },
@@ -98,6 +103,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(6.dp))
 
+                    // Date of birth input field
                     TextField(
                         value = dob,
                         onValueChange = { dob = it },
@@ -116,6 +122,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(6.dp))
 
+                    // Contact number input field
                     TextField(
                         value = contactNumber,
                         onValueChange = { contactNumber = it },
@@ -129,6 +136,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
+                    // Address input field
                     TextField(
                         value = address,
                         onValueChange = { address = it },
@@ -142,6 +150,8 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
+
+                    // Email input field
                     TextField(
                         value = email,
                         onValueChange = { email = it },
@@ -155,6 +165,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
+                    // Password input field
                     TextField(
                         value = password,
                         onValueChange = { password = it },
@@ -169,6 +180,8 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
+
+                    // Confirm password input field
                     TextField(
                         value = confirmPassword,
                         onValueChange = { confirmPassword = it },
@@ -185,6 +198,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    // Create Account button
                     GradientButton(
                         onClick = {
                             if (isValidDateOfBirth(dob)) {
@@ -204,6 +218,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    // Back to Login button
                     GradientButton(
                         onClick = onLoginClicked,
                         text = "Back to Login",
@@ -213,6 +228,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp)
                     )
 
+                    // Display error message if there is an error in authentication state
                     authState.error?.let {
                         Text(text = it, color = Color.Red)
                     }
@@ -222,6 +238,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
     }
 }
 
+// Function to validate the date of birth
 fun isValidDateOfBirth(dob: String): Boolean {
     return try {
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

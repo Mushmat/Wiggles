@@ -25,6 +25,7 @@ import com.example.wigglesapp.ui.components.GradientButton
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel) {
+    //Lists for storing the options for the questions.
     val timeOptions = listOf("Less than 1 hour", "1-2 hours", "2-4 hours", "More than 4 hours")
     val sizeOptions = listOf("Small", "Medium", "No preference")
     val childrenOptions = listOf(
@@ -47,6 +48,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
     val groomingOptions =
         listOf("Low maintenance", "Moderate maintenance", "High maintenance", "No preference")
 
+    //State of variables chosen as answers
     var selectedTime by remember { mutableStateOf("") }
     var selectedSize by remember { mutableStateOf("") }
     var selectedChildren by remember { mutableStateOf("") }
@@ -57,6 +59,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
     var selectedGrooming by remember { mutableStateOf("") }
 
     Scaffold(
+        // Top AppBar with title and back navigation.
         topBar = {
             TopAppBar(
                 title = { Text(text = "Find Best Paw") },
@@ -71,7 +74,9 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
             )
         }
     ) { paddingValues ->
+        //Main Content Container
         Box(modifier = Modifier.fillMaxSize()) {
+            //Background Image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -79,6 +84,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                 modifier = Modifier.fillMaxSize()
             )
             Column(
+                // Column to hold the quiz questions and answers.
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
@@ -203,6 +209,7 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Button to find the best pet based on preferences.
                 GradientButton(
                     onClick = {
                         val preferences = UserPreferences(
@@ -215,7 +222,9 @@ fun PetQuizScreen(navController: NavController, sharedViewModel: SharedViewModel
                             reasonForPet = selectedReason,
                             groomingPreference = selectedGrooming
                         )
+                        // Set the suggested pets in the shared view model.
                         sharedViewModel.setSuggestedPets(suggestPets(preferences))
+                        // Navigate to the suggested pets screen.
                         navController.navigate("suggested_pets_screen")
                     },
                     text = "Find Best Pet",

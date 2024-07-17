@@ -28,6 +28,8 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ParentsScreen(navController: NavController) {
+
+    // List of parents and their pets.
     val parents = listOf(
         Parent(
             name = "John Doe",
@@ -78,6 +80,7 @@ fun ParentsScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
+            // Top AppBar with title and back navigation.
             TopAppBar(
                 title = { Text(text = "Parents who bought similar paws!") },
                 navigationIcon = {
@@ -91,12 +94,14 @@ fun ParentsScreen(navController: NavController) {
 
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
+                // Background image.
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
         LazyColumn(
+            // List of parent cards displayed in a LazyColumn.
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -122,6 +127,7 @@ fun ParentCard(navController: NavController, parent: Parent) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(16.dp)
         ) {
+            // Display parent image.
             Image(
                 painter = rememberAsyncImagePainter(model = parent.imageUrl),
                 contentDescription = null,
@@ -130,6 +136,7 @@ fun ParentCard(navController: NavController, parent: Parent) {
                     .padding(end = 16.dp)
             )
             Column {
+                // Display parent's name and pet breed.
                 Text(text = parent.name, fontSize = 18.sp, color = Color(0xFFff1493))
                 Text(text = parent.breed, fontSize = 16.sp, color = Color(0xFF1a1a73))
             }
@@ -144,6 +151,8 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
 
         Scaffold(
             topBar = {
+                // Top AppBar with title and back navigation.
+
                 TopAppBar(
                     title = { Text(text = "Paw-rent Details") },
                     navigationIcon = {
@@ -159,6 +168,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
         ) { paddingValues ->
             Box(modifier = Modifier.fillMaxSize()) {
                 Image(
+                    // Background image.
                     painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
@@ -171,6 +181,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
                     .padding(16.dp)
             ) {
                 Image(
+                    // Display parent image.
                     painter = rememberAsyncImagePainter(model = parent.imageUrl),
                     contentDescription = null,
                     modifier = Modifier
@@ -178,6 +189,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
                         .height(200.dp)
                         .padding(bottom = 16.dp)
                 )
+                // Display parent details.
                 Text(text = "Name: ${parent.name}", fontSize = 24.sp, color = Color.Black)
                 Text(text = "Pet's Name: ${parent.petName}", fontSize = 20.sp, color = Color(0xFF5d4037))
                 Text(text = "Breed: ${parent.breed}", fontSize = 20.sp, color = Color(0xFF5d4037))
@@ -203,6 +215,7 @@ fun ParentDetailScreen(navController: NavController, parentName: String) {
     }
 }
 
+// Function to get parent details by name.
 fun getParentByName(name: String): Parent {
     return when (name) {
         "John Doe" -> Parent(
@@ -262,6 +275,7 @@ fun getParentByName(name: String): Parent {
     }
 }
 
+// Data class to represent parent information.
 data class Parent(
     val name: String,
     val petName: String,

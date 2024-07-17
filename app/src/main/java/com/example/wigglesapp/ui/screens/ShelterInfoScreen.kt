@@ -29,8 +29,10 @@ import com.example.wigglesapp.R
 @Composable
 fun ShelterInfoScreen(navController: NavController){
 
+    // Scaffold provides the basic structure for the screen with a top bar
     Scaffold(
         topBar = {
+            // Top AppBar with title and back navigation
             TopAppBar(
                 title = { Text(text = "Shelter Information") },
                 navigationIcon = {
@@ -43,13 +45,17 @@ fun ShelterInfoScreen(navController: NavController){
     ) {
         paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
+            // Box to hold the background image and main content
             Image(
+                // Background image
+
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
         Column(
+            // Column to hold the shelter information content
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
@@ -58,6 +64,7 @@ fun ShelterInfoScreen(navController: NavController){
                     rememberScrollState()
                 )
         ) {
+            // Shelter image
             val imageUrl = "https://i.insider.com/6589dc041c5c7b8c9a0beb71?width=700"
             Image(
                 painter = rememberAsyncImagePainter(model = imageUrl),
@@ -69,6 +76,7 @@ fun ShelterInfoScreen(navController: NavController){
                     .padding(bottom = 16.dp)
             )
 
+            // Shelter overview section
             Text(
                 text = "Shelter Overview (Dummy Data)",
                 fontSize = 24.sp,
@@ -80,6 +88,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Contact information section
             Text(
                 text = "Contact Information",
                 fontSize = 24.sp,
@@ -94,6 +103,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Adoption process section
             Text(
                 text = "Adoption Process",
                 fontSize = 24.sp,
@@ -105,6 +115,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Volunteer opportunities section
             Text(
                 text = "Volunteer Opportunities",
                 fontSize = 24.sp,
@@ -116,6 +127,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Donation information section
             Text(
                 text = "Donation Information",
                 fontSize = 24.sp,
@@ -127,6 +139,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Events and programs section
             Text(
                 text = "Events and Programs",
                 fontSize = 24.sp,
@@ -138,6 +151,7 @@ fun ShelterInfoScreen(navController: NavController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
+            // Success stories section
             Text(
                 text = "Success Stories",
                 fontSize = 24.sp,
