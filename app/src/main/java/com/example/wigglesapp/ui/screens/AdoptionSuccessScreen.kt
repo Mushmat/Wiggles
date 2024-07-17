@@ -29,6 +29,8 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdoptionSuccessScreen(navController: NavController) {
+
+    // Scaffold provides the basic structure for the screen, including the top app bar
     Scaffold(
         topBar = {
             TopAppBar(
@@ -44,18 +46,22 @@ fun AdoptionSuccessScreen(navController: NavController) {
             )
         }
     ) { paddingValues ->
+        // Main content container
         Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Column layout to display success message and navigation button
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                // Display success message
                 Text(
                     text = "Your application has been submitted and is in process.",
                     fontSize = 20.sp,
@@ -71,7 +77,11 @@ fun AdoptionSuccessScreen(navController: NavController) {
                     fontSize = 16.sp,
                     modifier = Modifier.padding(16.dp), color = Color(0xFF800000)
                 )
+
+
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Button to navigate back to the home screen
                 Button(onClick = { navController.navigate("home") }) {
                     Text(text = "Back to Home")
                 }
