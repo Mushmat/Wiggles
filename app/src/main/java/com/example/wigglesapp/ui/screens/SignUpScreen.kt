@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
+import com.example.wigglesapp.ui.components.GradientButton
 import java.text.SimpleDateFormat
 import java.util.*
 

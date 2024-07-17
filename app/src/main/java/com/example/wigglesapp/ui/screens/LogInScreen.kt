@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
+import com.example.wigglesapp.ui.components.GradientButton
 import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
