@@ -24,13 +24,17 @@ import com.example.wigglesapp.ui.components.GradientButton
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel) {
+
+    // Collect user details from the view model
     val user by authViewModel.userDetails.collectAsState()
+    // State variables to hold user input
     var fullName by remember { mutableStateOf("") }
     var contactNumber by remember { mutableStateOf("") }
     var address by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var dob by remember { mutableStateOf("") }
 
+    // Update state variables when user details change
     LaunchedEffect(user) {
         user?.let {
             fullName = it.fullName
@@ -44,6 +48,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
     Scaffold(
         topBar = {
             TopAppBar(
+                // Top AppBar with title and back navigation
                 title = { Text("Purr-sonal Profile") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -58,12 +63,14 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
     ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
+                // Background image
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
             Column(
+                // Main content column
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
@@ -72,6 +79,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                // Full name input field
                 TextField(
                     value = fullName,
                     onValueChange = { fullName = it },
@@ -84,6 +92,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                     shape = RoundedCornerShape(8.dp)
                 )
 
+                // Contact number input field
                 TextField(
                     value = contactNumber,
                     onValueChange = { contactNumber = it },
@@ -97,6 +106,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                     shape = RoundedCornerShape(8.dp)
                 )
 
+                // Address input field
                 TextField(
                     value = address,
                     onValueChange = { address = it },
@@ -109,6 +119,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                     shape = RoundedCornerShape(8.dp)
                 )
 
+                //Email input field
                 TextField(
                     value = email,
                     onValueChange = { /* No-op: This field is read-only */ },
@@ -122,6 +133,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                     shape = RoundedCornerShape(8.dp)
                 )
 
+                //DOB
                 TextField(
                     value = dob,
                     onValueChange = { /* No-op: This field is read-only */ },
@@ -137,6 +149,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
 
                 Spacer(modifier = Modifier.height(16.dp))
 
+                //Button for updating the profile changes
                 GradientButton(
                     onClick = {
                         authViewModel.updateUserProfile(fullName, contactNumber, address)
@@ -150,6 +163,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
 
                 Spacer(modifier = Modifier.height(16.dp))
 
+                //Error if any
                 authViewModel.authState.collectAsState().value.error?.let {
                     Text(text = it, color = Color.Red)
                 }

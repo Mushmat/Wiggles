@@ -33,6 +33,7 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TestimonialsScreen(navController: NavController){
+    // List of testimonials
     val testimonials = listOf(
         "John Doe - Adopted Luna, the Golden Retriever: \"Adopting Luna through Wiggles was a seamless experience. She has brought so much joy to our family. The app made it easy to find the perfect pet for us. Highly recommend Wiggles to anyone looking to adopt a pet!\"",
         "Jane Smith - Adopted Max, the Beagle: \"Wiggles made the adoption process so easy and stress-free. Max is the perfect addition to our home. The app's interface is user-friendly, and the support team was incredibly helpful.\"",
@@ -49,6 +50,7 @@ fun TestimonialsScreen(navController: NavController){
     Scaffold(
         topBar = {
             TopAppBar(
+                // Top AppBar with title and back navigation
                 title = { Text(text = "Tail Wagging Stories") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -61,18 +63,21 @@ fun TestimonialsScreen(navController: NavController){
 
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
+                // Background image
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
         LazyColumn(
+            // LazyColumn to display testimonials
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Iterate over testimonials and display each one in a Card
             items(testimonials) { testimonial ->
                 Card(
                     modifier = Modifier.fillMaxWidth()
@@ -82,6 +87,7 @@ fun TestimonialsScreen(navController: NavController){
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
+                        // Split the testimonial into name and message
                         val parts = testimonial.split(":")
                         Text(text = parts[0], fontSize = 18.sp, color = Color(0xFFff1493))
                         Spacer(modifier = Modifier.height(8.dp))

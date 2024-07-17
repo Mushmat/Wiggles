@@ -29,10 +29,12 @@ import com.example.wigglesapp.viewmodels.SharedViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedViewModel){
+    // Collect the suggested pets from the shared view model
     val suggestedPets by sharedViewModel.suggestedPets.collectAsState(initial = emptyList())
 
     Scaffold(
         topBar = {
+            // Top AppBar with title and back navigation
             TopAppBar(
                 title = { Text(text = "Suggested Paws") },
                 navigationIcon = {
@@ -45,6 +47,7 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
     ) { paddingValues ->
 
         Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -58,12 +61,14 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
                 .padding(16.dp)
         ) {
             if (suggestedPets.isEmpty()) {
+                // Display message if no suggested pets are found
                 Text(
                     text = "No pets found matching your preference!",
                     fontSize = 20.sp,
                     modifier = Modifier.padding(16.dp)
                 )
             } else {
+                // Display the list of suggested pets
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -85,6 +90,7 @@ fun SuggestedPetsScreen(navController: NavController, sharedViewModel: SharedVie
 
 @Composable
 fun SuggestedPetCard(navController: NavController, pet: Pet){
+    // Card to display suggested pet details
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
@@ -92,11 +98,13 @@ fun SuggestedPetCard(navController: NavController, pet: Pet){
             .clickable { navController.navigate("pet_detail/${pet.id}") }
     ){
         Image(
+            // Display pet image
             painter = rememberAsyncImagePainter(model = pet.imageUrl),
             contentDescription = null,
             modifier = Modifier.size(200.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
+        // Display pet name and breed
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
         Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
 
