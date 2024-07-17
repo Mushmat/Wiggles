@@ -53,10 +53,13 @@ fun MyApp(authViewModel: AuthViewModel) {
     val scope = rememberCoroutineScope()
     val authState by authViewModel.authState.collectAsState()
 
+    // ViewModel to share data across screens
     val sharedViewModel: SharedViewModel = viewModel()
 
+    // State variable to hold filtered pets
     var filteredPets by remember { mutableStateOf(dummyPets) }
 
+    // Function to apply filters to the pet list
     fun applyFilters(breeds: List<String>, genders: List<String>, sizes: List<String>) {
         filteredPets = dummyPets.filter { pet ->
             (breeds.isEmpty() || breeds.contains(pet.breed)) &&
@@ -65,6 +68,7 @@ fun MyApp(authViewModel: AuthViewModel) {
         }
     }
 
+    // Navigation drawer and scaffold setup
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -78,6 +82,7 @@ fun MyApp(authViewModel: AuthViewModel) {
         content = {
             Scaffold(
                 content = {
+                    // Navigation host to manage navigation between different screens
                     NavHost(
                         navController = navController,
                         startDestination = if (authState.isAuthenticated) "home" else "auth"

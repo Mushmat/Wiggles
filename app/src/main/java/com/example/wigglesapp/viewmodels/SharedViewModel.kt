@@ -13,20 +13,25 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
+    // Get instances of the database and DAO
     private val db = AppDatabase.getDatabase(application)
     private val bookmarkedPetDao = db.bookmarkedPetDao()
     private val adoptionApplicationDao = db.adoptionApplicationDao()
     private val auth = FirebaseAuth.getInstance()
 
+    // MutableStateFlow to hold the list of bookmarked pets
     private val _bookmarkedPets = MutableStateFlow<List<BookmarkedPet>>(emptyList())
     val bookmarkedPets: StateFlow<List<BookmarkedPet>> get() = _bookmarkedPets
 
+    // MutableStateFlow to hold the list of suggested pets
     private val _suggestedPets = MutableStateFlow<List<Pet>>(emptyList())
     val suggestedPets: StateFlow<List<Pet>> get() = _suggestedPets
 
+    // MutableStateFlow to hold the list of adoption applications
     private val _adoptionApplications = MutableStateFlow<List<AdoptionApplicationEntity>>(emptyList())
     val adoptionApplications: StateFlow<List<AdoptionApplicationEntity>> get() = _adoptionApplications
 
+    // Initialize the ViewModel by fetching the initial data for the current user
     init {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
@@ -36,6 +41,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    // Function to bookmark a pet
     fun bookmarkPet(pet: BookmarkedPet) {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
@@ -46,6 +52,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    // Function to remove a bookmarked pet
     fun removeBookmark(pet: BookmarkedPet) {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
@@ -55,10 +62,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    // Function to set the list of suggested pets
     fun setSuggestedPets(pets: List<Pet>) {
         _suggestedPets.value = pets
     }
 
+    // Function to submit an adoption application
     fun submitAdoptionApplication(petId: Int, answers: List<String>) {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
@@ -70,5 +79,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 }
 
+// Data class to represent an adoption application
+// Currently Unused
 data class AdoptionApplication(val petId: Int, val answers: List<String>)
 
