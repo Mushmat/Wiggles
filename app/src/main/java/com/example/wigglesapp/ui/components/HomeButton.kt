@@ -26,30 +26,31 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// Composable function for creating a custom-styled home button with an icon and text
 @Composable
 fun HomeButton(text: String, icon: Int, onClick: () -> Unit) {
     Button(
-        onClick = onClick,
+        onClick = onClick, // Action to be performed on button click
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .clip(RoundedCornerShape(12.dp))
+            .fillMaxWidth() // Button fills the width of its parent
+            .padding(vertical = 8.dp) // Padding around the button
+            .clip(RoundedCornerShape(12.dp)) // Rounded corners with a radius of 12 dp
             .background(
-                brush = Brush.horizontalGradient(
-                    listOf(Color(0xFF42A5F5), Color(0xFF1E88E5))
+                brush = Brush.horizontalGradient( // Horizontal gradient background
+                    listOf(Color(0xFF42A5F5), Color(0xFF1E88E5)) // Gradient colors
                 )
             )
-            .shadow(8.dp, RoundedCornerShape(12.dp)),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+            .shadow(8.dp, RoundedCornerShape(12.dp)), // Shadow with rounded corners and elevation of 8 dp
+        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent) // Transparent button container color
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically // Align items vertically in the center
         ) {
             Box(
                 modifier = Modifier
-                    .size(40.dp)
-                    .background(Color.White, shape = CircleShape)
-                    .padding(8.dp)
+                    .size(40.dp) // Box size for the icon background
+                    .background(Color.White, shape = CircleShape) // White circular background for the icon
+                    .padding(8.dp) // Padding around the icon
             ) {
                 Image(painter = painterResource(id = icon), contentDescription = null, modifier = Modifier.fillMaxSize())
             }
