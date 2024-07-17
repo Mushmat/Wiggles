@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import com.example.wigglesapp.utils.MyApp
+import com.example.wigglesapp.viewmodels.AuthState
+import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
