@@ -39,6 +39,7 @@ import com.example.wigglesapp.viewmodels.SharedViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedViewModel) {
+    // Collect the list of adoption applications from the shared ViewModel
     val adoptionApplications by sharedViewModel.adoptionApplications.collectAsState()
 
     Scaffold(
@@ -56,25 +57,31 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
             )
         }
     ) { paddingValues ->
+        // Main content container
         Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Column layout to display the list of applications
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                // Title text for the screen
                 Text(
                     text = "Paw-plications:",
                     fontSize = 24.sp,
                     modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                 )
 
+                // Check if there are any applications
                 if (adoptionApplications.isEmpty()) {
+                    // Display a message if no applications are found
                     Text(
                         text = "No Paw-plications Found!",
                         fontSize = 18.sp,
@@ -82,6 +89,7 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                     )
                 } else {
                     adoptionApplications.forEach { application ->
+                        // Loop through each application and display its details
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -89,12 +97,14 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                 .clickable { navController.navigate("application_detail/${application.petId}") },
                             shape = RoundedCornerShape(8.dp)
                         ) {
+                            // Row layout to display the pet image and details
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
+                                // Display the pet image
                                 Image(
                                     painter = rememberAsyncImagePainter(model = dummyPets.first { it.id == application.petId }.imageUrl),
                                     contentDescription = "Pet Image",
@@ -103,6 +113,7 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                         .clip(RoundedCornerShape(8.dp))
                                 )
                                 Spacer(modifier = Modifier.width(16.dp))
+                                // Display the pet name and application status
                                 Column {
                                     Text(
                                         text = dummyPets.first { it.id == application.petId }.name,
