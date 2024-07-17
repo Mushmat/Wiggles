@@ -49,13 +49,16 @@ fun PetCareOptions(navController: NavController){
             )
         }
     ) { paddingValues ->
+        // Main content container
         Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Column layout to display the buttons
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
@@ -65,6 +68,7 @@ fun PetCareOptions(navController: NavController){
                     .padding(16.dp)
                     .verticalScroll(rememberScrollState())
             ) {
+                // Button to navigate to general pet care tips screen
                 GradientButton(
                     onClick = { navController.navigate("general_tips") },
                     text = "General Pet Care Tips",
@@ -75,6 +79,7 @@ fun PetCareOptions(navController: NavController){
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Button to navigate to dog care tips screen
                 GradientButton(
                     onClick = { navController.navigate("dog_tips") },
                     text = "Dog Care Tips",
@@ -85,6 +90,7 @@ fun PetCareOptions(navController: NavController){
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Button to navigate to cat care tips screen
                 GradientButton(
                     onClick = { navController.navigate("cat_tips") },
                     text = "Cat Care Tips",

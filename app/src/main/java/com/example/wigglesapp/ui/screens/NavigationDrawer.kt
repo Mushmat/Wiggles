@@ -14,7 +14,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel, drawerState: DrawerState, scope:CoroutineScope) {
+    // Column layout for the navigation drawer content
     Column(modifier = Modifier.padding(16.dp)) {
+        // Home button
         DrawerButton(text = "Paw-some Home") {
             scope.launch {
 
@@ -22,12 +24,14 @@ fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel,
                 drawerState.close()
             }
         }
+        // About Us button
         DrawerButton(text = "Fur-tastic About Us") {
             scope.launch {
                 navController.navigate("about_us_screen")
                 drawerState.close()
             }
         }
+        // User Profile button
         DrawerButton(text = "Purr-sonal Profile") {
             scope.launch {
 
@@ -35,31 +39,38 @@ fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel,
                 drawerState.close()
             }
         }
+        // Bookmarked Pets button
         DrawerButton(text = "Favorite Fur-iends") {
             scope.launch {
 
                 navController.navigate("bookmarked_pets_screen")
                 drawerState.close()}}
+        // Adoption Tracker button
         DrawerButton(text = "Pawgress Tracker") {
             scope.launch {
 
                 navController.navigate("adoption_tracker")
                 drawerState.close()}}
+        // Testimonials button
         DrawerButton(text = "Tail Wagging Stories") {
             scope.launch {
 
                 navController.navigate("testimonials_screen")
                 drawerState.close()}}
+        // FAQs button
         DrawerButton(text = "FAQs") {
             scope.launch {
 
                 navController.navigate("faqs_screen")
                 drawerState.close()}}
+
+        // Contact Us button
         DrawerButton(text = "Get in Touch with Paws") {
             scope.launch {
 
                 navController.navigate("contact_us_screen")
                 drawerState.close()}}
+        // Log Out button
         DrawerButton(text = "Paws Out") {
             scope.launch {
 

@@ -73,8 +73,10 @@ fun GeneralTipsScreen(navController: NavController) {
                 )
             }
         ) { paddingValues ->
+            // Remember the state for the pager
             val pagerState = rememberPagerState()
 
+            // Horizontal pager to swipe through pet care tips
             HorizontalPager(
                 count = tips.size,
                 state = pagerState,
@@ -82,15 +84,16 @@ fun GeneralTipsScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValues)
             ) { page ->
-
+                // Main content container for each page
                 Box(modifier = Modifier.fillMaxSize()) {
+                    // Background image
                     Image(
                         painter = painterResource(id = R.drawable.bg),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
                     )
-
+                    // Column layout to display tip content
                     Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -98,6 +101,7 @@ fun GeneralTipsScreen(navController: NavController) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                        // Display GIF for the current page
                     GlideImage(
                         imageModel = gifs[page],
                         contentScale = ContentScale.Crop,
@@ -105,8 +109,10 @@ fun GeneralTipsScreen(navController: NavController) {
                             .fillMaxWidth()
                             .height(300.dp)
                     )
+                        // Display the pet care tip text
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(text = tips[page], fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+                        // Instruction to swipe left or right
                     Text(
                         text = "Swipe Left/Right :)",
                         fontSize = 18.sp,

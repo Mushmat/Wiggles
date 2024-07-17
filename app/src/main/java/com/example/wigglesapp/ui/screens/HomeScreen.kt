@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
@@ -32,10 +31,10 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, authViewModel: AuthViewModel) {
-
-    val context = LocalContext.current
+    // Get the current context
     val authState by authViewModel.authState.collectAsState()
-
+    // Get the authentication state from the view model
+    // Check the authentication state and navigate to the auth screen if not authenticated
     LaunchedEffect(key1 = authState.isAuthenticated) {
         if(!authState.isAuthenticated){
             navController.navigate("auth"){
@@ -59,7 +58,9 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             )
         }
     ) { paddingValues ->
+        // Main content container
         Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -67,15 +68,18 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 modifier = Modifier.fillMaxSize()
             )
             Column(
+                // Column layout to display the home screen content
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Display the title
                 Text(text = "Paws Up!", fontSize = 32.sp)
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Home buttons for navigation
                 HomeButton(
                     icon = R.drawable.baseline_pets_24,
                     text = "Pet Parade",

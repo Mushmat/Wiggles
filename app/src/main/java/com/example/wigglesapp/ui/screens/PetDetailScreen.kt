@@ -38,13 +38,16 @@ import com.google.firebase.auth.FirebaseAuth
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel) {
+    // Find the pet with the given ID
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
+    // Get the list of bookmarked pets from the shared view model
     val bookmarkedPets by sharedViewModel.bookmarkedPets.collectAsState()
-
+    // Check if the current pet is bookmarked
     val isBookmarked = bookmarkedPets.any { it.id == pet.id }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
+            // Background image
             painter = painterResource(id = R.drawable.bg),
             contentDescription = null,
             contentScale = ContentScale.Crop,
@@ -54,6 +57,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
             modifier = Modifier
                 .fillMaxSize()
         ) {
+            // Top App Bar with a back button
             TopAppBar(
                 title = { Text(text = "Paw Details") },
                 navigationIcon = {
@@ -63,12 +67,14 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
                 }
             )
 
+            // LazyColumn to display the pet details
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
             ) {
                 item {
+                    // Pet image
                     Image(
                         painter = rememberAsyncImagePainter(model = pet.imageUrl),
                         contentDescription = null,
@@ -83,6 +89,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
                 }
 
                 item {
+                    // Display pet details
                     Text(
                         text = pet.name,
                         fontSize = 32.sp,
@@ -133,6 +140,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    // Button to bookmark or remove bookmark
                     Button(
                         onClick = {
                             if (isBookmarked) {
@@ -163,6 +171,7 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    // Button to navigate to the adoption application screen
                     Button(
                         onClick = { navController.navigate("adoption_application/${pet.id}") },
                         modifier = Modifier
@@ -190,7 +199,9 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
     }
 }
 
+// Extension function to convert a Pet to a BookmarkedPet
 fun Pet.toBookmarkedPet(): BookmarkedPet {
+    // Get the current user ID from FirebaseAuth
     val userId = FirebaseAuth.getInstance().currentUser?.uid ?: throw IllegalStateException("User not logged in")
     return BookmarkedPet(
         id = this.id,

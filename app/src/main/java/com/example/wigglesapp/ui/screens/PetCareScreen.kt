@@ -45,13 +45,16 @@ fun PetCareScreen(navController: NavController) {
             )
         }
     ) { paddingValues ->
+        // Main content container
         Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Column layout to display the buttons
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -61,6 +64,7 @@ fun PetCareScreen(navController: NavController) {
                     .padding(16.dp)
                     .verticalScroll(rememberScrollState())
             ) {
+                // Button to navigate to pet care tips screen
                 GradientButton(
                     onClick = { navController.navigate("pet_care_tips_screen") },
                     text = "Pet Care Tips",
@@ -71,6 +75,7 @@ fun PetCareScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Button to open Google Maps with a search for nearby vets
                 GradientButton(
                     onClick = {
                         val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -86,6 +91,7 @@ fun PetCareScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
+                // Button to navigate to parents screen
                 GradientButton(
                     onClick = { navController.navigate("parents_screen") },
                     text = "Paw-rents with my fur-iends",

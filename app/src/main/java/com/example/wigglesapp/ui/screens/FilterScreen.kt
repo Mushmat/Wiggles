@@ -18,9 +18,14 @@ import com.example.wigglesapp.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterScreen(navController: NavController, applyFilters: (List<String>, List<String>, List<String>) -> Unit) {
+
+    // State variables to keep track of selected filters
+
     val selectedBreeds = remember { mutableStateListOf<String>() }
     val selectedGenders = remember { mutableStateListOf<String>() }
     val selectedSizes = remember { mutableStateListOf<String>() }
+
+    // Lists of available breeds, genders, and sizes
 
     val breeds = listOf(
         "Pit Bull Terrier",
@@ -58,8 +63,9 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
                 )
             }
         ) { paddingValues ->
-
+            // Main content container
             Box(modifier = Modifier.fillMaxSize()) {
+                // Background image
                 Image(
                     painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
@@ -67,12 +73,14 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
                     modifier = Modifier.fillMaxSize()
                 )
             LazyColumn(
+                // LazyColumn to display filter options
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
                     .padding(16.dp)
             ) {
                 item {
+                    // Breed selection
                     Text(text = "Select Breed")
                     breeds.forEach { breed ->
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -91,7 +99,7 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
-
+                    // Gender selection
                     Text(text = "Select Gender")
                     genders.forEach { gender ->
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -110,6 +118,7 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
+                    // Size selection
 
                     Text(text = "Select Size")
                     sizes.forEach { size ->
@@ -130,6 +139,7 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    // Apply filters button
                     Button(onClick = {
                         applyFilters(selectedBreeds, selectedGenders, selectedSizes)
                         navController.popBackStack()
