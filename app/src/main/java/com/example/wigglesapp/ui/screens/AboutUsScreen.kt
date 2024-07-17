@@ -41,6 +41,7 @@ fun AboutUsScreen(navController: NavController) {
             )
         }
     ) { paddingValues ->
+        // Background image that fills the entire screen
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(id = R.drawable.bg),
@@ -48,6 +49,7 @@ fun AboutUsScreen(navController: NavController) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+            // Main content in a vertically scrollable column
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -57,6 +59,7 @@ fun AboutUsScreen(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top
             ) {
+                // Header image for the About Us section
                 Image(
                     painter = painterResource(id = R.drawable._024), // Add your shelter image here
                     contentDescription = null,
@@ -67,6 +70,7 @@ fun AboutUsScreen(navController: NavController) {
                         .padding(16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+                // Title of the About Us section
                 Text(
                     text = "Welcome to Wiggles",
                     fontSize = 28.sp,
@@ -74,6 +78,7 @@ fun AboutUsScreen(navController: NavController) {
                     color = Color(0xFF6200EE)
                 )
                 Spacer(modifier = Modifier.height(8.dp))
+                // Description about Wiggles' mission
                 Text(
                     text = "Your one-stop solution for finding and adopting the perfect pet! Our mission is to connect loving homes with pets in need and ensure that every pet finds a forever home. At Wiggles, we believe in the transformative power of pet adoption and strive to make the process as seamless and joyful as possible.",
                     fontSize = 16.sp,
@@ -81,7 +86,10 @@ fun AboutUsScreen(navController: NavController) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+                // Section header for 'Paws for a Cause'
                 SectionHeader(title = "Paws for a Cause")
+
+                // Description of the mission and aims
                 Text(
                     text = "Our mission is to provide a platform that facilitates the adoption process, making it easier for you to find a pet that matches your lifestyle and preferences. We aim to:\n\n- Promote Pet Adoption\n- Provide Comprehensive Information\n- Support Pet Owners",
                     fontSize = 16.sp,
@@ -89,7 +97,10 @@ fun AboutUsScreen(navController: NavController) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+                // Section header for 'Tail Tales'
                 SectionHeader(title = "Tail Tales")
+
+                // Description of the features offered by Wiggles
                 Text(
                     text = "At Wiggles, we offer a range of features designed to help you find and adopt the perfect pet:\n\n- Detailed Pet Profiles\n- Personalized Recommendations\n- Pet Care Tips\n- Nearby Vets\n- Community Support",
                     fontSize = 16.sp,
@@ -97,7 +108,11 @@ fun AboutUsScreen(navController: NavController) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Section header for 'Paws & Perks'
                 SectionHeader(title = "Paws & Perks")
+
+                // Description of the perks of using Wiggles
                 Text(
                     text = "User-Friendly Interface\nComprehensive Resources\nCommitment to Pet Welfare",
                     fontSize = 16.sp,
@@ -105,13 +120,19 @@ fun AboutUsScreen(navController: NavController) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Section header for 'Get in Touch with Paws'
                 SectionHeader(title = "Get in Touch with Paws")
+
+                // Contact information for Wiggles
                 Text(
                     text = "If you have any questions or need assistance, feel free to reach out to us at contact@wigglesapp.com. We're here to help!",
                     fontSize = 16.sp,
                     color = Color(0xff1a1a73),
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
+
+                // Button to navigate to the Contact Us screen
                 Button(
                     onClick = { navController.navigate("contact_us_screen") },
                     modifier = Modifier
