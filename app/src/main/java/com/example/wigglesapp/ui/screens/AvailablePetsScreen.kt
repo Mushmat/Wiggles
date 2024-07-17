@@ -231,20 +231,23 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
                 )
             }
         ) { paddingValues ->
+            //Main Container
             Box(modifier = Modifier.fillMaxSize()) {
+                // Background image
                 Image(
                     painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
-
+                // Column layout to display the filter button and list of pets
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues)
                         .padding(16.dp)
                 ) {
+                    // Filter button
                     Button(
                         onClick = { navController.navigate("filter") },
                         modifier = Modifier
@@ -266,6 +269,8 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
                     Spacer(modifier = Modifier.height(16.dp))
 
                     if (pets.isEmpty()) {
+                        // Check if there are any available pets
+                        // Display message if no pets are available
                         Text(
                             text = "No such pet is available for now! ",
                             color = Color.White,
@@ -275,7 +280,7 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
                             )
                         )
                     } else {
-
+                        // LazyColumn to display the list of available pets
                         LazyColumn(
                             modifier = Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -299,6 +304,7 @@ fun AvailablePetsScreen(navController: NavController, pets: List<Pet>){
 
 @Composable
 fun PetCard(navController: NavController, pet: Pet) {
+    // Card to display pet details
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -311,6 +317,7 @@ fun PetCard(navController: NavController, pet: Pet) {
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
+                // Display the pet image
                 Image(
                     painter = rememberAsyncImagePainter(model = pet.imageUrl),
                     contentDescription = null,
@@ -326,6 +333,7 @@ fun PetCard(navController: NavController, pet: Pet) {
                         .padding(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Display the pet's name and breed
                     Text(
                         text = pet.name,
                         fontWeight = FontWeight.Bold,
