@@ -38,15 +38,19 @@ import com.example.wigglesapp.viewmodels.SharedViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedViewModel: SharedViewModel) {
+
+    // Retrieve the specific adoption application based on petId
     val application =
         sharedViewModel.adoptionApplications.collectAsState().value.firstOrNull { it.petId == petId }
             ?: return
+
+    // Retrieve the pet details based on petId
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Pawgress Detail") },
+                    title = { Text(text = "Paw-gress Detail") },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -58,13 +62,16 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 )
             }
         ) { paddingValues ->
+            // Main content container
             Box(modifier = Modifier.fillMaxSize()) {
+                // Background image
                 Image(
                     painter = painterResource(id = R.drawable.bg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
+                // LazyColumn to display pet details and application answers
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
@@ -73,6 +80,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                 verticalArrangement = Arrangement.Top
             ) {
                 item {
+                    // Display the pet image
                     Image(
                         painter = rememberAsyncImagePainter(model = pet.imageUrl),
                         contentDescription = "Pet Image",
@@ -81,11 +89,14 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                             .clip(RoundedCornerShape(8.dp))
                     )
                     Spacer(modifier = Modifier.height(16.dp))
+                    // Display the pet's name, breed, and application status
                     Text(text = "Paw-sonal Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF1a1a73))
                     Text(text = "Paw-sonal Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF1a1a73))
                     Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color(0xFF2e7d32))
                     Spacer(modifier = Modifier.height(16.dp))
                 }
+
+                // Display each question and its corresponding answer
                 itemsIndexed(application.answers) { index, answer ->
                     Card(
                         modifier = Modifier
@@ -99,12 +110,14 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                                 .padding(16.dp),
                             horizontalAlignment = Alignment.Start
                         ) {
+                            // Display the question label
                             Text(
                                 text = "Q${index + 1}: ${getQuestionLabel(index)}",
                                 fontSize = 18.sp,
                                 color = Color.Gray
                             )
                             Spacer(modifier = Modifier.height(8.dp))
+                            // Display the answer
                             Text(text = answer, fontSize = 18.sp)
                         }
                     }
@@ -117,6 +130,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
     }
 }
 
+// Function to get the label for each question based on the index
 fun getQuestionLabel(index: Int): String {
     return when (index) {
         0 -> "Name"
