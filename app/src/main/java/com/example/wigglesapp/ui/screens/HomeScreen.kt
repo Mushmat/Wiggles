@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
@@ -39,17 +40,20 @@ import androidx.navigation.NavController
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.HomeButton
+import com.example.wigglesapp.utils.PreferencesHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, authViewModel: AuthViewModel) {
+    //CONTEXT
+    val context = LocalContext.current
     // Get the authentication state from the view model
     val authState by authViewModel.authState.collectAsState()
 
     //Variable to store the state of greeting animation display
-    var showGreeting by remember { mutableStateOf(true) }
+    var showGreeting by remember { mutableStateOf(!PreferencesHelper.isGreetingShown(context)) }
 
     // Check the authentication state and navigate to the auth screen if not authenticated
     LaunchedEffect(key1 = authState.isAuthenticated) {
@@ -132,7 +136,10 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.Black.copy(alpha = 0.5f))
-                    .clickable { showGreeting = false },
+                    .clickable {
+                        showGreeting = false
+                               PreferencesHelper.setGreetingShown(context, true)
+                               },
                 contentAlignment = Alignment.BottomStart
             ) {
                 Column(
