@@ -18,4 +18,8 @@ object PreferencesHelper
     fun setGreetingShown(context: Context, shown: Boolean){
         getPreferences(context).edit().putBoolean(KEY_GREETING_SHOWN, shown).apply()
     }
+
+    fun resetGreetingShown(context: Context) {
+        getPreferences(context).edit().remove(KEY_GREETING_SHOWN).apply()
+    }
 }
