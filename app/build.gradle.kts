@@ -54,6 +54,11 @@ android {
 
 dependencies {
 
+    //Dependencies for animation
+    implementation(libs.androidx.animation)
+    implementation(libs.material3)
+
+
     implementation(libs.accompanist.coil)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
