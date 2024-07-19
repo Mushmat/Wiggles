@@ -1,5 +1,5 @@
 
-![Logo](https://raw.githubusercontent.com/Mushmat/Wiggles/master/Picture1.png?token=GHSAT0AAAAAACTES5MICMSBZ5Z7DA7BPTSEZUWUKDQ)
+![Logo](https://i.ibb.co/9GwTpSD/Picture1.png)
 
 
 # Wiggles 
