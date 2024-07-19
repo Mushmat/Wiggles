@@ -182,5 +182,5 @@ The Wiggles App is build using the following technologies:
 - **[OpenAI](https://openai.com/)**: Language models for generating content and code suggestions.
 - **Contributors**: Valuable feedback and support during development.
 
-![Thank You]
+![Thank You](https://i.ibb.co/bQgHRDv/82124ST.jpg)
 
