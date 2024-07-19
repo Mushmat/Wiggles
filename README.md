@@ -18,29 +18,18 @@ Welcome to Wiggles! This comprehensive mobile application facilitates the adopti
 ## 🔍 Features
 
 - **Exclusive Pet Profiles**: Every pet gets a unique profile with detailed information.
-  
+
 - **Hassle-Free Adoption**: Streamlined process for adopting pets.
-- 
 - **Personalized Recommendations**: Quiz-based system to match pets with owners.
-- 
 - **Data Persistence**: Local storage with Room Database.
-- 
 - **User Authentication**: Secure login and signup with Firebase.
-- 
 - **Adoption Request Tracking**: Monitor the progress of your adoption applications.
-- 
 - **Pet Filtering and Bookmarking**: Easily find and save your favorite pets.
-- 
 - **Pet Care Tips**: Essential tips to help you care for your new pet.
-- 
 - **Nearby Pets Locator**: Find pets available for adoption near you.
-- 
 - **Community Connection**: Connect with other pet owners.
-- 
 - **Modern UI & Easy-to-Use**: A visually appealing and intuitive interface.
-- 
 - **Shelter Information**: Details about local shelters.
-- 
 - **Informational Screens**: About Us, FAQs, and more.
 
 
