@@ -2,7 +2,7 @@
 ![Logo](https://i.ibb.co/9GwTpSD/Picture1.png)
 
 
-# Wiggles 
+# 🐾 Wiggles - Your Ultimate Pet Adoption Companion 🐾
 
 (**Prototype Version**)
 
