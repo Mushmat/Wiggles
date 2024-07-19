@@ -91,11 +91,6 @@ If you encounter any issues or need further customization, refer to the followin
 - [Firebase Documentation](https://firebase.google.com/docs)
 
 
-## 📚 Project Documentation
-
-[Documentation](https://linktodocumentation)
-
-
 ## 🛠️ Tech Stack
 
 The Wiggles App is build using the following technologies:
