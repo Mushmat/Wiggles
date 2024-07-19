@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -25,6 +26,7 @@ import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.GradientButton
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,13 +39,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
     var isLoading by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
     val context = LocalContext.current
-
-    if (authState.isAuthenticated) {
-        // Navigate to home screen if authenticated
-        LaunchedEffect(Unit) {
-            isLoading = false
-        }
-    }
+    val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Background image
@@ -161,18 +157,52 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                 Text(text = it, color = Color.Red)
                 isLoading = false
             }
+
+            if (authState.isAuthenticated) {
+                isLoading = false
+                // Navigate to the home screen or perform other actions as needed
+            }
         }
 
-        // Loading indicator
         if (isLoading) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.5f))
-                    .clickable(enabled = false) {},
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator(color = Color.White)
+            LoadingScreen()
+        }
+    }
+}
+
+@Composable
+fun LoadingScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.5f)),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.White)
+                .padding(16.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.animated_dog_image),
+                contentDescription = "Loading",
+                modifier = Modifier.size(128.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Hang tight! We are fetching your pet-tastic experience...",
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            CircularProgressIndicator(color = Color(0xFF3498DB))
+
+            // Adding a delay to keep the loading screen visible
+            LaunchedEffect(Unit) {
+                delay(10000) //seconds delay
             }
         }
     }
