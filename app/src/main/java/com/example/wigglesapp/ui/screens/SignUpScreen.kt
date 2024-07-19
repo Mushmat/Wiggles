@@ -1,6 +1,7 @@
 package com.example.wigglesapp.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -19,6 +21,8 @@ import androidx.compose.ui.unit.sp
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.GradientButton
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,6 +39,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
     var confirmPassword by remember { mutableStateOf("") }
     var dobError by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
+
+    var isLoading by remember { mutableStateOf(false)}
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -92,7 +99,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         value = fullname,
                         onValueChange = { fullname = it },
                         label = { Text(text = "Full Name") },
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -108,7 +117,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         value = dob,
                         onValueChange = { dob = it },
                         label = { Text(text = "Date of Birth (DD/MM/YYYY)") },
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -127,7 +138,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         value = contactNumber,
                         onValueChange = { contactNumber = it },
                         label = { Text(text = "Contact Number") },
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -141,7 +154,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         value = address,
                         onValueChange = { address = it },
                         label = { Text(text = "Paw-ddress") },
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -156,7 +171,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         value = email,
                         onValueChange = { email = it },
                         label = { Text(text = "Paw-mail") },
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -171,7 +188,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         onValueChange = { password = it },
                         label = { Text(text = "Paws-word") },
                         visualTransformation = PasswordVisualTransformation(),
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -187,7 +206,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         onValueChange = { confirmPassword = it },
                         label = { Text(text = "Confirm Paws-word") },
                         visualTransformation = PasswordVisualTransformation(),
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.White,
                             focusedIndicatorColor = Color.Transparent,
@@ -202,9 +223,19 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                     GradientButton(
                         onClick = {
                             if (isValidDateOfBirth(dob)) {
-                                authViewModel.signUp(
-                                    fullname, dob, contactNumber, address, email, password, confirmPassword
-                                )
+                                isLoading = true
+                                scope.launch {
+                                    delay(5000)
+                                    authViewModel.signUp(
+                                        fullname,
+                                        dob,
+                                        contactNumber,
+                                        address,
+                                        email,
+                                        password,
+                                        confirmPassword
+                                    )
+                                }
                             } else {
                                 dobError = true
                             }
@@ -213,7 +244,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         gradient = Brush.horizontalGradient(
                             colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
                         ),
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp)
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp)
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -225,7 +258,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         gradient = Brush.horizontalGradient(
                             colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
                         ),
-                        modifier = Modifier.fillMaxWidth(0.8f).padding(8.dp)
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .padding(8.dp)
                     )
 
                     // Display error message if there is an error in authentication state
@@ -234,9 +269,58 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                     }
                 }
             }
+            if (isLoading) {
+                LoadingxScreen()
+            }
         }
     }
 }
+
+@Composable
+fun LoadingxScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .background(Color.White.copy(alpha = 0.8f))
+                .padding(16.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .padding(24.dp)
+        ) {
+            CircularProgressIndicator(
+                color = Color(0xFF3498DB),
+                strokeWidth = 6.dp,
+                modifier = Modifier.size(60.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Image(
+                painter = painterResource(id = R.drawable.animated_dog_image), // Replace with your dog image resource
+                contentDescription = "Loading Dog",
+                modifier = Modifier.size(128.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Loading... Get ready for some pawsome content!",
+                fontSize = 18.sp,
+                color = Color.Black,
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }
+    }
+}
+
 
 // Function to validate the date of birth
 fun isValidDateOfBirth(dob: String): Boolean {
