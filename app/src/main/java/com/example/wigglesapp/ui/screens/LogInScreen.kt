@@ -3,6 +3,7 @@ package com.example.wigglesapp.ui.screens
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -33,8 +34,16 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
     var password by remember { mutableStateOf("") }
     var emailError by remember { mutableStateOf("") }
     var passwordError by remember { mutableStateOf("") }
+    var isLoading by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
     val context = LocalContext.current
+
+    if (authState.isAuthenticated) {
+        // Navigate to home screen if authenticated
+        LaunchedEffect(Unit) {
+            isLoading = false
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Background image
@@ -44,6 +53,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
+
         // Column layout to display login form
         Column(
             modifier = Modifier
@@ -53,7 +63,6 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Spacer(modifier = Modifier.height(16.dp))
             // Logo and title
             Image(
@@ -67,7 +76,6 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                 color = Color.Black,
                 fontSize = 60.sp,
             )
-
             Spacer(modifier = Modifier.height(16.dp))
 
             // Email input field
@@ -115,10 +123,10 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             GradientButton(
                 onClick = {
                     if (validateFields(email, password, { emailError = it }, { passwordError = it })) {
+                        isLoading = true
                         authViewModel.logIn(email, password)
                     }
                 },
-
                 text = "Paws In",
                 gradient = Brush.horizontalGradient(
                     colors = listOf(Color(0xFF8E44AD), Color(0xFF3498DB))
@@ -127,7 +135,6 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
                     .fillMaxWidth(0.8f)
                     .padding(8.dp)
             )
-
             Spacer(modifier = Modifier.height(8.dp))
 
             // Sign up button
@@ -152,10 +159,25 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
             // Display authentication error if any
             authState.error?.let {
                 Text(text = it, color = Color.Red)
+                isLoading = false
+            }
+        }
+
+        // Loading indicator
+        if (isLoading) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.5f))
+                    .clickable(enabled = false) {},
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(color = Color.White)
             }
         }
     }
 }
+
 
 // Function to validate input fields
 fun validateFields(email: String, password: String, onEmailError: (String) -> Unit, onPasswordError: (String) -> Unit): Boolean {
