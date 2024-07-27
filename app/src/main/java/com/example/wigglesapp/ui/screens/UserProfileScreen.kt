@@ -51,7 +51,7 @@ fun UserProfileScreen(navController: NavController, authViewModel: AuthViewModel
                 // Top AppBar with title and back navigation
                 title = { Text("Purr-sonal Profile") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("home") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back"

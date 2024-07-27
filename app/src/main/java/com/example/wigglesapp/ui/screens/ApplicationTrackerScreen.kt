@@ -47,7 +47,7 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
             TopAppBar(
                 title = { Text(text = "Paw-plications") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("home") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back"

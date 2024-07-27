@@ -53,7 +53,7 @@ fun TestimonialsScreen(navController: NavController){
                 // Top AppBar with title and back navigation
                 title = { Text(text = "Tail Wagging Stories") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("home") }) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
                     }
                 }

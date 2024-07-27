@@ -50,7 +50,7 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
             TopAppBar(
                 title = { Text(text = "Favorite Fur-iends") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("home") }) {
                         Icon(imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "Back")
                     }
                 }

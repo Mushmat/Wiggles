@@ -31,7 +31,7 @@ fun AboutUsScreen(navController: NavController) {
             TopAppBar(
                 title = { Text(text = "Fur-tastic About Us", color = Color(0xFF000000)) },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("home") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back"

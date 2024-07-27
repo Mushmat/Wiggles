@@ -37,13 +37,12 @@ import com.example.wigglesapp.R
 fun ContactUsScreen(navController: NavController) {
     // Get the current context
     val context = LocalContext.current
-
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text(text = "Get in Touch with Paws") },
                     navigationIcon = {
-                        IconButton(onClick = { navController.popBackStack() }) {
+                        IconButton(onClick = { navController.navigate("home") }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                                 contentDescription = "Back"

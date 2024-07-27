@@ -53,7 +53,7 @@ fun FAQsScreen(navController: NavController){
             TopAppBar(
                 title = { Text(text = "This might be helpful!") },
                 navigationIcon = {
-                    IconButton(onClick = {navController.popBackStack()}) {
+                    IconButton(onClick = {navController.navigate("home")}) {
                         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24), contentDescription = "BACK")
                     }
                 }

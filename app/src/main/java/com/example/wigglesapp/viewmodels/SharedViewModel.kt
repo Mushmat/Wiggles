@@ -8,6 +8,7 @@ import com.example.wigglesapp.data.dao.AppDatabase
 import com.example.wigglesapp.data.entity.AdoptionApplicationEntity
 import com.example.wigglesapp.data.entity.BookmarkedPet
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val bookmarkedPetDao = db.bookmarkedPetDao()
     private val adoptionApplicationDao = db.adoptionApplicationDao()
     private val auth = FirebaseAuth.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
 
     // MutableStateFlow to hold the list of bookmarked pets
     private val _bookmarkedPets = MutableStateFlow<List<BookmarkedPet>>(emptyList())
@@ -39,6 +41,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
             }
         }
+        fetchAdoptionApplications()
     }
 
     // Function to bookmark a pet
@@ -71,15 +74,56 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     fun submitAdoptionApplication(petId: Int, answers: List<String>) {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
-                val application = AdoptionApplicationEntity(userId = user.uid, petId = petId, answers = answers)
+                val application = AdoptionApplicationEntity(
+                    userId = user.uid, petId = petId, answers = answers,
+                    status = "IN PROGRESS", remarks = "")
                 adoptionApplicationDao.insertAdoptionApplication(application)
                 _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
+
+                //TO FIRESTORE
+                val applicationData = mapOf(
+                    "userId" to user.uid,
+                    "petId" to petId,
+                    "answers" to answers,
+                    "status" to "IN PROGRESS",
+                    "remarks" to ""
+                )
+                firestore.collection("adoptionRequests").add(applicationData)
             }
         }
     }
+
+    //Function to fetch adoption applications from FireStore
+
+    private fun fetchAdoptionApplications(){
+        auth.currentUser?.let{ user ->
+            firestore.collection("adoptionRequests")
+                .whereEqualTo("userId", user.uid)
+                .addSnapshotListener{ snapshots, e ->
+                    if(e != null || snapshots == null){
+                        return@addSnapshotListener
+                    }
+                    val applications = snapshots.documents.mapNotNull { doc ->
+                        doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id)
+                    }
+                    _adoptionApplications.value = applications
+
+                }
+        }
+    }
+
+    // Function to update the status of an adoption application
+    fun updateAdoptionApplicationStatus(applicationId: String, status: String, remarks: String) {
+        firestore.collection("adoptionRequests").document(applicationId)
+            .update(mapOf("status" to status, "remarks" to remarks))
+    }
+
+
 }
 
 // Data class to represent an adoption application
-// Currently Unused
-data class AdoptionApplication(val petId: Int, val answers: List<String>)
+data class AdoptionApplication(
+    val petId: Int,
+    val answers: List<String>
+)
 

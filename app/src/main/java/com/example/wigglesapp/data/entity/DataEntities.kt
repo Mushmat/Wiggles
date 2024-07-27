@@ -29,11 +29,12 @@ data class BookmarkedPet(
 )
 
 // Define a Room entity for adoption applications
-
 @Entity(tableName = "adoption_application")
 data class AdoptionApplicationEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Auto-generated primary key
+    @PrimaryKey(autoGenerate = true) val id: String = 0, // Auto-generated primary key
     val userId: String, // User ID who submitted the application
     val petId: Int, // ID of the pet being adopted
-    val answers: List<String> // List of answers to adoption questions
+    val answers: List<String>, // List of answers to adoption questions
+    val status: String = "IN PROGRESS", // Status of the adoption application
+    val remarks: String = "" // Remarks for the adoption application
 )
