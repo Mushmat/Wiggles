@@ -104,7 +104,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                         return@addSnapshotListener
                     }
                     val applications = snapshots.documents.mapNotNull { doc ->
-                        doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id)
+                        doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id.hashCode())
                     }
                     _adoptionApplications.value = applications
 
@@ -126,4 +126,3 @@ data class AdoptionApplication(
     val petId: Int,
     val answers: List<String>
 )
-
