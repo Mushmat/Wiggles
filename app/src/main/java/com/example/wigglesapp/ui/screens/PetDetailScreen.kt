@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -122,21 +124,50 @@ fun PetDetailScreen(navController: NavController, petId: Int, sharedViewModel: S
                         modifier = Modifier.padding(vertical = 4.dp)
                     )
 
-                    Text(
-                        text = "Characteristics: ${pet.characteristics}",
-                        fontSize = 18.sp,
-                        color = Color(0xFF5d4037),
-                        fontWeight = FontWeight.Normal,
-                        modifier = Modifier.padding(vertical = 4.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color(0xFFF5f5f5))
+                            .padding(16.dp)
+                            .shadow(8.dp, RoundedCornerShape(16.dp))
+                            .padding(16.dp)
+                    ){
+                        Column {
+                            Text(
+                                text = buildAnnotatedString {
+                                    append("Characteristics: ")
+                                    addStyle(
+                                        style = SpanStyle(fontWeight = FontWeight.Bold),
+                                        start = 0,
+                                        end = 15
+                                    )
+                                    append(pet.characteristics)
+                                },
+                                fontSize = 18.sp,
+                                color = Color(0xFF5d4037),
+                                fontWeight = FontWeight.Normal,
+                                modifier = Modifier.padding(vertical = 4.dp)
+                            )
 
-                    Text(
-                        text = "About: ${pet.about}",
-                        fontSize = 18.sp,
-                        color = Color(0xFF5d4037),
-                        fontWeight = FontWeight.Normal,
-                        modifier = Modifier.padding(vertical = 4.dp)
-                    )
+                            Text(
+                                text = buildAnnotatedString {
+                                    append("About: ")
+                                    addStyle(
+                                        style = SpanStyle(fontWeight = FontWeight.Bold),
+                                        start = 0,
+                                        end = 6
+                                    )
+                                    append(pet.about)
+                                },
+                                fontSize = 18.sp,
+                                color = Color(0xFF5d4037),
+                                fontWeight = FontWeight.Normal,
+                                modifier = Modifier.padding(vertical = 4.dp)
+                            )
+
+                        }
+                    }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
