@@ -1,38 +1,29 @@
 package com.example.wigglesapp.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.wigglesapp.R
+import com.example.wigglesapp.ui.components.CardSection
+import com.example.wigglesapp.ui.components.SectionContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShelterInfoScreen(navController: NavController){
 
-    // Scaffold provides the basic structure for the screen with a top bar
     Scaffold(
         topBar = {
-            // Top AppBar with title and back navigation
             TopAppBar(
                 title = { Text(text = "Shelter Information") },
                 navigationIcon = {
@@ -42,127 +33,64 @@ fun ShelterInfoScreen(navController: NavController){
                 }
             )
         }
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
         Box(modifier = Modifier.fillMaxSize()) {
-            // Box to hold the background image and main content
             Image(
-                // Background image
-
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
-        Column(
-            // Column to hold the shelter information content
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .padding(16.dp)
-                .verticalScroll(
-                    rememberScrollState()
-                )
-        ) {
-            // Shelter image
-            val imageUrl = "https://i.insider.com/6589dc041c5c7b8c9a0beb71?width=700"
-            Image(
-                painter = rememberAsyncImagePainter(model = imageUrl),
-                contentDescription = "Shelter Image",
-                contentScale = ContentScale.Crop,
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(bottom = 16.dp)
-            )
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                val imageUrl = "https://i.insider.com/6589dc041c5c7b8c9a0beb71?width=700"
+                Image(
+                    painter = rememberAsyncImagePainter(model = imageUrl),
+                    contentDescription = "Shelter Image",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .padding(bottom = 16.dp)
+                )
 
-            // Shelter overview section
-            Text(
-                text = "Shelter Overview (Dummy Data)",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "Our shelter is dedicated to rescuing and rehoming pets. We strive to provide a safe and loving environment for all animals in our care until they find their forever homes.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Shelter Overview") {
+                    SectionContent(text = "Our shelter is dedicated to rescuing and rehoming pets. We strive to provide a safe and loving environment for all animals in our care until they find their forever homes.")
+                }
 
-            // Contact information section
-            Text(
-                text = "Contact Information",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(text = "Address: 123 Pet Street, Animal City, AC 12345", fontSize = 16.sp)
-            Text(text = "Phone: (123) 456-7890", fontSize = 16.sp)
-            Text(text = "Email: contact@shelter.org", fontSize = 16.sp)
-            Text(
-                text = "Operating Hours: Mon-Sat, 9 AM - 6 PM",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Contact Information") {
+                    SectionContent(text = "Address: 123 Pet Street, Animal City, AC 12345")
+                    SectionContent(text = "Phone: (123) 456-7890")
+                    SectionContent(text = "Email: contact@shelter.org")
+                    SectionContent(text = "Operating Hours: Mon-Sat, 9 AM - 6 PM")
+                }
 
-            // Adoption process section
-            Text(
-                text = "Adoption Process",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "1. Visit the shelter to meet the pets.\n2. Fill out an adoption application.\n3. Meet with an adoption counselor.\n4. Complete the adoption paperwork and pay the adoption fee.\n5. Take your new pet home!",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Adoption Process") {
+                    SectionContent(text = "1. Go to the Pet Parade or find a pet through Pet Matcher.\n2. Click on the Adopt Button and fill out the form.\n3. Track the status of the request from the drawer.\n4. You will be informed when your request is accepted.\n5. Take your new pet home!")
+                }
 
-            // Volunteer opportunities section
-            Text(
-                text = "Volunteer Opportunities",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "Join our team of dedicated volunteers! We have various roles available, including animal care, event support, and administrative tasks. Contact us to learn more and get involved.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Volunteer Opportunities") {
+                    SectionContent(text = "Join our team of dedicated volunteers! We have various roles available, including animal care, event support, and administrative tasks. Contact us to learn more and get involved.")
+                }
 
-            // Donation information section
-            Text(
-                text = "Donation Information",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "Support our shelter by donating! We accept monetary donations, as well as supplies such as food, toys, and bedding. Visit our website for more details on how to donate.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Donation Information") {
+                    SectionContent(text = "Support our shelter by donating! We accept monetary donations, as well as supplies such as food, toys, and bedding. Visit our website for more details on how to donate.")
+                }
 
-            // Events and programs section
-            Text(
-                text = "Events and Programs",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "Stay updated on our upcoming events and programs. We host adoption events, workshops, and community outreach programs. Check our website or contact us for more information.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                CardSection(title = "Events and Programs") {
+                    SectionContent(text = "Stay updated on our upcoming events and programs. We host adoption events, workshops, and community outreach programs. Check our website or contact us for more information.")
+                }
 
-            // Success stories section
-            Text(
-                text = "Success Stories",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-            Text(
-                text = "Read heartwarming stories from individuals and families who have adopted pets from our shelter. Their stories inspire and motivate us to continue our mission.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-        }
+                CardSection(title = "Success Stories") {
+                    SectionContent(text = "Read heartwarming stories from individuals and families who have adopted pets from our shelter. Their stories inspire and motivate us to continue our mission.")
+                }
+            }
         }
     }
 }
