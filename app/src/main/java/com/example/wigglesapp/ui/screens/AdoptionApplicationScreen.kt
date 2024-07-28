@@ -2,25 +2,24 @@ package com.example.wigglesapp.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wigglesapp.R
-import com.example.wigglesapp.ui.components.GradientButton
 import com.example.wigglesapp.viewmodels.SharedViewModel
 import coil.compose.rememberAsyncImagePainter
+import androidx.compose.ui.platform.LocalFocusManager
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,6 +41,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
 
     val answers = remember { mutableStateOf(List(questions.size) { "" }) }
     var currentQuestion by remember { mutableIntStateOf(0) }
+    val focusManager = LocalFocusManager.current
 
     Scaffold(
         topBar = {
@@ -117,7 +117,22 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                                 answers.value = answers.value.toMutableList()
                                     .also { it[currentQuestion] = newValue }
                             },
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
+                            keyboardOptions = KeyboardOptions.Default.copy(
+                                imeAction = if (currentQuestion < questions.size - 1) ImeAction.Next else ImeAction.Done
+                            ),
+                            keyboardActions = KeyboardActions(
+                                onNext = {
+                                    if (currentQuestion < questions.size - 1) {
+                                        currentQuestion++
+                                    } else {
+                                        focusManager.clearFocus()
+                                    }
+                                },
+                                onDone = {
+                                    focusManager.clearFocus()
+                                }
+                            )
                         )
                         Spacer(modifier = Modifier.height(16.dp))
 
