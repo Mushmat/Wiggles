@@ -16,36 +16,37 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.HomeButton
+import com.example.wigglesapp.ui.components.TutorialOverlay
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-//Class for Tutorial
-
-enum class TutorialStep{
+enum class TutorialStep {
     None, PetParade, PetMatcher, PetWellness, PawHouseInfo, Donate, Drawer
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: CoroutineScope, authViewModel: AuthViewModel) {
-    // Get the authentication state from the view model
     val authState by authViewModel.authState.collectAsState()
-    //State to remember the tutorial steps
     var tutorialStep by remember { mutableStateOf(TutorialStep.None) }
+    var highlightPosition by remember { mutableStateOf(Offset.Zero) }
+    var highlightSize by remember { mutableStateOf(Size.Zero) }
 
-    // Check the authentication state and navigate to the auth screen if not authenticated
     LaunchedEffect(key1 = authState.isAuthenticated) {
         if (!authState.isAuthenticated) {
             navController.navigate("auth") {
@@ -83,13 +84,11 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
             )
         }
     ) { paddingValues ->
-        // Main content container
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
                 contentDescription = null,
@@ -97,97 +96,103 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 modifier = Modifier.fillMaxSize()
             )
             Column(
-                // Column layout to display the home screen content
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Display the title
                 Text(text = "Paws Up!", fontSize = 32.sp)
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Home buttons for navigation
                 HomeButton(
                     icon = R.drawable.baseline_pets_24,
                     text = "Pet Parade",
                     onClick = { navController.navigate("available_pets") },
-                    highlight = tutorialStep == TutorialStep.PetParade
+                    highlight = tutorialStep == TutorialStep.PetParade,
+                    onGloballyPositioned = { coordinates ->
+                        if (tutorialStep == TutorialStep.PetParade) {
+                            highlightPosition = coordinates.positionInRoot()
+                            highlightSize = coordinates.size.toSize()
+                        }
+                    }
                 )
                 HomeButton(
                     icon = R.drawable.baseline_search_24,
                     text = "Pet Matcher",
                     onClick = { navController.navigate("pet_quiz") },
-                    highlight = tutorialStep == TutorialStep.PetMatcher
+                    highlight = tutorialStep == TutorialStep.PetMatcher,
+                    onGloballyPositioned = { coordinates ->
+                        if (tutorialStep == TutorialStep.PetMatcher) {
+                            highlightPosition = coordinates.positionInRoot()
+                            highlightSize = coordinates.size.toSize()
+                        }
+                    }
                 )
                 HomeButton(
                     icon = R.drawable.health,
                     text = "Pet Wellness",
                     onClick = { navController.navigate("pet_care_screen") },
-                    highlight = tutorialStep == TutorialStep.PetWellness
-                    )
+                    highlight = tutorialStep == TutorialStep.PetWellness,
+                    onGloballyPositioned = { coordinates ->
+                        if (tutorialStep == TutorialStep.PetWellness) {
+                            highlightPosition = coordinates.positionInRoot()
+                            highlightSize = coordinates.size.toSize()
+                        }
+                    }
+                )
                 HomeButton(
                     icon = R.drawable.shelter,
                     text = "Paw-house Info",
                     onClick = { navController.navigate("shelter_info") },
-                    highlight = tutorialStep == TutorialStep.PawHouseInfo
+                    highlight = tutorialStep == TutorialStep.PawHouseInfo,
+                    onGloballyPositioned = { coordinates ->
+                        if (tutorialStep == TutorialStep.PawHouseInfo) {
+                            highlightPosition = coordinates.positionInRoot()
+                            highlightSize = coordinates.size.toSize()
+                        }
+                    }
                 )
                 HomeButton(
                     icon = R.drawable.money,
                     text = "Donate (Coming Soon)",
                     onClick = { /* Navigate to Donate */ },
-                    highlight = tutorialStep == TutorialStep.Donate
+                    highlight = tutorialStep == TutorialStep.Donate,
+                    onGloballyPositioned = { coordinates ->
+                        if (tutorialStep == TutorialStep.Donate) {
+                            highlightPosition = coordinates.positionInRoot()
+                            highlightSize = coordinates.size.toSize()
+                        }
+                    }
                 )
             }
 
-            when (tutorialStep) {
-                TutorialStep.PetParade -> TutorialOverlay("This is Pet Parade. Click here to see available pets.") {
-                    tutorialStep = TutorialStep.PetMatcher
-                }
-                TutorialStep.PetMatcher -> TutorialOverlay("This is Pet Matcher. Click here to take a quiz and find your perfect pet.") {
-                    tutorialStep = TutorialStep.PetWellness
-                }
-                TutorialStep.PetWellness -> TutorialOverlay("This is Pet Wellness. Click here for tips and services on pet care.") {
-                    tutorialStep = TutorialStep.PawHouseInfo
-                }
-                TutorialStep.PawHouseInfo -> TutorialOverlay("This is Paw-house Info. Click here for information on shelters.") {
-                    tutorialStep = TutorialStep.Donate
-                }
-                TutorialStep.Donate -> TutorialOverlay("This is Donate. You can donate here soon.") {
-                    tutorialStep = TutorialStep.Drawer
-                }
-                TutorialStep.Drawer -> TutorialOverlay("This is the menu. Swipe from left to right to open the drawer or click the icon above.") {
-                    tutorialStep = TutorialStep.None
-                }
-                else -> {}
+            if (tutorialStep != TutorialStep.None) {
+                TutorialOverlay(
+                    message = when (tutorialStep) {
+                        TutorialStep.PetParade -> "This is Pet Parade. Click here to see available pets."
+                        TutorialStep.PetMatcher -> "This is Pet Matcher. Click here to take a quiz and find your perfect pet."
+                        TutorialStep.PetWellness -> "This is Pet Wellness. Click here for tips and services on pet care."
+                        TutorialStep.PawHouseInfo -> "This is Paw-house Info. Click here for information on shelters."
+                        TutorialStep.Donate -> "This is Donate. You can donate here soon."
+                        TutorialStep.Drawer -> "This is the menu. Swipe from left to right to open the drawer or click the icon above."
+                        else -> ""
+                    },
+                    highlightPosition = highlightPosition,
+                    highlightSize = highlightSize,
+                    onDismiss = {
+                        tutorialStep = when (tutorialStep) {
+                            TutorialStep.PetParade -> TutorialStep.PetMatcher
+                            TutorialStep.PetMatcher -> TutorialStep.PetWellness
+                            TutorialStep.PetWellness -> TutorialStep.PawHouseInfo
+                            TutorialStep.PawHouseInfo -> TutorialStep.Donate
+                            TutorialStep.Donate -> TutorialStep.Drawer
+                            TutorialStep.Drawer -> TutorialStep.None
+                            else -> TutorialStep.None
+                        }
+                    }
+                )
             }
-        }
-    }
-}
-
-@Composable
-fun TutorialOverlay(message: String, onDismiss: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0x80000000))
-            .clickable { onDismiss() }
-            .padding(16.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White)
-                .padding(24.dp)
-        ) {
-            Text(
-                text = message,
-                color = Color.Black,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
-            )
         }
     }
 }

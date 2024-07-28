@@ -13,15 +13,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeButton(text: String, icon: Int, onClick: () -> Unit, highlight: Boolean = false) {
+fun HomeButton(
+    text: String,
+    icon: Int,
+    onClick: () -> Unit,
+    highlight: Boolean,
+    onGloballyPositioned: (LayoutCoordinates) -> Unit
+) {
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -33,11 +40,13 @@ fun HomeButton(text: String, icon: Int, onClick: () -> Unit, highlight: Boolean 
                     listOf(Color(0xFF42A5F5), Color(0xFF1E88E5))
                 )
             )
-            .shadow(8.dp, RoundedCornerShape(12.dp))
             .then(
                 if (highlight) Modifier.border(2.dp, Color.Red, RoundedCornerShape(12.dp))
                 else Modifier
-            ),
+            )
+            .onGloballyPositioned { coordinates ->
+                onGloballyPositioned(coordinates)
+            },
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
     ) {
         Row(
