@@ -97,6 +97,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                         "DENIED" -> Color(0xFFD32F2F)
                         else -> Color(0xFFFFA000)
                     })
+                    Text(text = "Remarks: ${application.remarks}", fontSize = 20.sp, color = Color(0xFF2e7d32))
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 

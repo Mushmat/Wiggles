@@ -127,6 +127,8 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                             else -> Color(0xFFFFA000)
                                         }
                                     )
+                                    Text(text = "Remarks: ${application.remarks}", fontSize = 14.sp, color = Color(0xFF2e7d32))
+
                                 }
                             }
                         }
