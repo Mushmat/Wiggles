@@ -2,14 +2,8 @@ package com.example.wigglesapp.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -26,31 +20,34 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Composable function for creating a custom-styled home button with an icon and text
 @Composable
-fun HomeButton(text: String, icon: Int, onClick: () -> Unit) {
+fun HomeButton(text: String, icon: Int, onClick: () -> Unit, highlight: Boolean = false) {
     Button(
-        onClick = onClick, // Action to be performed on button click
+        onClick = onClick,
         modifier = Modifier
-            .fillMaxWidth() // Button fills the width of its parent
-            .padding(vertical = 8.dp) // Padding around the button
-            .clip(RoundedCornerShape(12.dp)) // Rounded corners with a radius of 12 dp
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .clip(RoundedCornerShape(12.dp))
             .background(
-                brush = Brush.horizontalGradient( // Horizontal gradient background
-                    listOf(Color(0xFF42A5F5), Color(0xFF1E88E5)) // Gradient colors
+                brush = Brush.horizontalGradient(
+                    listOf(Color(0xFF42A5F5), Color(0xFF1E88E5))
                 )
             )
-            .shadow(8.dp, RoundedCornerShape(12.dp)), // Shadow with rounded corners and elevation of 8 dp
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent) // Transparent button container color
+            .shadow(8.dp, RoundedCornerShape(12.dp))
+            .then(
+                if (highlight) Modifier.border(2.dp, Color.Red, RoundedCornerShape(12.dp))
+                else Modifier
+            ),
+        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically // Align items vertically in the center
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier
-                    .size(40.dp) // Box size for the icon background
-                    .background(Color.White, shape = CircleShape) // White circular background for the icon
-                    .padding(8.dp) // Padding around the icon
+                    .size(40.dp)
+                    .background(Color.White, shape = CircleShape)
+                    .padding(8.dp)
             ) {
                 Image(painter = painterResource(id = icon), contentDescription = null, modifier = Modifier.fillMaxSize())
             }
