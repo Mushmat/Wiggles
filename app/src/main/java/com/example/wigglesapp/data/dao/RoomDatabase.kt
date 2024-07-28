@@ -11,14 +11,13 @@ import com.example.wigglesapp.data.entity.BookmarkedPet
 import com.example.wigglesapp.data.entity.UserProfile
 
 // Define the Room database for the application
-
 @Database(
     entities = [UserProfile::class, BookmarkedPet::class, AdoptionApplicationEntity::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(Converters::class) // Converters for custom types
-abstract class AppDatabase : RoomDatabase(){
+abstract class AppDatabase : RoomDatabase() {
     // Abstract methods to get DAO objects
     abstract fun userProfileDao(): UserProfileDao
     abstract fun bookmarkedPetDao(): BookmarkedPetDao
@@ -37,7 +36,8 @@ abstract class AppDatabase : RoomDatabase(){
                     context.applicationContext, // Application context
                     AppDatabase::class.java, // Database class
                     "app_database" // Database name
-                ).build()
+                )
+                    .build()
                 INSTANCE = instance // Assign the instance to the INSTANCE variable
                 instance // Return the instance
             }
@@ -46,7 +46,6 @@ abstract class AppDatabase : RoomDatabase(){
 }
 
 // Class to handle type conversions for Room database
-
 class Converters {
     @TypeConverter
     fun fromStringList(value: List<String>): String {

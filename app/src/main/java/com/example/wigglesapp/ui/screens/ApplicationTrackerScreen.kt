@@ -120,8 +120,12 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                         fontSize = 20.sp
                                     )
                                     Text(
-                                        text = "Status: IN PROGRESS",
-                                        fontSize = 16.sp, color = Color(0xFF2e7d32)
+                                        text = "Status: ${application.status}",
+                                        fontSize = 16.sp, color = when(application.status) {
+                                            "ACCEPTED" -> Color(0xFF2e7d32)
+                                            "DENIED" -> Color(0xFFD32F2F)
+                                            else -> Color(0xFFFFA000)
+                                        }
                                     )
                                 }
                             }

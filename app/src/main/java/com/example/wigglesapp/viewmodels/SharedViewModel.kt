@@ -35,13 +35,17 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     // Initialize the ViewModel by fetching the initial data for the current user
     init {
+        fetchInitialData()
+    }
+
+    private fun fetchInitialData() {
         viewModelScope.launch {
             auth.currentUser?.let { user ->
                 _bookmarkedPets.value = bookmarkedPetDao.getAllBookmarkedPets(user.uid)
                 _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
+                fetchAdoptionApplications()
             }
         }
-        fetchAdoptionApplications()
     }
 
     // Function to bookmark a pet
@@ -80,7 +84,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 adoptionApplicationDao.insertAdoptionApplication(application)
                 _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
 
-                //TO FIRESTORE
+                // TO FIRESTORE
                 val applicationData = mapOf(
                     "userId" to user.uid,
                     "petId" to petId,
@@ -93,8 +97,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    //Function to fetch adoption applications from FireStore
-
+    // Function to fetch adoption applications from Firestore
     private fun fetchAdoptionApplications(){
         auth.currentUser?.let{ user ->
             firestore.collection("adoptionRequests")
@@ -104,10 +107,9 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                         return@addSnapshotListener
                     }
                     val applications = snapshots.documents.mapNotNull { doc ->
-                        doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id.hashCode())
+                        doc.toObject(AdoptionApplicationEntity::class.java)
                     }
                     _adoptionApplications.value = applications
-
                 }
         }
     }
@@ -117,8 +119,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         firestore.collection("adoptionRequests").document(applicationId)
             .update(mapOf("status" to status, "remarks" to remarks))
     }
-
-
 }
 
 // Data class to represent an adoption application

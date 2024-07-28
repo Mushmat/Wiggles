@@ -47,31 +47,31 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
     // Retrieve the pet details based on petId
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "Paw-gress Detail") },
-                    navigationIcon = {
-                        IconButton(onClick = { navController.popBackStack() }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
-                                contentDescription = "Back"
-                            )
-                        }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Paw-gress Detail") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                            contentDescription = "Back"
+                        )
                     }
-                )
-            }
-        ) { paddingValues ->
-            // Main content container
-            Box(modifier = Modifier.fillMaxSize()) {
-                // Background image
-                Image(
-                    painter = painterResource(id = R.drawable.bg),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
-                // LazyColumn to display pet details and application answers
+                }
+            )
+        }
+    ) { paddingValues ->
+        // Main content container
+        Box(modifier = Modifier.fillMaxSize()) {
+            // Background image
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            // LazyColumn to display pet details and application answers
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
@@ -92,7 +92,11 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                     // Display the pet's name, breed, and application status
                     Text(text = "Paw-sonal Name: ${pet.name}", fontSize = 20.sp, color = Color(0xFF1a1a73))
                     Text(text = "Paw-sonal Breed: ${pet.breed}", fontSize = 20.sp, color = Color(0xFF1a1a73))
-                    Text(text = "STATUS: IN PROGRESS", fontSize = 20.sp, color = Color(0xFF2e7d32))
+                    Text(text = "STATUS: ${application.status}", fontSize = 20.sp, color = when(application.status) {
+                        "ACCEPTED" -> Color(0xFF2e7d32)
+                        "DENIED" -> Color(0xFFD32F2F)
+                        else -> Color(0xFFFFA000)
+                    })
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
