@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.wigglesapp.R
+import com.example.wigglesapp.utils.NotificationUtils
 import com.example.wigglesapp.viewmodels.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -119,7 +120,6 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                                         }
                                     )
                                     Text(text = "Remarks: ${application.remarks}", fontSize = 14.sp, color = Color(0xFF2e7d32))
-
                                 }
                             }
                         }
