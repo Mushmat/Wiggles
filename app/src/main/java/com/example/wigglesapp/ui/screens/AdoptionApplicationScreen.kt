@@ -19,6 +19,7 @@ import com.example.wigglesapp.R
 import com.example.wigglesapp.viewmodels.SharedViewModel
 import coil.compose.rememberAsyncImagePainter
 import androidx.compose.ui.platform.LocalFocusManager
+import com.example.wigglesapp.utils.NotificationUtils
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -153,6 +154,11 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                                 Button(onClick = {
                                     sharedViewModel.submitAdoptionApplication(petId, answers.value)
                                     navController.navigate("adoption_success")
+                                    NotificationUtils.sendNotification(
+                                        context = navController.context,
+                                        title = "Application Submitted!",
+                                        message = "Pet adoption application submitted! Track the status via Application Tracker option."
+                                    )
                                 }) {
                                     Text(text = "Submit")
                                 }

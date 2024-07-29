@@ -58,6 +58,9 @@ dependencies {
     implementation(libs.androidx.animation)
     implementation(libs.material3)
 
+    //For notification
+    implementation(libs.material)
+    implementation(libs.androidx.appcompat)
 
     implementation(libs.accompanist.coil)
     implementation(libs.androidx.core.ktx)

@@ -3,6 +3,7 @@ accompanistCoil = "0.15.0"
 accompanistPager = "0.25.1"
 agp = "8.5.0"
 animation = "1.6.8"
+appcompat = "1.7.0"
 coilCompose = "2.4.0"
 compiler = "4.12.0"
 firebaseAuthKtx = "23.0.0"
@@ -29,6 +30,7 @@ landscapistGlide = "1.4.8"
 lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
+material = "1.12.0"
 material3 = "1.2.1"
 module = "1.0.0"
 navigationCompose = "2.7.7"
@@ -45,6 +47,7 @@ adapters = "3.2.0-alpha11"
 accompanist-coil = { module = "com.google.accompanist:accompanist-coil", version.ref = "accompanistCoil" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
 androidx-hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
@@ -84,6 +87,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 landscapist-glide = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapistGlide" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 module = { module = "com.example.library:module", version.ref = "module" }
 sceneform = { module = "com.gorisse.thomas.sceneform:sceneform", version.ref = "sceneform" }

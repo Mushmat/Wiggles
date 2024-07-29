@@ -27,6 +27,7 @@ import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.HomeButton
 import com.example.wigglesapp.ui.components.TutorialOverlay
+import com.example.wigglesapp.utils.NotificationUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -112,7 +113,9 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 HomeButton(
                     icon = R.drawable.baseline_search_24,
                     text = "Pet Matcher",
-                    onClick = { navController.navigate("pet_quiz") },
+                    onClick = {
+                        navController.navigate("pet_quiz")
+                    },
                     highlight = tutorialStep == TutorialStep.PetMatcher,
                     onGloballyPositioned = { coordinates ->
                         if (tutorialStep == TutorialStep.PetMatcher) {
@@ -121,10 +124,13 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                         }
                     }
                 )
+
                 HomeButton(
                     icon = R.drawable.health,
                     text = "Pet Wellness",
-                    onClick = { navController.navigate("pet_care_screen") },
+                    onClick = {
+                        navController.navigate("pet_care_screen")
+                              },
                     highlight = tutorialStep == TutorialStep.PetWellness,
                     onGloballyPositioned = { coordinates ->
                         if (tutorialStep == TutorialStep.PetWellness) {
