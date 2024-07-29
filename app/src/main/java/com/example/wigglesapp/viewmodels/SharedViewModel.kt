@@ -118,18 +118,4 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             fetchAdoptionApplications(userId)
         }
     }
-
-    // Function to handle user logout
-    fun handleUserLogout() {
-        _bookmarkedPets.value = emptyList()
-        _adoptionApplications.value = emptyList()
-        adoptionListenerRegistration?.remove()
-        adoptionListenerRegistration = null
-    }
-
-    // Function to update the status of an adoption application
-    fun updateAdoptionApplicationStatus(applicationId: String, status: String, remarks: String) {
-        firestore.collection("adoptionRequests").document(applicationId)
-            .update(mapOf("status" to status, "remarks" to remarks))
-    }
 }
