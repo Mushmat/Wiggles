@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -97,7 +98,7 @@ fun ApplicationDetailScreen(navController: NavController, petId: Int, sharedView
                         "DENIED" -> Color(0xFFD32F2F)
                         else -> Color(0xFFFFA000)
                     })
-                    Text(text = "Remarks: ${application.remarks}", fontSize = 20.sp, color = Color(0xFF2e7d32))
+                    Text(text = "Remarks: \n ${application.remarks}", fontSize = 20.sp, color = Color(0xFF2e7d32), textAlign = TextAlign.Center)
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
