@@ -17,7 +17,7 @@ fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel,
     // Column layout for the navigation drawer content
     Column(modifier = Modifier.padding(16.dp)) {
         // Home button
-        DrawerButton(text = "Paw-some Home") {
+        DrawerButton(text = "Home") {
             scope.launch {
 
                 navController.navigate("home")
@@ -25,7 +25,7 @@ fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel,
             }
         }
         // About Us button
-        DrawerButton(text = "Fur-tastic About Us") {
+        DrawerButton(text = "About Us") {
             scope.launch {
                 navController.navigate("about_us_screen")
                 drawerState.close()
@@ -40,13 +40,13 @@ fun NavigationDrawer(navController: NavController, authViewModel: AuthViewModel,
             }
         }
         // Bookmarked Pets button
-        DrawerButton(text = "Favorite Fur-iends") {
+        DrawerButton(text = "Bookmarked Fur-iends") {
             scope.launch {
 
                 navController.navigate("bookmarked_pets_screen")
                 drawerState.close()}}
         // Adoption Tracker button
-        DrawerButton(text = "Pawgress Tracker") {
+        DrawerButton(text = "Application Tracker") {
             scope.launch {
 
                 navController.navigate("adoption_tracker")
