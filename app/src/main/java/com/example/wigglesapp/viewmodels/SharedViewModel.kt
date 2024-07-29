@@ -9,6 +9,7 @@ import com.example.wigglesapp.data.entity.AdoptionApplicationEntity
 import com.example.wigglesapp.data.entity.BookmarkedPet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -33,17 +34,14 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val _adoptionApplications = MutableStateFlow<List<AdoptionApplicationEntity>>(emptyList())
     val adoptionApplications: StateFlow<List<AdoptionApplicationEntity>> get() = _adoptionApplications
 
+    private var adoptionListenerRegistration: ListenerRegistration? = null
+
     // Initialize the ViewModel by fetching the initial data for the current user
     init {
-        fetchInitialData()
-    }
-
-    private fun fetchInitialData() {
-        viewModelScope.launch {
-            auth.currentUser?.let { user ->
+        auth.currentUser?.let { user ->
+            viewModelScope.launch {
                 _bookmarkedPets.value = bookmarkedPetDao.getAllBookmarkedPets(user.uid)
-                _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
-                fetchAdoptionApplications()
+                fetchAdoptionApplications(user.uid)
             }
         }
     }
@@ -98,20 +96,35 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // Function to fetch adoption applications from Firestore
-    private fun fetchAdoptionApplications(){
-        auth.currentUser?.let{ user ->
-            firestore.collection("adoptionRequests")
-                .whereEqualTo("userId", user.uid)
-                .addSnapshotListener{ snapshots, e ->
-                    if(e != null || snapshots == null){
-                        return@addSnapshotListener
-                    }
-                    val applications = snapshots.documents.mapNotNull { doc ->
-                        doc.toObject(AdoptionApplicationEntity::class.java)
-                    }
-                    _adoptionApplications.value = applications
+    private fun fetchAdoptionApplications(userId: String) {
+        adoptionListenerRegistration?.remove()
+        adoptionListenerRegistration = firestore.collection("adoptionRequests")
+            .whereEqualTo("userId", userId)
+            .addSnapshotListener { snapshots, e ->
+                if (e != null || snapshots == null) {
+                    return@addSnapshotListener
                 }
+                val applications = snapshots.documents.mapNotNull { doc ->
+                    doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id.hashCode())
+                }
+                _adoptionApplications.value = applications
+            }
+    }
+
+    // Function to handle user login
+    fun handleUserLogin(userId: String) {
+        viewModelScope.launch {
+            _bookmarkedPets.value = bookmarkedPetDao.getAllBookmarkedPets(userId)
+            fetchAdoptionApplications(userId)
         }
+    }
+
+    // Function to handle user logout
+    fun handleUserLogout() {
+        _bookmarkedPets.value = emptyList()
+        _adoptionApplications.value = emptyList()
+        adoptionListenerRegistration?.remove()
+        adoptionListenerRegistration = null
     }
 
     // Function to update the status of an adoption application
@@ -120,9 +133,3 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             .update(mapOf("status" to status, "remarks" to remarks))
     }
 }
-
-// Data class to represent an adoption application
-data class AdoptionApplication(
-    val petId: Int,
-    val answers: List<String>
-)

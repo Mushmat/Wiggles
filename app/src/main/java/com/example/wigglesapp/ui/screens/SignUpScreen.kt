@@ -18,9 +18,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.wigglesapp.viewmodels.AuthViewModel
+import androidx.navigation.NavController
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.GradientButton
+import com.example.wigglesapp.viewmodels.AuthViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -320,7 +321,6 @@ fun LoadingxScreen() {
         }
     }
 }
-
 
 // Function to validate the date of birth
 fun isValidDateOfBirth(dob: String): Boolean {

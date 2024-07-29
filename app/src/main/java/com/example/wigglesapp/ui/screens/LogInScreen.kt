@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wigglesapp.viewmodels.AuthViewModel
+import com.example.wigglesapp.viewmodels.SharedViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.GradientButton
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +31,11 @@ import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
+fun LoginScreen(
+    authViewModel: AuthViewModel,
+    sharedViewModel: SharedViewModel,
+    onSignUpClicked: () -> Unit
+) {
     // State variables to manage input fields and errors
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -160,6 +165,7 @@ fun LoginScreen(authViewModel: AuthViewModel, onSignUpClicked: () -> Unit) {
 
             if (authState.isAuthenticated) {
                 isLoading = false
+                sharedViewModel.handleUserLogin(email)
                 // Navigate to the home screen or perform other actions as needed
             }
         }
@@ -207,7 +213,6 @@ fun LoadingScreen() {
         }
     }
 }
-
 
 // Function to validate input fields
 fun validateFields(email: String, password: String, onEmailError: (String) -> Unit, onPasswordError: (String) -> Unit): Boolean {

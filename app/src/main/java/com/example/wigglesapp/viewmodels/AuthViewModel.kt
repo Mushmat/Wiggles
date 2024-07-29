@@ -29,6 +29,15 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 val userProfile = userProfileDao.getUserProfile(it.email!!)
                 _userDetails.value = userProfile
+                if (userProfile != null) {
+                    _authState.value = AuthState(isAuthenticated = true, userDetails = User(
+                        fullName = userProfile.fullName,
+                        dob = userProfile.dob,
+                        contactNumber = userProfile.contactNumber,
+                        address = userProfile.address,
+                        email = userProfile.email
+                    ))
+                }
             }
         }
     }
@@ -41,7 +50,15 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                     viewModelScope.launch {
                         val userProfile = userProfileDao.getUserProfile(email)
                         _userDetails.value = userProfile
-                        _authState.value = AuthState(isAuthenticated = true)
+                        if (userProfile != null) {
+                            _authState.value = AuthState(isAuthenticated = true, userDetails = User(
+                                fullName = userProfile.fullName,
+                                dob = userProfile.dob,
+                                contactNumber = userProfile.contactNumber,
+                                address = userProfile.address,
+                                email = userProfile.email
+                            ))
+                        }
                     }
                 } else {
                     _authState.value = AuthState(error = task.exception?.message)
@@ -62,7 +79,13 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                     viewModelScope.launch {
                         userProfileDao.insertUserProfile(userProfile)
                         _userDetails.value = userProfile
-                        _authState.value = AuthState(isAuthenticated = true)
+                        _authState.value = AuthState(isAuthenticated = true, userDetails = User(
+                            fullName = fullName,
+                            dob = dob,
+                            contactNumber = contactNumber,
+                            address = address,
+                            email = email
+                        ))
                     }
                 } else {
                     _authState.value = AuthState(error = task.exception?.message)
@@ -70,19 +93,19 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
             }
     }
 
-    //Log Out Function
+    // Log out function
     fun logOut() {
         auth.signOut()
         _authState.value = AuthState()
         _userDetails.value = null
     }
 
-    //Reset state
+    // Reset state
     fun resetAuthState() {
         _authState.value = AuthState()
     }
 
-    //Update user profile
+    // Update user profile
     fun updateUserProfile(fullName: String, contactNumber: String, address: String) {
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -102,16 +125,16 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 }
 
 
-//Data classes
 data class AuthState(
     val isAuthenticated: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val userDetails: User? = null // Add this line
 )
 
 data class User(
     val fullName: String = "",
     val dob: String = "",
-    val contactNumber: String = "" ,
+    val contactNumber: String = "",
     val address: String = "",
     val email: String = ""
 )

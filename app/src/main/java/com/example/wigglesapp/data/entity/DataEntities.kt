@@ -31,10 +31,12 @@ data class BookmarkedPet(
 // Define a Room entity for adoption applications
 @Entity(tableName = "adoption_application")
 data class AdoptionApplicationEntity(
-    @PrimaryKey val id: String = "",
-    val userId: String = "",
-    val petId: Int = 0,
-    val answers: List<String> = emptyList(),
-    val status: String = "IN PROGRESS",
-    val remarks: String = ""
-)
+    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Auto-generated primary key
+    val userId: String, // User ID who submitted the application
+    val petId: Int, // ID of the pet being adopted
+    val answers: List<String>, // List of answers to adoption questions
+    val status: String, // Status of the application
+    val remarks: String // Remarks for the application
+) {
+    constructor() : this(0, "", 0, emptyList(), "", "") // No-argument constructor for Firestore
+}

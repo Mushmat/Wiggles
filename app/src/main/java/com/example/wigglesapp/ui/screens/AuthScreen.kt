@@ -9,18 +9,26 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wigglesapp.viewmodels.AuthViewModel
+import com.example.wigglesapp.viewmodels.SharedViewModel
 
 @Composable
-fun AuthScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
+fun AuthScreen(
+    navController: NavController,
+    authViewModel: AuthViewModel = viewModel(),
+    sharedViewModel: SharedViewModel = viewModel()
+) {
     // Track whether the user is on the sign-up screen or the login screen
-
     var isSignUp by remember { mutableStateOf(false) }
 
     // Collect the authentication state from the view model
-
     val authState by authViewModel.authState.collectAsState()
+
     // Check if the user is authenticated
     if (authState.isAuthenticated) {
+        // Handle user login
+        authState.userDetails?.let { userDetails ->
+            sharedViewModel.handleUserLogin(userDetails.email)
+        }
         // Navigate to the home screen and clear the back stack
         navController.navigate("home") {
             popUpTo("auth") { inclusive = true }
@@ -30,7 +38,7 @@ fun AuthScreen(navController: NavController, authViewModel: AuthViewModel = view
         if (isSignUp) {
             SignUpScreen(authViewModel) { isSignUp = false }
         } else {
-            LoginScreen(authViewModel) { isSignUp = true }
+            LoginScreen(authViewModel, sharedViewModel) { isSignUp = true }
         }
     }
 }
