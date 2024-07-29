@@ -79,6 +79,11 @@ fun AdoptionTrackerScreen(navController: NavController, sharedViewModel: SharedV
                         fontSize = 18.sp,
                         modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
                     )
+                    Text(
+                        text = "If you registered a pet adoption request and cannot see it, relaunch the app!",
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(16.dp), color = Color(0xFF1a1a73)
+                    )
                 } else {
                     adoptionApplications.forEach { application ->
                         // Loop through each application and display its details

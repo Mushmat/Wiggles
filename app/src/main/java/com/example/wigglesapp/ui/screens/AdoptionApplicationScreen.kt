@@ -157,7 +157,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                                     NotificationUtils.sendNotification(
                                         context = navController.context,
                                         title = "Application Submitted!",
-                                        message = "Pet adoption application submitted! Track the status via Application Tracker option."
+                                        message = "Pet adoption application submitted for ${pet.name}! Track the status via Application Tracker option."
                                     )
                                 }) {
                                     Text(text = "Submit")
