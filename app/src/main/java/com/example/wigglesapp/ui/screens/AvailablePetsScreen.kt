@@ -139,7 +139,9 @@ val dummyPets = listOf(
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300",
         "Male", "Small",
         "Dog-friendly, Cute",
-        "Profile coming soon!"
+        "Meet September, the adorable Domestic Short Hair cat who's sure to steal your heart! " +
+                "This small male feline is not only cute but also incredibly friendly, especially with dogs. " +
+                "His charming personality and playful demeanor make him the perfect addition to any family."
     ),
 
     Pet(22, "Nene", "Domestic Short Hair",

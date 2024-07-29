@@ -1,10 +1,7 @@
 package com.example.wigglesapp.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,10 +12,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.positionInRoot
@@ -66,20 +61,6 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                             contentDescription = "Menu"
                         )
                     }
-                    Box(
-                        modifier = Modifier
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(Color.Transparent)
-                    ) {
-                        Text(
-                            text = "Start Tutorial",
-                            color = Color.Blue,
-                            modifier = Modifier
-                                .clickable { tutorialStep = TutorialStep.PetParade }
-                                .padding(horizontal = 16.dp, vertical = 8.dp) // Added padding
-                        )
-                    }
                 }
             )
         }
@@ -105,6 +86,16 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 Text(text = "Paws Up!", fontSize = 32.sp)
                 Spacer(modifier = Modifier.height(16.dp))
 
+               HomeButton(
+                icon = R.drawable.baseline_tour_24,
+                text = "Start Tutorial",
+                onClick = { tutorialStep = TutorialStep.PetParade },
+                highlight = false,
+                onGloballyPositioned = {}
+            )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 HomeButton(
                     icon = R.drawable.baseline_pets_24,
                     text = "Pet Parade",
@@ -117,6 +108,7 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                         }
                     }
                 )
+
                 HomeButton(
                     icon = R.drawable.baseline_search_24,
                     text = "Pet Matcher",

@@ -108,5 +108,6 @@ fun SuggestedPetCard(navController: NavController, pet: Pet){
         Text(text = pet.name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
         Text(text = pet.breed, fontSize = 14.sp, color = Color(0xFF5d4037))
 
+        Text(text = "Click on the pet to adopt it!", fontSize = 16.sp, color = Color(0xFF5d4037))
     }
 }
