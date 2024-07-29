@@ -27,16 +27,16 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
     val pet = dummyPets.firstOrNull { it.id == petId } ?: return
 
     val questions = listOf(
-        "Who will be the owner of the pet?",
-        "What is their gender?",
-        "What is their age?",
-        "What is their email?",
-        "Do they need any assistive services along with the pet?",
-        "Does their colony allow pets?",
-        "Have they had pets before? If yes, what kind?",
-        "How much time can they dedicate to the pet?",
-        "Do they travel frequently? If yes, where will the pet be during that phase?",
-        "How long can they hold the adoption request?"
+        "Who will be the primary caretaker of the pet?",
+        "What is the individual's gender?",
+        "What is the individual's age?",
+        "What is the individual's email address?",
+        "Do they require any assistive services in addition to the pet?",
+        "Does their residential community allow pets? If not, how will they address this issue?",
+        "Have they had pets before? If so, what kind?",
+        "How much time can they dedicate to caring for the pet?",
+        "Do they travel frequently? If so, where will the pet be during that time?",
+        "How long are they able to hold the adoption request?"
     )
 
     val answers = remember { mutableStateOf(List(questions.size) { "" }) }
