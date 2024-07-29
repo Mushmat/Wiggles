@@ -35,7 +35,7 @@ data class AdoptionApplicationEntity(
     val userId: String, // User ID who submitted the application
     val petId: Int, // ID of the pet being adopted
     val answers: List<String>, // List of answers to adoption questions
-    val status: String, // Status of the application
+    var status: String, // Status of the application
     val remarks: String // Remarks for the application
 ) {
     constructor() : this(0, "", 0, emptyList(), "", "") // No-argument constructor for Firestore

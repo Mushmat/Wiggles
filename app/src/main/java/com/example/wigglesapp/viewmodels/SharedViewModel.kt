@@ -1,12 +1,14 @@
 package com.example.wigglesapp.viewmodels
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wigglesapp.models.Pet
 import com.example.wigglesapp.data.dao.AppDatabase
 import com.example.wigglesapp.data.entity.AdoptionApplicationEntity
 import com.example.wigglesapp.data.entity.BookmarkedPet
+import com.example.wigglesapp.utils.NotificationUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -31,7 +33,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val suggestedPets: StateFlow<List<Pet>> get() = _suggestedPets
 
     // MutableStateFlow to hold the list of adoption applications
-    private val _adoptionApplications = MutableStateFlow<List<AdoptionApplicationEntity>>(emptyList())
+    private val _adoptionApplications =
+        MutableStateFlow<List<AdoptionApplicationEntity>>(emptyList())
     val adoptionApplications: StateFlow<List<AdoptionApplicationEntity>> get() = _adoptionApplications
 
     private var adoptionListenerRegistration: ListenerRegistration? = null
@@ -78,9 +81,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             auth.currentUser?.let { user ->
                 val application = AdoptionApplicationEntity(
                     userId = user.uid, petId = petId, answers = answers,
-                    status = "IN PROGRESS", remarks = "")
+                    status = "IN PROGRESS", remarks = ""
+                )
                 adoptionApplicationDao.insertAdoptionApplication(application)
-                _adoptionApplications.value = adoptionApplicationDao.getAllAdoptionApplications(user.uid)
+                _adoptionApplications.value =
+                    adoptionApplicationDao.getAllAdoptionApplications(user.uid)
 
                 // TO FIRESTORE
                 val applicationData = mapOf(
@@ -105,7 +110,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     return@addSnapshotListener
                 }
                 val applications = snapshots.documents.mapNotNull { doc ->
-                    doc.toObject(AdoptionApplicationEntity::class.java)?.copy(id = doc.id.hashCode())
+                    doc.toObject(AdoptionApplicationEntity::class.java)
+                        ?.copy(id = doc.id.hashCode())
                 }
                 _adoptionApplications.value = applications
             }
@@ -119,3 +125,4 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 }
+
