@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.wigglesapp.R
-import com.example.wigglesapp.utils.NotificationUtils
 import com.example.wigglesapp.viewmodels.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
