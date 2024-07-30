@@ -1,5 +1,7 @@
 package com.example.wigglesapp.ui.screens
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -10,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -20,6 +23,7 @@ import com.example.wigglesapp.viewmodels.SharedViewModel
 import coil.compose.rememberAsyncImagePainter
 import androidx.compose.ui.platform.LocalFocusManager
 import com.example.wigglesapp.utils.NotificationUtils
+import com.google.firebase.auth.FirebaseAuth
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,6 +47,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
     val answers = remember { mutableStateOf(List(questions.size) { "" }) }
     var currentQuestion by remember { mutableIntStateOf(0) }
     val focusManager = LocalFocusManager.current
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -159,6 +164,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                                         title = "Application Submitted!",
                                         message = "Pet adoption application submitted for ${pet.name}! Track the status via Application Tracker option."
                                     )
+                                    sendPasswordResetEmail(answers.value[3],context)
                                 }) {
                                     Text(text = "Submit")
                                 }
@@ -168,5 +174,23 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
                 }
             }
         }
+    }
+}
+
+
+// Function to send a password reset email
+//THIS IS AN EXPLOITATION OF THE PASSWORD RESET FEATURE OF FIRESTORE TO SEND AN ADOPTION CONFIRMATION EMAIL. Thankyou!
+fun sendPasswordResetEmail(email: String, context: Context) {
+    if (email.isNotEmpty()) {
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(context, "Request submitted!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    } else {
+        Toast.makeText(context, "Please enter your email.", Toast.LENGTH_SHORT).show()
     }
 }

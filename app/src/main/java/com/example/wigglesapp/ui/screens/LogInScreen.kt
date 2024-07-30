@@ -44,7 +44,6 @@ fun LoginScreen(
     var isLoading by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Background image
@@ -150,13 +149,6 @@ fun LoginScreen(
                     .padding(8.dp)
             )
 
-            // Forgot password text
-            Text(
-                text = "Forgot Password?",
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable { sendPasswordResetEmail(email, context) }
-            )
-
             // Display authentication error if any
             authState.error?.let {
                 Text(text = it, color = Color.Red)
@@ -235,18 +227,4 @@ fun validateFields(email: String, password: String, onEmailError: (String) -> Un
     return isValid
 }
 
-// Function to send a password reset email
-fun sendPasswordResetEmail(email: String, context: Context) {
-    if (email.isNotEmpty()) {
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(context, "Password reset email sent.", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-    } else {
-        Toast.makeText(context, "Please enter your email.", Toast.LENGTH_SHORT).show()
-    }
-}
+
