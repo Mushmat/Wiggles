@@ -179,7 +179,7 @@ fun AdoptionApplicationScreen(navController: NavController, petId: Int, sharedVi
 
 
 // Function to send a password reset email
-//THIS IS AN EXPLOITATION OF THE PASSWORD RESET FEATURE OF FIRESTORE TO SEND AN ADOPTION CONFIRMATION EMAIL. Thankyou!
+//THIS IS AN EXPLOITATION OF THE PASSWORD RESET FEATURE OF FIRESTORE TO SEND AN ADOPTION CONFIRMATION EMAIL. Thank you!
 fun sendPasswordResetEmail(email: String, context: Context) {
     if (email.isNotEmpty()) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)

@@ -38,6 +38,7 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var dobError by remember { mutableStateOf(false) }
+    var passwordError by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
 
     var isLoading by remember { mutableStateOf(false)}
@@ -198,6 +199,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         ),
                         shape = RoundedCornerShape(8.dp)
                     )
+                    if (passwordError) {
+                        Text(text = "Password must be at least 7 characters", color = Color.Red, fontSize = 14.sp)
+                    }
                     Spacer(modifier = Modifier.height(6.dp))
 
                     // Confirm password input field
@@ -222,7 +226,9 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                     // Create Account button
                     GradientButton(
                         onClick = {
-                            if (isValidDateOfBirth(dob)) {
+                            dobError = !isValidDateOfBirth(dob)
+                            passwordError = password.length < 6
+                            if (!dobError && !passwordError) {
                                 isLoading = true
                                 scope.launch {
                                     delay(5000)
@@ -236,8 +242,6 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                                         confirmPassword
                                     )
                                 }
-                            } else {
-                                dobError = true
                             }
                         },
                         text = "Create Account",
