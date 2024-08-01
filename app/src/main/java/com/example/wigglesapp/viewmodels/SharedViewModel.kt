@@ -1,14 +1,12 @@
 package com.example.wigglesapp.viewmodels
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wigglesapp.models.Pet
 import com.example.wigglesapp.data.dao.AppDatabase
 import com.example.wigglesapp.data.entity.AdoptionApplicationEntity
 import com.example.wigglesapp.data.entity.BookmarkedPet
-import com.example.wigglesapp.utils.NotificationUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -81,7 +79,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             auth.currentUser?.let { user ->
                 val application = AdoptionApplicationEntity(
                     userId = user.uid, petId = petId, answers = answers,
-                    status = "IN PROGRESS", remarks = ""
+                    status = "IN PROGRESS", remarks = "The application is in progress. Please keep checking the status of it through the respective window provided."
                 )
                 adoptionApplicationDao.insertAdoptionApplication(application)
                 _adoptionApplications.value =
@@ -93,7 +91,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     "petId" to petId,
                     "answers" to answers,
                     "status" to "IN PROGRESS",
-                    "remarks" to ""
+                    "remarks" to "The application is in progress. Please keep checking the status of it through the respective window provided."
                 )
                 firestore.collection("adoptionRequests").add(applicationData)
             }
