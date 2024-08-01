@@ -258,7 +258,7 @@ val dummyPets = listOf(
     ),
 
     Pet(23, "Asher", "American Short Hair",
-        "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72124640/1/?bust=1720323573&width=300",
+        "https://dbw3zep4prcju.cloudfront.net/animal/2614b7cb-7afb-44cc-9266-f4d18329885b/image/142e3c9a-3e38-48c4-b11d-6010ce380c40.jpeg?versionId=_l8vXZCRiA6UQLDSDESewj2k8FgKOq8S&bust=1721051805&width=1080",
         "Male", "Medium",
         "Dog-friendly, Affectionate, Curious, Friendly, Independent, Playful",
         "The adorable boys ready for his forever home. He is house trained and has all the vaccinations up-to-date."
