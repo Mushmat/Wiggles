@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import com.example.wigglesapp.viewmodels.AuthViewModel
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.HomeButton
+import com.example.wigglesapp.ui.components.TutorialButton
 import com.example.wigglesapp.ui.components.TutorialOverlay
 import com.example.wigglesapp.utils.NotificationUtils
 import kotlinx.coroutines.CoroutineScope
@@ -87,7 +88,7 @@ fun HomeScreen(navController: NavController, drawerState: DrawerState, scope: Co
                 Text(text = "Paws Up!", fontSize = 32.sp)
                 Spacer(modifier = Modifier.height(16.dp))
 
-               HomeButton(
+               TutorialButton(
                 icon = R.drawable.baseline_tour_24,
                 text = "Start Tutorial",
                 onClick = { tutorialStep = TutorialStep.PetParade },
