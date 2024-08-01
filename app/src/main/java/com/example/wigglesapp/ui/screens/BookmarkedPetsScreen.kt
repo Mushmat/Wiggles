@@ -29,6 +29,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -86,7 +87,15 @@ fun BookmarkedPetsScreen(navController: NavController, sharedViewModel: SharedVi
                         )
                     }
                 } else {
+                    Spacer(modifier = Modifier.height(15.dp))
                     // LazyColumn to display the list of bookmarked pets
+                    Text(
+                        text = "Bookmarked Pets: ",
+                        fontSize = 20.sp,
+                        color = Color(0xFF1a1a73),
+                        textAlign = TextAlign.Center
+                    )
+
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
