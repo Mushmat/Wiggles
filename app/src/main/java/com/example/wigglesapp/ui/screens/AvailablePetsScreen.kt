@@ -133,6 +133,112 @@ val dummyPets = listOf(
     ),
 
     Pet(
+        11, "Lark", "Chihuahua","https://dbw3zep4prcju.cloudfront.net/animal/5101bbf8-8f26-4f4c-ba3e-425a283f648f/image/78bae310-2b18-4041-9ac9-ea94b981422c.jpg?versionId=1_VagU4ldPAfzAcGi9whXBVR.rn5OhZJ&bust=1716582429&width=1080",
+        "Female","Small","Affectionate, Protective, Funny",
+        "Are you looking for a little spice in your life? Then Lark is ready to bring the hotness." +
+                " She hails from St. Croix where she was a typical, stray, street dog and found her way here after being hit by a car with broken back legs." +
+                " She has since made a full recovery. We are so proud of the strength and confidence she has regained. Lark has a little bit of a courting phase." +
+                " But oh the joy when she latches on! Her funny, sparky personality comes alive." +
+                " She doesn't have to court the ladies or pups as long as the gents, but she will come around." +
+                " She deserves a furever home where she has all the toys, can steal all the socks and do all her little happy hop dance despite the spicy flavor she likes to bring to the table!"
+    ),
+
+    Pet(
+        12, "Ruby", "Chihuahua", "https://dbw3zep4prcju.cloudfront.net/animal/1870c3ee-e283-4ffb-8246-8eee42dbb730/image/6b9f6032-9da9-4d03-a3a5-62c1ea09bd5f.jpeg?versionId=9Me6I.jjOhpBruoJT7YBl8smmKcDTZGv&bust=1719694254&width=1080",
+        "Female", "Small", "Affectionate, Couch, Friendly, Independent, Gentle, Loyal, Loves Belly Rubs Sunbathing And Treats, Playful",
+        "Meet Ruby, a charming 5-year-old female Chihuahua mix weighing in at a perfect 16 lbs. Ruby is the epitome of a loving companion who adores belly rubs and snuggling on your lap. She’s a sunbathing enthusiast who enjoys lounging in warm spots and treats are her absolute favorite! Ruby is house and crate trained, making her an easy fit into any home. She prefers the quieter things in life and gets along well with other dogs, though she appreciates a little time to warm up to new friends. Ruby loves being around people and relishes her moments as the center of attention, yet she also values her personal space. This sweet girl would make a wonderful couch companion, bringing joy and comfort to her forever home. If you're looking for a loyal friend who enjoys both quality time and serene moments, Ruby is the perfect match for you! She is spayed and current on vaccines and microchipped. Contact us today at adopt@carolinapaws.com to meet Ruby and make her part of your family."
+    ),
+
+    Pet(
+        13, "Eilish","Pit Bull Terrier", "https://dbw3zep4prcju.cloudfront.net/animal/c32941f0-5599-4e12-bc7c-97caaba6a235/image/81f2585c-75ff-4895-bbcd-c72f45f3bfe5.jpeg?versionId=DPuH1Su8Uom8hxXUxivkaJxn4N80O_9v&bust=1722291321&width=1080",
+        "Female","Small","Affectionate, Friendly, Playful, Smart, Curious, Funny",
+        "Meet Eilish! ?\n" +
+                "\n" +
+                "Eilish is a sweet, sassy, and spunky 10-week-old mixed breed puppy looking for her forever home. With her adorable personality and love for play and snuggles, she’s sure to win your heart! Eilish adores her human companions and gets along wonderfully with both big and small people. She’s also great with other dogs and curious but unbothered by cats.\n" +
+                "\n" +
+                "Eilish is doing fantastic with her potty training and sleeps soundly through the night. She has the most beautiful eyes that she loves to use to her advantage, charming her way into getting whatever she wants!\n" +
+                "\n" +
+                "If you’re looking for a loving, playful, and obedient pup to join your family, Eilish could be the perfect match."
+    ),
+
+    Pet(
+        14, "Charlie","Beagle","https://dbw3zep4prcju.cloudfront.net/animal/0400da21-30e1-40a6-b6fa-74907e4cef3d/image/502bdd43-c30c-40ce-ad75-dc9d2dbe6098.jpeg?versionId=HGP.tAKtkJs45VahlFp0cBsqoxWAP5tt&bust=1720961850&width=1080",
+        "Male","Small","Affectionate, Friendly, Playful, Smart, Curious, Funny",
+        "Weight: 24 pounds\n" +
+                "House trained: no\n" +
+                "Crate trained: yes\n" +
+                "Fence required: No, could be leash walk only\n" +
+                "Apartment/condo appropriate: yes\n" +
+                "Bark meter 1-5: 2\n" +
+                "Good in the car: yes\n" +
+                "Good on a leash: yes\n" +
+                "Good with other dogs: yes\n" +
+                "Good with cats: We don’t know\n" +
+                "Good with kids: yes\n" +
+                "Good with Women/Men/Both: both\n" +
+                "Medications: heartgard ( hw treatment)\n" +
+                "Temperament: friendly, very sweet, semi playful\n" +
+                "Special needs: none\n" +
+                "Story: He was dumped with Lena in a very remote area. They wandered up to a home there that had other dogs.Charlie is a very light heartworm positive. He is currently on the slow kill treatment. no restrictions with exercise or anything like that. The heartworm prevention pills are included in adoption fee."
+    ),
+
+    Pet(
+        15, "Fred","Labrador Retriever","https://dbw3zep4prcju.cloudfront.net/animal/e02230c0-5047-4304-9358-efc527d7bf8d/image/2a87a95f-ceef-4099-b7f2-f390d267c25e.jpg?versionId=Cl3bWc.7XmtGKq_as5MQ5LpwDFP9fp8w&bust=1721502796&width=1080",
+        "Male","Medium","Dog-friendly, Cute",
+        "Fred is 1.5 years old, 50 lbs.\n" +
+                "\n" +
+                "He received a spinal injury early in his life. Neurology dept at CARE evaluated him and said the injury was too old to fix.\n" +
+                "\n" +
+                "He is adapting and can go on short walks, can negotiate a stair, cannot run but can lead a fairly normal life\n" +
+                "\n" +
+                "He adores other dogs and follows their leads. He is special needs but just needs dogs that won't bowl him over."
+    ),
+
+    Pet(
+        16, "Mr. Big", "Domestic Short Hair", "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/68744484/1/?bust=1722211444&width=1080",
+        "Male","Medium","Dog-friendly, Playful, Affectionate, Curious, Independent, Agile",
+        "Meet Mr. Big!\n" +
+                "\n" +
+                "With a big personality and an impressive physique, Mr. Big is a chatty and charming feline looking for his forever home. At 2-3 years old, he's in perfect shape, fully vaccinated, and neutered. Dogs don't bother him, and he gets along well with most kitties (although he may enjoy some playful teasing!).\n" +
+                "\n" +
+                "Mr. Big loves to explore the great outdoors, so an indoor/outdoor home with a safe environment is ideal for him. While he adores human company, he prefers older children who understand his boundaries. If you're ready to welcome this adventurous and lovable companion into your life, click the \"Adopt\" button for more info or to arrange a meeting!\n"
+    ),
+
+    Pet(
+        17, "Herbie","Americal Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/03a65930-1e0a-490e-9975-dd78dc849075/image/174422a7-2f8a-4ee1-83fc-74dfb59b06d9.jpg?versionId=4htwt43tVAE3SC0ObtjYJaOI0n9V9Uay&bust=1721784702&width=1080",
+        "Male","Medium","Affectionate, Quiet, Loyal, Gentle, Friendly",
+        "Coat length: \n" +
+                "Short\n" +
+                "House-trained: \n" +
+                "Yes\n" +
+                "Health: \n" +
+                "Vaccinations up to date, spayed / neutered.\n" +
+                "Good in a home with: \n" +
+                "Other cats, dogs, children."
+    ),
+
+    Pet(
+        18, "Little Man","American Short Hair","https://dbw3zep4prcju.cloudfront.net/animal/34ffe533-9f43-450c-96d4-c591d132754c/image/dd54598d-eca3-42c1-9c78-198e2ff237be.jpg?versionId=dWvlmMiALqd7Lo.tBiQzslW61y5pgu7k&bust=1721819768&width=1080",
+        "Male","Small","Affectionate, Athletic, Brave, Couch, Curious, Dignified, Friendly, Funny, Gentle, Independent, Loves, Playful, Protective, Quiet, Loyal, Smart",
+        "I was found at four weeks old I was So little and sick but a lovely lady kept checking on me and giving me meds till she found me a safe place. My colony was not safe and my mom left me.\n" +
+                "Now I’m spoiled rotten and will be looking to find a furever family in two weeks."
+    ),
+
+    Pet(
+        19, "French Fry", "Domestic Short Hair", "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72054397/1/?bust=1722380766&width=1080",
+        "Male", "Small", "Dog-friendly, Cute",
+        "French Fry loves to play and take long cat naps. He especially loves to wrestle with his sister, Zesty and any other kittens around. Nobody is a stranger to him!\n" +
+                "\n" +
+                "If kitty has not yet been spayed or neutered they may still go home if the approved adopter agrees to sign a legal contract certifying that they will take Kitty to the spay/neuter appointment."
+    ),
+
+    Pet(
+        20, "Drogon", "Russian Blue", "https://dbw3zep4prcju.cloudfront.net/animal/f8800bc7-dd6b-45c3-a5f2-4e3e4d3f4af9/image/b8cd3d66-a2c7-49e9-8e8f-5c2f90932623.jpeg?versionId=AYEzaHRCsmtaGhz0jJ4Sv6i2UHvN0Qm1&bust=1721620352&width=1080",
+        "Male", "Medium", "Dog-friendly, Affectionate, Curious, Friendly, Independent, Playful",
+        "Drogon and his brothers Balerion and Morghul are SO sweet! They’re incredibly affectionate and love to snuggle. While they’re enjoying the best kittenhood has to offer in their foster home, they would each really love a home of their own."
+    ),
+
+    Pet(
         21, "September", "Domestic Short Hair",
         "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/72072169/1/?bust=1719985470&width=300",
         "Male", "Small",

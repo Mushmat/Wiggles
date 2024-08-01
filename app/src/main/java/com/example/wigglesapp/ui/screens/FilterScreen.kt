@@ -28,6 +28,8 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
     // Lists of available breeds, genders, and sizes
 
     val breeds = listOf(
+        "Chihuahua",
+        "Beagle",
         "Pit Bull Terrier",
         "Dachshund",
         "Plott Hound",
@@ -43,7 +45,8 @@ fun FilterScreen(navController: NavController, applyFilters: (List<String>, List
         "Abyssinian",
         "Bengal",
         "British Short Hair",
-        "Dilute Calico"
+        "Dilute Calico",
+        "Russian Blue"
     )
     val genders = listOf("Male", "Female")
     val sizes = listOf("Small", "Medium")
