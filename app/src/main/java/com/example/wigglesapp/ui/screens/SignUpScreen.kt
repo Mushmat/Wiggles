@@ -14,10 +14,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat.Type
 import com.example.wigglesapp.R
 import com.example.wigglesapp.ui.components.GradientButton
 import com.example.wigglesapp.viewmodels.AuthViewModel
@@ -41,8 +45,18 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
     var passwordError by remember { mutableStateOf(false) }
     val authState by authViewModel.authState.collectAsState()
 
-    var isLoading by remember { mutableStateOf(false)}
+    var isLoading by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+
+    // Getting the current view to calculate insets
+    val view = LocalView.current
+    val density = LocalDensity.current
+
+    // Get the current window insets to determine if the keyboard is visible
+    val imeHeightPx = ViewCompat.getRootWindowInsets(view)?.getInsets(Type.ime())?.bottom ?: 0
+
+    // Convert the height from pixels to DP
+    val imeHeightDp = with(density) { imeHeightPx.toDp() }
 
     Scaffold(
         topBar = {
@@ -60,9 +74,10 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
             )
         }
     ) { paddingValues ->
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
             // Background image
             Image(
@@ -81,7 +96,8 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 32.dp),
+                        .padding(vertical = 32.dp)
+                        .padding(bottom = imeHeightDp), // Adjust bottom padding based on keyboard height
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -91,7 +107,12 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         contentDescription = "Cute Pets",
                         modifier = Modifier.size(48.dp)
                     )
-                    Text(text = "Wiggles", style = MaterialTheme.typography.titleLarge, color = Color.Black, fontSize = 60.sp)
+                    Text(
+                        text = "Wiggles",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Black,
+                        fontSize = 60.sp
+                    )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -129,7 +150,11 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     if (dobError) {
-                        Text(text = "Please enter a valid Date of Birth", color = Color.Red, fontSize = 14.sp)
+                        Text(
+                            text = "Please enter a valid Date of Birth",
+                            color = Color.Red,
+                            fontSize = 14.sp
+                        )
                     }
 
                     Spacer(modifier = Modifier.height(6.dp))
@@ -200,7 +225,11 @@ fun SignUpScreen(authViewModel: AuthViewModel, onLoginClicked: () -> Unit) {
                         shape = RoundedCornerShape(8.dp)
                     )
                     if (passwordError) {
-                        Text(text = "Password must be at least 7 characters", color = Color.Red, fontSize = 14.sp)
+                        Text(
+                            text = "Password must be at least 7 characters",
+                            color = Color.Red,
+                            fontSize = 14.sp
+                        )
                     }
                     Spacer(modifier = Modifier.height(6.dp))
 
