@@ -54,15 +54,11 @@ Welcome to Wiggles! This comprehensive mobile application facilitates the adopti
 
 To run the Wiggles App, follow these steps:
 
-### Download Wiggles.apk
-
-Simply download Wiggles.apk from the repository's master section.
-
 ### Follow the link
 
 [Go on this link to download the apk:](https://drive.google.com/file/d/1dyrvzFw9_2jPOnSyAxuP53zmnrjAMKj9/view?usp=sharing) 
 
-### Run using Android Studio:
+### OR Run using Android Studio:
 
 ### Prerequisites
 
