@@ -44,7 +44,9 @@ fun AdoptionSuccessScreen(navController: NavController) {
         }
     ) { paddingValues ->
         // Main content container
-        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)) {
             // Background image
             Image(
                 painter = painterResource(id = R.drawable.bg),
@@ -117,7 +119,29 @@ fun AdoptionSuccessScreen(navController: NavController) {
 
                 // Button to navigate back to the home screen
                 Button(
-                    onClick = { navController.navigate("home") },
+                        onClick = { navController.navigate("home") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            listOf(Color(0xFFFFA726), Color(0xFFFF7043))
+                        )
+                    )
+                    .shadow(8.dp, RoundedCornerShape(12.dp))
+                ) {
+                Text(
+                    text = "Back to Home",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Button(
+                    onClick = { navController.navigate("adoption_tracker") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(12.dp))
@@ -129,12 +153,13 @@ fun AdoptionSuccessScreen(navController: NavController) {
                         .shadow(8.dp, RoundedCornerShape(12.dp))
                 ) {
                     Text(
-                        text = "Back to Home",
+                        text = "Track your application!",
                         color = Color.White,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
+                
             }
         }
     }
