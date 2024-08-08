@@ -56,7 +56,7 @@ To run the Wiggles App, follow these steps:
 
 ### Follow the link
 
-[Go on this link to download the apk:](https://drive.google.com/file/d/1dyrvzFw9_2jPOnSyAxuP53zmnrjAMKj9/view?usp=sharing) 
+[Go on this link to download the apk](https://drive.google.com/file/d/1dyrvzFw9_2jPOnSyAxuP53zmnrjAMKj9/view?usp=sharing) 
 
 ### OR Run using Android Studio:
 
