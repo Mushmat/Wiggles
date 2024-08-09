@@ -1,15 +1,19 @@
+# Ignore IDE-specific files
 *.iml
+.idea/
+
+# Ignore Gradle files
 .gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
+local.properties
+
+# Ignore build output
 /build
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+
+# Ignore macOS-specific files
+.DS_Store
+
+# Other potentially unnecessary files
+/local.properties
