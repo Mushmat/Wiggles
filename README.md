@@ -51,7 +51,7 @@ Welcome to Wiggles! This comprehensive mobile application facilitates the adopti
 
 ## 📚💻 Code Documentation
 
-[Code Documentation]()
+[Code Documentation](https://github.com/Mushmat/Wiggles/blob/master/code_doc.md)
 
 ## 📥 Installation
 
