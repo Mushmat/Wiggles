@@ -4,7 +4,7 @@
 
 # 🐾 Wiggles - Your Ultimate Pet Adoption Companion 🐾
 
-(**Prototype Version**)
+(**Prototype Version 0.9.0-alpha**)
 
 Welcome to Wiggles! This comprehensive mobile application facilitates the adoption process for cats and dogs. Wiggles connects potential pet owners with pets needing a home, providing detailed profiles and personalized recommendations to ensure the perfect match. Our mission is to streamline the adoption process and support pet owners with valuable resources.
 
@@ -49,6 +49,9 @@ Welcome to Wiggles! This comprehensive mobile application facilitates the adopti
 
 - **Navigation**: Seamless navigation throughout the app using Jetpack Navigation Component.
 
+## 📚💻 Code Documentation
+
+[Code Documentation]()
 
 ## 📥 Installation
 
