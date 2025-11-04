@@ -38,6 +38,56 @@ Wiggles follows the MVVM (Model-View-ViewModel) architecture pattern to separate
 
 ## 🛠️📂 Code Structure
 
+```bash
+C:.
+├───.idea
+│   └───inspectionProfiles
+├───app
+│   ├───schemas
+│   │   └───com.example.wigglesapp.PetDatabase
+│   └───src
+│       ├───androidTest
+│       │   └───java
+│       │       └───com
+│       │           └───example
+│       │               └───wigglesapp
+│       ├───main
+│       │   ├───assets
+│       │   ├───java
+│       │   │   └───com
+│       │   │       └───example
+│       │   │           └───wigglesapp
+│       │   │               ├───data
+│       │   │               │   ├───dao
+│       │   │               │   └───entity
+│       │   │               ├───models
+│       │   │               ├───ui
+│       │   │               │   ├───components
+│       │   │               │   ├───screens
+│       │   │               │   └───theme
+│       │   │               ├───utils
+│       │   │               └───viewmodels
+│       │   └───res
+│       │       ├───drawable
+│       │       ├───mipmap-anydpi-v26
+│       │       ├───mipmap-hdpi
+│       │       ├───mipmap-mdpi
+│       │       ├───mipmap-xhdpi
+│       │       ├───mipmap-xxhdpi
+│       │       ├───mipmap-xxxhdpi
+│       │       ├───values
+│       │       └───xml
+│       └───test
+│           └───java
+│               └───com
+│                   └───example
+│                       └───wigglesapp
+├───banner
+├───Code_Documentation
+└───gradle
+    └───wrapper
+```
+
 ### Package Structure:
 
 - **ui:** Contains screens like Login, SignUp, AdoptionTracker and components for UI rendering.
